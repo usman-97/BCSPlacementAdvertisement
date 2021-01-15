@@ -16,7 +16,7 @@ if (isset($_POST['cvUpload']))
         }
         else
         {
-
+            $view->error=
         }
     }
     else
