@@ -16,12 +16,12 @@ if (isset($_POST['cvUpload']))
         }
         else
         {
-            $view->error=
+            $view->error= "File size too large to upload";
         }
     }
     else
     {
-        $view->error = "File";
+        $view->error = "File size too large to upload";
     }
 }
 
