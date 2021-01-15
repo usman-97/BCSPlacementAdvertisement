@@ -8,20 +8,19 @@ $cv = new FileUpload();
 
 if (isset($_POST['cvUpload']))
 {
-    if ($cv->checkFileSize(5000000))
-    {
-        if ($cv->checkFileType("pdf"))
-        {
-            $cv->cvUpload($_SESSION['username']);
+    if (!$_FILES['fileToUpload']['name'] == "") {
+        if ($cv->checkFileSize(2500000)) {
+            $cv->cvUpload($_SESSION['username'], "pdf");
+            $cv->addFileToDatabase($_SESSION['userID']);
+            $view->error = "The file" . htmlspecialchars(basename($_FILES['fileToUpload']['name'])) . " has been uploaded";
         }
-        else
-        {
-            $view->error= "File size too large to upload";
+        else {
+            $view->error = "File size too large to upload";
         }
     }
     else
     {
-        $view->error = "File size too large to upload";
+        $view->error = "Please Select a file to upload";
     }
 }
 

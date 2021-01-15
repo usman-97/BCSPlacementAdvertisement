@@ -24,6 +24,10 @@ if (isset($_POST['register']))
             {
                 // Then register new user
                 $user->register($_POST['newFullName'], $_POST['phone_number'], $_POST['address']);
+                if ($_POST['userType'] == "Student")
+                {
+                    $user->addStudent();
+                }
                 header ("location: login.php");
             }
             else

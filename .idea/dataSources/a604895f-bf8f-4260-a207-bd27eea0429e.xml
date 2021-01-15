@@ -841,7 +841,7 @@
     <column id="252" parent="229" name="cv">
       <Position>3</Position>
       <DataType>varchar(45)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;No CV&apos;</DefaultExpression>
     </column>
     <index id="253" parent="229" name="user_id_idx">
       <ColNames>user_id</ColNames>
@@ -886,7 +886,7 @@
     </column>
     <column id="261" parent="230" name="postal_address">
       <Position>6</Position>
-      <DataType>varchar(45)|0s</DataType>
+      <DataType>varchar(70)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="262" parent="230" name="user_type">

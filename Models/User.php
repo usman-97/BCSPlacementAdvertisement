@@ -80,12 +80,14 @@ class User {
     /**
      * Gets total number of  User IDs from users table
      */
-    public function countUserID()
+    public function countID($id, $table)
     {
         // SQL query counts userID rows
-        $countQuery = "SELECT COUNT(userID) FROM users";
+        $countQuery = "SELECT COUNT(:id) FROM :tableName";
         // Prepare PDO statement
         $countStatement = $this->_dbHandle->prepare($countQuery);
+        $countStatement->bindParam(":id", $id, PDO::PARAM_INT);
+        $countStatement->bindParam(":tableName", $table, PDO::PARAM_STR);
         // Execute PDO statement
         $countStatement->execute();
         // return total number of userID records
@@ -102,7 +104,8 @@ class User {
     public function register($fullName, $phoneNumber, $address)
     {
         // New User ID for registration
-        $newKey = $this->countUserID() + 1;
+        $newKey = $this->countID("userID", "users") + 1;
+        $this->_userID = $newKey;
 
         // SQL query to insert user details
         $sqlQuery = "INSERT INTO users VALUES (:Pkey, :username, :userEmail, :pwd, :phone, :postal, :typeOfUser)";
@@ -124,6 +127,25 @@ class User {
 
         // Execute PDO statement
         $statement->execute();
+    }
+
+    /**
+     * Insert new registered user as a student
+     */
+    public function addStudent()
+    {
+        // New id for student table
+        $newKey = $this->countID("studentID", "student") + 1;
+        // SQL query to insert student and user id
+        $sqlQuery = 'INSERT INTO student VALUES (:id, :user_id, null)';
+        // Prepare PDO statement
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        // Assign values to parameters in SQL query
+        $statement->bindParam(":id", $newKey, PDO::PARAM_INT);
+        $statement->bindParam(":user_id", $this->_userID, PDO::PARAM_INT);
+        // Execute PDO statement
+        $statement->execute();
+
     }
 
     /**
