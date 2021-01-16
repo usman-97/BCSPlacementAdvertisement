@@ -29,7 +29,7 @@ if (isset($_POST['register']))
                     $user->addStudent();
                 }
                 echo "Created";
-                // header ("location: login.php");
+                header ("location: login.php");
             }
             else
             {

@@ -110,17 +110,11 @@ class User {
         $countQuery = "SELECT COUNT(userID) FROM users";
         // Prepare PDO statement
         $countStatement = $this->_dbHandle->prepare($countQuery);
-        /*$countStatement->bindParam(":id", $id, PDO::PARAM_INT);
-        $countStatement->bindParam(":tableName", $table, PDO::PARAM_STR)*/;
-        // Execute PDO statement
         $countStatement->execute();
+
         // return total number of userID records
         $newKey = $countStatement->fetchColumn() + 1;
-        var_dump($newKey);
-        /*// New User ID for registration
-        $newKey = $this->countID("userID", "users") + 1;
         $this->_userID = $newKey;
-        var_dump($this->_userID);*/
 
         // SQL query to insert user details
         $sqlQuery = "INSERT INTO users VALUES(:Pkey, :username, :userEmail, :pwd, :phone, :postal, :typeOfUser)";
@@ -150,10 +144,19 @@ class User {
      */
     public function addStudent()
     {
+        // SQL query counts userID rows
+        $countQuery = "SELECT COUNT(studentID) FROM student";
+        // Prepare PDO statement
+        $countStatement = $this->_dbHandle->prepare($countQuery);
+        $countStatement->bindParam(":id", $id, PDO::PARAM_INT);
+        $countStatement->bindParam(":tableName", $table, PDO::PARAM_STR);
+        // Execute PDO statement
+        $countStatement->execute();
+
         // New id for student table
-        $newKey = $this->countID("studentID", "student") + 1;
+        $newKey = $countStatement->fetchColumn() + 1;
         // SQL query to insert student and user id
-        $sqlQuery = 'INSERT INTO student VALUES (:id, :user_id, null)';
+        $sqlQuery = "INSERT INTO student VALUES (:id, :user_id, null)";
         // Prepare PDO statement
         $statement = $this->_dbHandle->prepare($sqlQuery);
         // Assign values to parameters in SQL query
@@ -161,7 +164,7 @@ class User {
         $statement->bindParam(":user_id", $this->_userID, PDO::PARAM_INT);
         // Execute PDO statement
         $statement->execute();
-        var_dump($newKey);
+        var_dump($this->_userID);
 
     }
 
