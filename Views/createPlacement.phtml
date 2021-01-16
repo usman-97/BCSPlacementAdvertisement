@@ -133,19 +133,24 @@
 <div class="form-style-10">
     <h1>Upload Placement Details<span>Enter all the information related to the Placement Below!</span></h1>
     <form>
-        <div class="section">Placement Details</div>
+        <div class="section">Placement Description</div>
         <div class="inner-wrap">
-            <label>Enter Placement Details <input type="text" name="field1" /></label>
+            <label><textarea rows="4" cols="50" name="description" placeholder="200 character max ..."></textarea></label>
         </div>
 
-        <div class="section">Location</div>
+        <div class="section">Benefits</div>
         <div class="inner-wrap">
-            <label>Location <input type="text" name="field2" /></label>
+            <label> <textarea rows="4" cols="50" name="benefits" ></textarea></label>
         </div>
 
         <div class="section">Salary</div>
         <div class="inner-wrap">
-            <label> Salary <input type="text" name="field3" /></label>
+            <label>e.g. 22000 <input type="text" name="salary" />
+            <select name="salaryPaid">
+                <option>Annually</option>
+                <option>Monthly</option>
+                <option>Weekly</option>
+            </select></label>
         </div>
 
         <div class="section">Benefit</div>
