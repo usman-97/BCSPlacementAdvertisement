@@ -1,5 +1,6 @@
 <?php
 require_once ("Database.php");
+require_once ("SkillsData.php");
 
 
 class Skills {
@@ -13,6 +14,27 @@ class Skills {
 
     public function listPlacementSkills()
     {
-        $sqlQuery = "SELECT * ";
+        $sqlQuery = "SELECT * FROM skills";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->execute();
+
+        $dataSet = [];
+        while ($row = $statement->fetch())
+        {
+            $dataSet[] = new SkillsData($row);
+        }
+
+        return $dataSet;
+    }
+
+    /**
+     *
+     */
+    public function addSkill($skillID, $placementID)
+    {
+        $sqlQuery = 'INSERT INTO placement_skills VALUES ()';
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->
+        $statement->execute();
     }
 }

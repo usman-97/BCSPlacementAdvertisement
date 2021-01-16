@@ -163,9 +163,25 @@
             <label> End Date <input type="Date" name="field5" /></label>
         </div>
 
-        <div class="section">Required Skills</div>
+        <div class="section">Skills</div>
         <div class="inner-wrap">
-            <label> skills <input type="Text" name="field6" /></label>
+            <label> Skill:
+                <select name="skill">
+                    <?php foreach ($view->getAllSkills as $skill) {
+                        for ($i = $skill->getStartLevel(); $i < $skill->getEndLevel(); $i++) {
+                            echo '<option>' . $skill->getSkill() . ' - Level ' . $i .
+                                '</option>';
+                        }
+                    }?>
+                </select>
+                <!--Level:
+                <select name="skillLevel">
+                    <?php /*for ($i = $view->getAllSkills->getStartLevel(); $i < $view->getAllSkills->getEndLevel(); $i++)
+                        {
+                            echo '<option>' . $i . '</option>';
+                        }*/?>
+                </select>-->
+                <input type="submit" name="addSkill" value="add"/></label>
         </div>
 
         <div class="button-section">
