@@ -1,9 +1,4 @@
 <?php require ("template/header.phtml") ?>
-
-    <!DOCTYPE html>
-    <html>
-<head>
-    <title>Login Page</title>
     <style>
         body
         {
@@ -91,21 +86,10 @@
             color: #ffffff;
         }
     </style>
-<head/>
-<body>
-<h2>Login Page</h2><br>
 
-
+<br /><br />
 <form action="" method="post" class="form-group">
-    <h4 class="text-warning text-center pt-5">Login</h4>
-    <!--            <input type="text" name="newFullName" value="Legend Expression" >-->
-    <!--<input type="text" name="email" value="legend.expression@edu.salford.ac.uk" >
-    <input type="password" name="newPwd" value="123456789" >
-    <input type="text" name="phone_number" value="0712345678" >
-    <input type="text" name="address" value="51 princess road, M16">
-    <input type="submit" name="register" value="Sign Up" >-->
-
-
+    <h1 class="text-warning text-center pt-5">Login</h1>
     <label>
         <input type="text" class="input" name="userEmail" placeholder="Email" value="example@edu.email.ac.uk"/>
         <div class="line-box">
@@ -137,12 +121,8 @@
     </label>
 
     <input type="submit" name="login" value="Login">
-    </div>
     <p><?php if (isset($view->error)) {echo $view->error;}?></p>
+    </div>
 </form>
-<p><?php if (isset($view->error)) {echo $view->error;} ?></p>
-
-
-
 
 <?php require ("template/footer.phtml") ?>
