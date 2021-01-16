@@ -9,6 +9,6 @@ class SkillsData {
         $this->_skillID = $dbRow['skillID'];
         $this->_skill = $dbRow['skill'];
         $this->_startLevel = $dbRow['startLevel'];
-        $this->_endLevel = $dbRow['skillID'];
+        $this->_endLevel = $dbRow['endLevel'];
     }
 }
