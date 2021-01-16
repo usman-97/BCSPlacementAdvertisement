@@ -15,12 +15,12 @@ class Database {
      * @return Database
      */
     public static function getInstance() {
-       $username ='hc21-16';
-       $password = 'GxUn3vN1jK5PCpE';
-       $host = 'poseidon.salford.ac.uk';
-       $dbName = 'hc21_16';
-       
-       if(self::$_dbInstance === null) { //checks if the PDO exists
+        $username ='hc21-16';
+        $password = 'GxUn3vN1jK5PCpE';
+        $host = 'poseidon.salford.ac.uk';
+        $dbName = 'hc21_16';
+
+        if(self::$_dbInstance === null) { //checks if the PDO exists
             // creates new instance if not, sending in connection info
             self::$_dbInstance = new self($username, $password, $host, $dbName);
         }
@@ -35,23 +35,23 @@ class Database {
      * @param $database
      */
     private function __construct($username, $password, $host, $database) {
-        try { 
+        try {
             $this->_dbHandle = new PDO("mysql:host=$host;dbname=$database",  $username, $password); // creates the database handle with connection info
-           
+
         }
         catch (PDOException $e) { // catch any failure to connect to the database
-	    echo $e->getMessage();
-	}
+            echo $e->getMessage();
+        }
     }
 
     /**
      * @return PDO
      */
     public function getdbConnection() {
-        return $this->_dbHandle; // returns the PDO handle to be used                                        elsewhere
+        return $this->_dbHandle; // returns the PDO handle to be used elsewhere
     }
 
     public function __destruct() {
-        $this->_dbHandle = null; // destroys the PDO handle when nolonger needed                                        longer needed
+        $this->_dbHandle = null; // destroys the PDO handle when no longer needed longer needed
     }
 }

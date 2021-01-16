@@ -20,7 +20,7 @@ if (isset($_POST['register']))
         // If user email doesn't exist in database
         if (!$user->checkEmail())
         {
-            if ($_POST['newPwd'] === $_POST['confirmPassword'])
+            if ($_POST['newPwd'] == $_POST['confirmPassword'])
             {
                 // Then register new user
                 $user->register($_POST['newFullName'], $_POST['phone_number'], $_POST['address']);
@@ -28,7 +28,8 @@ if (isset($_POST['register']))
                 {
                     $user->addStudent();
                 }
-                header ("location: login.php");
+                echo "Created";
+                // header ("location: login.php");
             }
             else
             {

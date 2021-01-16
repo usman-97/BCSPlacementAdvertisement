@@ -79,6 +79,9 @@ class User {
 
     /**
      * Gets total number of  User IDs from users table
+     * @param $id
+     * @param $table
+     * @return mixed
      */
     public function countID($id, $table)
     {
@@ -103,12 +106,24 @@ class User {
      */
     public function register($fullName, $phoneNumber, $address)
     {
-        // New User ID for registration
+        // SQL query counts userID rows
+        $countQuery = "SELECT COUNT(userID) FROM users";
+        // Prepare PDO statement
+        $countStatement = $this->_dbHandle->prepare($countQuery);
+        /*$countStatement->bindParam(":id", $id, PDO::PARAM_INT);
+        $countStatement->bindParam(":tableName", $table, PDO::PARAM_STR)*/;
+        // Execute PDO statement
+        $countStatement->execute();
+        // return total number of userID records
+        $newKey = $countStatement->fetchColumn() + 1;
+        var_dump($newKey);
+        /*// New User ID for registration
         $newKey = $this->countID("userID", "users") + 1;
         $this->_userID = $newKey;
+        var_dump($this->_userID);*/
 
         // SQL query to insert user details
-        $sqlQuery = "INSERT INTO users VALUES (:Pkey, :username, :userEmail, :pwd, :phone, :postal, :typeOfUser)";
+        $sqlQuery = "INSERT INTO users VALUES(:Pkey, :username, :userEmail, :pwd, :phone, :postal, :typeOfUser)";
 
         // Prepare PDO statement
         $statement = $this->_dbHandle->prepare($sqlQuery);
@@ -127,6 +142,7 @@ class User {
 
         // Execute PDO statement
         $statement->execute();
+        var_dump($password);
     }
 
     /**
@@ -145,6 +161,7 @@ class User {
         $statement->bindParam(":user_id", $this->_userID, PDO::PARAM_INT);
         // Execute PDO statement
         $statement->execute();
+        var_dump($newKey);
 
     }
 
