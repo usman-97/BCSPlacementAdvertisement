@@ -133,6 +133,7 @@
 <div class="form-style-10">
     <h1>Upload Placement Details<span>Enter all the information related to the Placement Below!</span></h1>
     <form>
+
         <div class="section">Placement Description</div>
         <div class="inner-wrap">
             <label><textarea rows="4" cols="50" name="description" placeholder="200 character max ..."></textarea></label>
@@ -155,12 +156,12 @@
 
         <div class="section">Start Date</div>
         <div class="inner-wrap">
-            <label> Start Date <input type="Date" name="field5" /></label>
+            <label> Start Date <input type="Date" name="startDate" /></label>
         </div>
 
         <div class="section">End Date</div>
         <div class="inner-wrap">
-            <label> End Date <input type="Date" name="field5" /></label>
+            <label> End Date <input type="Date" name="endDate" /></label>
         </div>
 
         <div class="section">Skills</div>
@@ -185,7 +186,7 @@
         </div>
 
         <div class="button-section">
-            <input type="submit" name="Sign Up" value="Create" />
+            <input type="submit" name="selectSkills" value="Add Required Skills" />
             <input type="submit" name="cancel" value="Cancel" />
             <!--<span class="privacy-policy">
      <input type="checkbox" name="field7">You agree to our Terms and Policy.
@@ -193,7 +194,6 @@
         </div>
     </form>
 </div>
-    <br /> <br />
 </section>
 
 
@@ -210,4 +210,4 @@
         <input type="button" value="Upload Placement Details" />
     </form>
 </div>-->
-
+<?php require ("template/footer.phtml")?>
