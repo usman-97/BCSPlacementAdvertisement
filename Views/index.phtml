@@ -10,6 +10,9 @@
                 <a href="login.php" class="btn btn-primary btn-xl rounded-pill mt-5">Login</a>
                 <a href="register.php" class="btn btn-primary btn-xl rounded-pill mt-5">Register</a>
                 <?php endif; ?>
+                <?php if (isset($_SESSION['typeOfUser']) && $_SESSION['typeOfUser'] == "Employer") : ?>
+                    <a href="createPlacement.php" class="btn btn-primary btn-xl rounded-pill mt-5">Create Placement Offer</a>
+                <?php endif; ?>
             </div>
         </div>
         <div class="bg-circle-1 bg-circle"></div>

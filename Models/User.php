@@ -83,7 +83,7 @@ class User {
      * @param $table
      * @return mixed
      */
-    public function countID($id, $table)
+    /*public function countID($id, $table)
     {
         // SQL query counts userID rows
         $countQuery = "SELECT COUNT(:id) FROM :tableName";
@@ -95,7 +95,7 @@ class User {
         $countStatement->execute();
         // return total number of userID records
         return $countStatement->fetchColumn();
-    }
+    }*/
 
     /**
      * Register user as an employer or as a student
@@ -174,7 +174,7 @@ class User {
     public function verifyUser()
     {
         // SQL query to check if user provided email match with database
-        $sqlQuery = "SELECT userID, full_name, email, password FROM users WHERE email = :userEmail";
+        $sqlQuery = "SELECT userID, full_name, email, password, user_type FROM users WHERE email = :userEmail";
         // Prepare PDO statement
         $statement = $this->_dbHandle->prepare($sqlQuery);
         // Assign value to parameter in SQL query
@@ -190,6 +190,7 @@ class User {
             $dbRow = $statement->fetch(); // Fetch records from database
             $this->_userID = $dbRow['userID']; // get userID from database
             $this->_name = $dbRow['full_name']; // get user full name from database
+            $this->_userType = $dbRow['user_type']; // get type of user
             $encryptedPassword = $dbRow['password']; // get encrypted password from database
 
             // if password is matched with encrypted password

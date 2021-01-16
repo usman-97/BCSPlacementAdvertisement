@@ -44,10 +44,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
-                <?php if (isset($_SESSION['loggedIn'])) : ?>
+                <?php if (isset($_SESSION['loggedIn']))  : ?>
+                <?php if (isset($_SESSION['typeOfUser']) && $_SESSION['typeOfUser'] == "Student")  : ?>
                     <li class="nav-item">
                         <a class="nav-link" href="studentProfile.php">My Profile</a>
                     </li>
+                <?php endif; ?>
+                    <?php if (isset($_SESSION['typeOfUser']) && $_SESSION['typeOfUser'] == "Employer")  : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">My Placements</a>
+                        </li>
+                    <?php endif; ?>
                 <form action="" method="post">
                     <?php if (isset($_SESSION['username'])) :?>
                     <?php echo 'Hello, ' . $_SESSION['username']?>
