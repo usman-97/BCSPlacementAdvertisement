@@ -45,7 +45,18 @@ class FileUpload {
         // Type of the file
         $this->fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
+        // Get all files from target directory
+        $checkTargetDir = scandir($targetDir);
+        // If target directory is not empty
+        if (count($checkTargetDir) > 1)
+        {
+            // Then delete previous file so user can upload new file
+            array_map('unlink', glob($targetDir . "*.pdf"));
+        }
+
+        // If file type is equal to set file type
         if ($this->checkFileType($filetype)) {
+            // Upload file to target directory
             if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $targetFile)) {
                 return true;
             }
@@ -100,10 +111,14 @@ class FileUpload {
      */
     public function addFileToDatabase($userID)
     {
+        // SQL query to add student user to student table
         $sqlQuery = 'UPDATE student SET cv = :filename WHERE user_id = :idUser';
+        // Prepare SQL statement
         $statement = $this->_dbHandle->prepare($sqlQuery);
+        // Assign values to parameters in SQL query
         $statement->bindParam(":filename", $_FILES['fileToUpload']['name'], PDO::PARAM_STR);
         $statement->bindParam(":idUser", $userID, PDO::PARAM_INT);
+        // Execute PDO statement
         $statement->execute();
 
     }
