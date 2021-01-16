@@ -10,9 +10,14 @@ if (isset($_POST['cvUpload']))
 {
     if (!$_FILES['fileToUpload']['name'] == "") {
         if ($cv->checkFileSize(2500000)) {
-            $cv->cvUpload($_SESSION['username'], "pdf");
-            $cv->addFileToDatabase($_SESSION['userID']);
-            $view->error = "The file" . htmlspecialchars(basename($_FILES['fileToUpload']['name'])) . " has been uploaded";
+            if ($cv->cvUpload($_SESSION['username'], "pdf")) {
+                $cv->addFileToDatabase($_SESSION['userID']);
+                $view->error = "The file" . htmlspecialchars(basename($_FILES['fileToUpload']['name'])) . " has been uploaded";
+            }
+            else
+            {
+                $view->error = "You can only upload .pdf format file";
+            }
         }
         else {
             $view->error = "File size too large to upload";
