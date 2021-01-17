@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>One Page Wonder - Start Bootstrap Template</title>
+    <title>BCS Placements</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -41,7 +41,20 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Log In</a>
                 </li>-->
-                <?php if (isset($_SESSION['loggedIn'])) : ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">Home</a>
+                </li>
+                <?php if (isset($_SESSION['loggedIn']))  : ?>
+                <?php if (isset($_SESSION['typeOfUser']) && $_SESSION['typeOfUser'] == "Student")  : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="studentProfile.php">My Profile</a>
+                    </li>
+                <?php endif; ?>
+                    <?php if (isset($_SESSION['typeOfUser']) && $_SESSION['typeOfUser'] == "Employer")  : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="myPlacements.php">My Placements</a>
+                        </li>
+                    <?php endif; ?>
                 <form action="" method="post">
                     <?php if (isset($_SESSION['username'])) :?>
                     <?php echo 'Hello, ' . $_SESSION['username']?>

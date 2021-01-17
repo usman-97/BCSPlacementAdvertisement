@@ -20,11 +20,16 @@ if (isset($_POST['register']))
         // If user email doesn't exist in database
         if (!$user->checkEmail())
         {
-            if ($_POST['newPwd'] === $_POST['confirmPassword'])
+            if ($_POST['newPwd'] == $_POST['confirmPassword'])
             {
                 // Then register new user
                 $user->register($_POST['newFullName'], $_POST['phone_number'], $_POST['address']);
-                echo "New account created";
+                if ($_POST['userType'] == "Student")
+                {
+                    $user->addStudent();
+                }
+                echo "Created";
+                header ("location: login.php");
             }
             else
             {

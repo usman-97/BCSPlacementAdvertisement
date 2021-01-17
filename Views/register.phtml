@@ -1,10 +1,4 @@
 <?php require ("template/header.phtml") ?>
-
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Page</title>
     <style>
         body
         {
@@ -185,18 +179,11 @@
                         </div>
                     </label>
 
-                    <?php if (isset($_POST['userType']) && $_POST['userType'] == "Student") : ?>
-                    <button type="Choose File">CV Upload</button>
-                    <?php endif; ?>
-
                     <input type="submit" name="register" value="Register">
+            <p style="color: #bd2130"><?php echo $view->error ?></p>
             </div>
-    <p><?php echo $view->error ?></p>
         </form>
-        <p><?php if (isset($view->error)) {echo $view->error;} ?></p>
     </div>
 </section>
-</body>
-</html>
 
 <?php require ("template/footer.phtml") ?>

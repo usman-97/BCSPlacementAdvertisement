@@ -1,13 +1,7 @@
-<?php
-?>
-
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Page</title>
-    <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+<?php require ("template/header.phtml")?>
+    <!--<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>-->
     <style type="text/css">
+
         .form-style-10{
             width:450px;
             padding:30px;
@@ -22,13 +16,13 @@
         }
         .form-style-10 .inner-wrap{
             padding: 30px;
-            background: #F8F8F8;
+            background: #85db23;
             border-radius: 6px;
             margin-bottom: 15px;
         }
         .form-style-10 h1
         {
-            background: #2a88ad;
+            background: #85db23;
             padding: 20px 30px 15px 30px;
             margin: -30px -30px 30px -30px;
             border-radius: 10px 10px 0 0;
@@ -52,7 +46,7 @@
         {
             display: block;
             font: 13px Arial, Helvetica, sans-serif;
-            color: #888888;
+            color: #000000;
             margin-bottom: 15px;
         }
         .form-style-10 input[type="text"],
@@ -81,7 +75,7 @@
         .form-style-10 .section
         {
             font: normal 20px 'Bitter', serif;
-            color: #2a88ad;
+            color: #000000;
             margin-bottom: 5px;
         }
         .form-style-10 .section span
@@ -133,50 +127,75 @@
             text-align: right;
         }
     </style>
-</head>
-<body>
+
+<section style="background: #C5E1A5">
+    <br /> <br />
 <div class="form-style-10">
     <h1>Upload Placement Details<span>Enter all the information related to the Placement Below!</span></h1>
     <form>
-        <div class="section">Placement Details</div>
+
+        <div class="section">Placement Description</div>
         <div class="inner-wrap">
-            <label>Enter Placement Details <input type="text" name="field1" /></label>
+            <label><textarea rows="4" cols="50" name="description" placeholder="200 character max ..."></textarea></label>
         </div>
 
-        <div class="section">Location</div>
+        <div class="section">Benefits</div>
         <div class="inner-wrap">
-            <label>Location <input type="text" name="field2" /></label>
+            <label> <textarea rows="4" cols="50" name="benefits" ></textarea></label>
         </div>
 
         <div class="section">Salary</div>
         <div class="inner-wrap">
-            <label> Salary <input type="text" name="field3" /></label>
+            <label>e.g. 22000 <input type="text" name="salary" />
+            <select name="salaryPaid">
+                <option>Annually</option>
+                <option>Monthly</option>
+                <option>Weekly</option>
+            </select></label>
         </div>
 
-        <div class="section">Benefit</div>
+        <div class="section">Start Date</div>
         <div class="inner-wrap">
-            <label> Benefits <input type="text" name="field4" /></label>
+            <label> Start Date <input type="Date" name="startDate" /></label>
         </div>
 
-        <div class="section">Start and End Date</div>
+        <div class="section">End Date</div>
         <div class="inner-wrap">
-            <label> Start and End Date <input type="Date" name="field5" /></label>
+            <label> End Date <input type="Date" name="endDate" /></label>
         </div>
 
-        <div class="section">Required Skills</div>
+       <!-- <div class="section">Skills</div>
         <div class="inner-wrap">
-            <label> Start and End Date <input type="Text" name="field6" /></label>
-        </div>
+            <label> Skill:
+                <select name="skill">
+                    <?php /*foreach ($view->getAllSkills as $skill) {
+                        for ($i = $skill->getStartLevel(); $i < $skill->getEndLevel(); $i++) {
+                            echo '<option>' . $skill->getSkill() . ' - Level ' . $i .
+                                '</option>';
+                        }
+                    }*/?>
+                </select>
+                Level:
+                <select name="skillLevel">
+                    <?php /*/*for ($i = $view->getAllSkills->getStartLevel(); $i < $view->getAllSkills->getEndLevel(); $i++)
+                        {
+                            echo '<option>' . $i . '</option>';
+                        }*/?>
+                </select>
+                <input type="submit" name="addSkill" value="add"/></label>
+        </div>-->
 
         <div class="button-section">
-            <input type="submit" name="Sign Up" />
-            <span class="privacy-policy">
+            <input type="submit" name="createPlacement" value="Create" />
+            <input type="submit" name="cancel" value="Cancel" />
+            <!--<span class="privacy-policy">
      <input type="checkbox" name="field7">You agree to our Terms and Policy.
-     </span>
+     </span>-->
         </div>
     </form>
 </div>
-
+<br /> <br />
+</section>
 
 
 <!--<div class="form-style-8">
@@ -192,5 +211,4 @@
         <input type="button" value="Upload Placement Details" />
     </form>
 </div>-->
-</body>
-</html>
+<?php require ("template/footer.phtml")?>

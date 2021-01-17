@@ -16,7 +16,6 @@ if (isset($_POST['login']))
     {
         $user->setEmail($_POST['userEmail']); // Set email field for User
         $user->setPassword($_POST['pwd']); // Set password field for User
-        $user->setUserType($_POST['userType']); // Set userType field for User
 
         // Check if email exist or match in database
         if ($user->checkEmail())
