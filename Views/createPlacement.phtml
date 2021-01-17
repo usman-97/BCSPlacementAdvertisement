@@ -164,29 +164,29 @@
             <label> End Date <input type="Date" name="endDate" /></label>
         </div>
 
-        <div class="section">Skills</div>
+       <!-- <div class="section">Skills</div>
         <div class="inner-wrap">
             <label> Skill:
                 <select name="skill">
-                    <?php foreach ($view->getAllSkills as $skill) {
+                    <?php /*foreach ($view->getAllSkills as $skill) {
                         for ($i = $skill->getStartLevel(); $i < $skill->getEndLevel(); $i++) {
                             echo '<option>' . $skill->getSkill() . ' - Level ' . $i .
                                 '</option>';
                         }
-                    }?>
+                    }*/?>
                 </select>
-                <!--Level:
+                Level:
                 <select name="skillLevel">
-                    <?php /*for ($i = $view->getAllSkills->getStartLevel(); $i < $view->getAllSkills->getEndLevel(); $i++)
+                    <?php /*/*for ($i = $view->getAllSkills->getStartLevel(); $i < $view->getAllSkills->getEndLevel(); $i++)
                         {
                             echo '<option>' . $i . '</option>';
                         }*/?>
-                </select>-->
+                </select>
                 <input type="submit" name="addSkill" value="add"/></label>
-        </div>
+        </div>-->
 
         <div class="button-section">
-            <input type="submit" name="selectSkills" value="Add Required Skills" />
+            <input type="submit" name="createPlacement" value="Create" />
             <input type="submit" name="cancel" value="Cancel" />
             <!--<span class="privacy-policy">
      <input type="checkbox" name="field7">You agree to our Terms and Policy.
@@ -194,6 +194,7 @@
         </div>
     </form>
 </div>
+<br /> <br />
 </section>
 
 
