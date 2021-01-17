@@ -21,7 +21,7 @@ class PlacementData {
      */
     public function getPlacementID()
     {
-        return $this->_title;
+        return $this->_placement_id;
     }
 
     /**
@@ -29,7 +29,7 @@ class PlacementData {
      */
     public function getTitle()
     {
-        return $this->_description;
+        return $this->_title;
     }
 
     /**

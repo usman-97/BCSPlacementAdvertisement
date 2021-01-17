@@ -38,7 +38,6 @@ class PlacementDataSet {
         {
             $dataSet[] = new PlacementData($row);
         }
-        var_dump($dataSet);
         return $dataSet;
     }
 
