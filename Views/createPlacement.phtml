@@ -132,7 +132,12 @@
     <br /> <br />
 <div class="form-style-10">
     <h1>Upload Placement Details<span>Enter all the information related to the Placement Below!</span></h1>
-    <form>
+    <form action="" method="post">
+        <div>
+            <p><?php if (isset($view->error)) {
+                    echo $view->error;
+                } ?></p>
+        </div>
 
         <div class="section">Placement Description</div>
         <div class="inner-wrap">
