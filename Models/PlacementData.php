@@ -2,11 +2,12 @@
 
 class PlacementData {
 
-    protected $_placement_id, $_description, $_benefits, $_salary, $_salarlyPaid, $_startDate, $_endDate;
+    protected $_placement_id, $_title, $_description, $_benefits, $_salary, $_salarlyPaid, $_startDate, $_endDate;
 
     public function __construct($dbRow)
     {
-        $this->_placement_id = $dbRow['placement_id'];
+        $this->_placement_id = $dbRow['placementID'];
+        $this->_title = $dbRow['title'];
         $this->_description = $dbRow['description'];
         $this->_benefits = $dbRow['benefits'];
         $this->_salary = $dbRow['salary'];
@@ -20,7 +21,15 @@ class PlacementData {
      */
     public function getPlacementID()
     {
-        return $this->_placement_id;
+        return $this->_title;
+    }
+
+    /**
+     *
+     */
+    public function getTitle()
+    {
+        return $this->_description;
     }
 
     /**
