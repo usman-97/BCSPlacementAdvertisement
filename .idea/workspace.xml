@@ -7,7 +7,6 @@
       <change beforePath="$PROJECT_DIR$/Models/PlacementDataSet.php" beforeDir="false" afterPath="$PROJECT_DIR$/Models/PlacementDataSet.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/createPlacement.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/createPlacement.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/myPlacements.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/myPlacements.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/createPlacement.php" beforeDir="false" afterPath="$PROJECT_DIR$/createPlacement.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myPlacements.php" beforeDir="false" afterPath="$PROJECT_DIR$/myPlacements.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
