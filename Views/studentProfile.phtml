@@ -162,10 +162,14 @@
                                 </div>
                                 <br />
                                 <div class="row">
+                                    <form action="" method="post">
+                                        <section>
                                     <?php foreach ($view->selectSkills as $skill)
                                     {
-                                        echo '<div>';
+                                        echo '<option>' . $skill->getSkillID() . '. ' .
+                                            $skill->getSkill() .  '</option>';
                                     }?>
+                                        </section>
                                 </div>
                                 <div class="button-section">
                                     <input type="submit" name="selectSkills" value="Add Skills" class="btn btn-dark"/>
