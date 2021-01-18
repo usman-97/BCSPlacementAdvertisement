@@ -11,6 +11,7 @@ $user = new User();
 $studentSkill = new StudentSkill();
 
 $view->selectSkills = $studentSkill->addStudentSkill($_SESSION['userID']);
+var_dump($view->selectSkills);
 
 // $view->details = $user->getUserData($_SESSION['userID']);
 
@@ -21,20 +22,16 @@ if (isset($_POST['cvUpload']))
             if ($cv->cvUpload($_SESSION['username'], "pdf")) {
                 $cv->addFileToDatabase($_SESSION['userID']);
                 $view->error = "The file" . htmlspecialchars(basename($_FILES['fileToUpload']['name'])) . " has been uploaded";
-            }
-            else
-            {
+            } else {
                 $view->error = "You can only upload .pdf format file";
             }
-        }
-        else {
+        } else {
             $view->error = "File size too large to upload";
         }
-    }
-    else
-    {
+    } else {
         $view->error = "Please Select a file to upload";
     }
+    // var_dump(basename($_FILES['fileToUpload']));
 }
 
 require_once ("Views/studentProfile.phtml");
