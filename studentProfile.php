@@ -1,11 +1,18 @@
 <?php
 require_once ("Models/FileUpload.php");
 require_once ("Models/User.php");
+require_once ("Models/Skills.php");
 require_once ("logout.php");
 
 $view = new stdClass();
 $view->pageTitle = "My Profile";
 $cv = new FileUpload();
+$user = new User();
+$skills = new Skills();
+
+$view->selectSkills = $skills->listPlacementSkills();
+
+// $view->details = $user->getUserData($_SESSION['userID']);
 
 if (isset($_POST['cvUpload']))
 {

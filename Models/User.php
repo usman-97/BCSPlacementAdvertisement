@@ -9,7 +9,7 @@ require_once ("UserData.php");
  */
 class User {
 
-    protected $_dbInstance, $_dbHandle, $_userID, $_email, $_password, $_userType, $_name;
+    protected $_dbInstance, $_dbHandle, $_userID, $_email, $_password, $_userType, $_name, $_phone, $_address;
 
     /**
      * User Constructor
@@ -175,7 +175,7 @@ class User {
     public function verifyUser()
     {
         // SQL query to check if user provided email match with database
-        $sqlQuery = "SELECT userID, full_name, email, password, user_type FROM users WHERE email = :userEmail";
+        $sqlQuery = "SELECT * FROM users WHERE email = :userEmail";
         // Prepare PDO statement
         $statement = $this->_dbHandle->prepare($sqlQuery);
         // Assign value to parameter in SQL query
@@ -193,6 +193,9 @@ class User {
             $this->_name = $dbRow['full_name']; // get user full name from database
             $this->_userType = $dbRow['user_type']; // get type of user
             $encryptedPassword = $dbRow['password']; // get encrypted password from database
+            $this->_email = $dbRow['email']; // get user email from database
+            $this->_phone = $dbRow['phone_number']; // get phone number from database
+            $this->_address = $dbRow['postal_address']; // get user address from database
 
             // if password is matched with encrypted password
             if (password_verify($this->_password, $encryptedPassword))
@@ -210,7 +213,7 @@ class User {
         }
     }
 
-    public function getUserData($id)
+    /*public function getUserData($id)
     {
         $sqlQuery = "SELECT full_name, phone_number, postal_address FROM users WHERE userID = :id";
         $statement = $this->_dbHandle->prepare($sqlQuery);
@@ -223,7 +226,7 @@ class User {
             $dataSet[] = new UserData($row);
         }
         return $dataSet;
-    }
+    }*/
 
     /**
      * Return user ID
@@ -247,6 +250,21 @@ class User {
     public function getUserType()
     {
         return $this->_userType;
+    }
+
+    public function getEmail()
+    {
+        return $this->_email;
+    }
+
+    public function getPhoneNumber()
+    {
+        return $this->_phone;
+    }
+
+    public function getAddress()
+    {
+        return $this->_address;
     }
 
 }

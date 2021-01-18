@@ -5,9 +5,9 @@ class UserData {
 
     public function __construct($dbRow)
     {
-        $this->_email = $dbRow['email'];
+        /*$this->_email = $dbRow['email'];
         $this->_phone_number = $dbRow['phone_number'];
-        $this->_address = $dbRow['postal_address'];
+        $this->_address = $dbRow['postal_address'];*/
     }
 
     public function getEmail()
