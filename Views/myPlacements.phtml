@@ -33,7 +33,7 @@
                 echo '<form action="" method="post">' .
                     '<div class="row"><h4>' . $placement->getPlacementID() .
                     '. ' . $placement->getTitle() . '</h4></div>' .
-                    '<input type="hidden" name="placement_id" />' . '<br />' .
+                    '<input type="hidden" name="placement_id" value="' . $placement->getPlacementID() . '"/>' . '<br />' .
                     '<h6>Description</h6>' .
                     '<div class="row">' . $placement->getDescription() . '</div>' . '<br />' .
                     '<h6>Benefits</h6>' .
@@ -41,11 +41,11 @@
                     '<div class="row"><p><b>Salary:</b>  £' . $placement->getSalary() .
                     ' ' . $placement->getSalaryPaid() . '</p></div>' .
                     '<div class="row"><div class="col-sm-2"><p><b>Start Date:</b>' . $placement->getStartDate() .
-                    '</p></div><div class="col-sm-2"><p><b>End Date:</b> ' . $placement->getEndDate() . '</p></div></div>' .
-                    '</form>';
+                    '</p></div><div class="col-sm-2"><p><b>End Date:</b> ' . $placement->getEndDate() . '</p></div></div>'
+                    ;
 
                 echo '<div class="row"><div class="cols-sm-3"><p><b>Add required skills for placement
-                        </b></p></div><div class="col-sm-2"><form action="" method="post">';
+                        </b></p></div><div class="col-sm-2">';
                 echo '<select name="skill">';
                 foreach ($view->allSkills as $skill)
                 {
@@ -55,7 +55,7 @@
                     }
                 }
                 echo '</select>';
-                echo '<input type="submit" name="addSkill" value="Add Skill"></form></form></div></div>';
+                echo '<input type="submit" name="addSkill" value="Add Skill"></form></div></div>';
                 /*foreach ($view->allSkills as $skill)
                 {
                     for ($i = $skill->getStartLevel(); $i < $skill->getEndLevel() + 1; $i++)
