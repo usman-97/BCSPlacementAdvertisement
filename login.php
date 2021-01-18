@@ -29,6 +29,9 @@ if (isset($_POST['login']))
                 $_SESSION['username'] = $user->getFullName(); // get full name of user
                 $_SESSION['userID'] = $user->getUserID(); // get user id from database
                 $_SESSION['typeOfUser'] = $user->getUserType(); // get type of user
+                $_SESSION['email'] = $user->getEmail(); // get type of user
+                $_SESSION['phone'] = $user->getPhoneNumber(); // get type of user
+                $_SESSION['address'] = $user->getAddress(); // get type of user
                 $_SESSION['timeout'] = time(); // get the time when user logged in
 
                 header("location: index.php");
