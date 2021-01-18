@@ -158,11 +158,14 @@
                                 <p><b>Address:</b> <?php if (isset($_SESSION['address'])) {echo $_SESSION['address'];}?></p>
 
                                 <div >
-                                    <input type="submit" name="cancel" value="Cancel" class="btn btn-dark"/>
+                                    <input type="submit" name="changeDetails" value="Change Details" class="btn btn-dark"/>
                                 </div>
                                 <br />
-                                <div row>
-
+                                <div class="row">
+                                    <?php foreach ($view->selectSkills as $skill)
+                                    {
+                                        echo '<div>';
+                                    }?>
                                 </div>
                                 <div class="button-section">
                                     <input type="submit" name="selectSkills" value="Add Skills" class="btn btn-dark"/>
