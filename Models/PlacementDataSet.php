@@ -22,12 +22,14 @@ class PlacementDataSet {
     /**
      * Get all the placements from placement table
      */
-    public function getAllPlacements()
+    public function getAllPlacements($start, $limit)
     {
         // SQL query to fetch all placement data
-        $sqlQuery = "SELECT * FROM placement ORDER BY end_date DESC";
+        $sqlQuery = "SELECT * FROM placement ORDER BY end_date DESC LIMIT :startPage, :nextPage";
         // Prepare PDO statement
         $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":startPage", $start, PDO::PARAM_INT);
+        $statement->bindParam(":nextPage", $limit, PDO::PARAM_INT);
         // Execute the PDO statement
         $statement->execute();
 
@@ -78,5 +80,16 @@ class PlacementDataSet {
     public function getPlacementID()
     {
         return $this->_placement_id;
+    }
+
+    public function countPlacementID()
+    {
+        // SQL query counts placement rows
+        $countQuery = "SELECT COUNT(placementID) FROM placement";
+        // Prepare PDO statement
+        $countStatement = $this->_dbHandle->prepare($countQuery);
+        $countStatement->execute();
+
+        return $countStatement->fetchColumn();
     }
 }

@@ -46,6 +46,7 @@
                 echo '<div class="row"><div class="cols-sm-3"><p><b>Add required skills for placement
                         </b></p></div><div class="col-sm-2">';
                 echo '<select name="skill">';
+
                 foreach ($view->allSkills as $skill)
                 {
                     for ($i = $skill->getStartLevel(); $i < $skill->getEndLevel() + 1; $i++)
@@ -54,15 +55,20 @@
                     }
                 }
                 echo '</select>';
-                echo '<input type="submit" name="addSkill" value="Add Skill">';
+                echo '<input type="submit" name="addSkill" value="Add Skill">
+                        <input type="submit" name="showSkills" value="Show Required Skills">';
 
-                foreach ($view->allPlacementSkills as $placementSkill)
+                if (isset($_POST['showSkills']))
                 {
-                    echo '<form action="" method="">' . $placementSkill->getSkill() . '</form>';
-                }
+                    foreach ($view->allPlacementSkills as $placementSkill)
+                    {
+                        echo '<form action="" method="post">' . $placementSkill->getSkill() . '</form>';
+                    }
                 echo '</form></div></div>';
+            } }?>
 
-            } ?>
+            <form action="" method="post"><input type="submit" name="prePage" value="Back">
+                <input type="submit" name="nextPage" value="Add"></form>
         </div>
 
     </div>
