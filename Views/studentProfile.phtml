@@ -1,31 +1,191 @@
 <?php require ("template/header.phtml")?>
+    <style type="text/css">
+
+        section {
+            background: #8BC34A;
+        }
+
+        .form-style-10
+        {
+            width:450px;
+            padding:30px;
+            margin:auto;
+            background: #FFF;
+            border-radius: 10px;
+            -webkit-border-radius:10px;
+            -moz-border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+            -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+            -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+        }
+        .form-style-10 .inner-wrap
+        {
+            padding: 30px;
+            background: #85db23;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        .form-style-10 h1
+        {
+            background: #85db23;
+            padding: 20px 30px 15px 30px;
+            margin: -30px -30px 30px -30px;
+            border-radius: 10px 10px 0 0;
+            -webkit-border-radius: 10px 10px 0 0;
+            -moz-border-radius: 10px 10px 0 0;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+            font: normal 30px 'Bitter', serif;
+            -moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+            -webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+            box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+            border: 1px solid #257C9E;
+        }
+        .form-style-10 h1 > span
+        {
+            display: block;
+            margin-top: 2px;
+            font: 13px Arial, Helvetica, sans-serif;
+        }
+        .form-style-10 label
+        {
+            display: block;
+            font: 13px Arial, Helvetica, sans-serif;
+            color: #000000;
+            margin-bottom: 15px;
+        }
+        .form-style-10 input[type="text"],
+        .form-style-10 input[type="date"],
+        .form-style-10 input[type="date"],
+        .form-style-10 input[type="email"],
+        .form-style-10 input[type="number"],
+        .form-style-10 textarea,
+        .form-style-10 select
+        {
+            display: block;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+            -webkit-border-radius:6px;
+            -moz-border-radius:6px;
+            border: 2px solid #fff;
+            box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+            -moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+            -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+        }
+
+        .form-style-10 .section
+        {
+            font: normal 20px 'Bitter', serif;
+            color: #000000;
+            margin-bottom: 5px;
+        }
+        .form-style-10 .section span
+        {
+            background: #2a88ad;
+            padding: 5px 10px 5px 10px;
+            position: absolute;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border: 4px solid #fff;
+            font-size: 14px;
+            margin-left: -45px;
+            color: #fff;
+            margin-top: -3px;
+        }
+        .form-style-10 input[type="button"],
+        .form-style-10 input[type="submit"]
+        {
+            padding: 8px 20px 8px 20px;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            color: #ffffff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+            font: normal 30px 'Bitter', serif;
+            -moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+            -webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+            box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+            border: 1px solid #257c9e;
+            font-size: 15px;
+        }
+        .form-style-10 input[type="button"]:hover,
+        .form-style-10 input[type="submit"]:hover
+        {
+            background: #2a6881;
+            -moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+            -webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+            box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+        }
+        .form-style-10 .privacy-policy
+        {
+            float: right;
+            width: 250px;
+            font: 12px Arial, Helvetica, sans-serif;
+            color: #4D4D4D;
+            margin-top: 10px;
+            text-align: right;
+        }
+    </style>
 
 <section>
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 order-lg-2">
-                <div class="p-5">
-                    <img class="img-fluid rounded-circle" src="img/01.jpg" alt="">
+    <br /><br /><br /><br /><br /><br /><br />
+    <div class="container" id="profileSection">
+        <div class="form-style-10">
+            <h1><?php echo $_SESSION['username'];?></h1>
+            <div class="container">
+                <div class="row">
+                        <div class="well profile">
+                            <div class="col-sm-12">
+                                <!--<div class="col-xs-12 col-sm-8">
+                                    <h2><?php /*if (isset($_SESSION['username'])) {echo $_SESSION['username'];} */?></h2>
+                                    <p><strong>Email: </strong>
+                                    <p><strong>Contact Details: </strong>
+                                    <p><strong>Skills: </strong>
+                                        <span class="tags"> </span>
+                                        <span class="tags"> </span>
+                                        <span class="tags"> </span>
+                                        <span class="tags"> </span>
+                                    </p>
+                                </div>-->
+                                <h4>Your Details</h4>
+                                <p><b>Email:</b> <?php if (isset($_SESSION['email'])) {echo $_SESSION['email'];} ?></p>
+                                <p><b>Phone Number:</b> <?php if (isset($_SESSION['phone'])) {echo $_SESSION['phone'];}?></p>
+                                <p><b>Address:</b> <?php if (isset($_SESSION['address'])) {echo $_SESSION['address'];}?></p>
+
+                                <div >
+                                    <input type="submit" name="cancel" value="Cancel" class="btn btn-dark"/>
+                                </div>
+                                <br />
+                                <div row>
+
+                                </div>
+                                <div class="button-section">
+                                    <input type="submit" name="selectSkills" value="Add Skills" class="btn btn-dark"/>
+                                    <!--<span class="privacy-policy">
+                             <input type="checkbox" name="field7">You agree to our Terms and Policy.
+                             </span>-->
+                                </div>
+                                <form action="" method="post" enctype="multipart/form-data">
+                                    <p><?php if (isset($view->error)) {echo $view->error;} ?></p>
+                                    Select file to upload:
+                                    <input type="file" name="fileToUpload" id="fileToUpload">
+                                    <br />
+                                    <input type="submit" value="Upload" name="cvUpload" class="btn btn-dark">
+                                </form>
+    </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-6 order-lg-1">
-                <div class="p-5">
-                    <h2 class="display-4">Who are we?</h2>
-                    <p>As a charity with a royal charter, our agenda is to lead the IT industry through its ethical challenges, to support the people who work in the industry, and to make IT good for society.
-                        We are expanding our purpose by creating new job advertisement website that takes the stress and ease from you manually searching and applying for the
-                        jobs, the way our site works is that when you register to our website you upload your CV with your details and what type of industry you're
-                        looking to go to and then you sit back and relax because our algorithm sends your details to employers that are looking for recruitment, if
-                        an employer is impressed with your CV you will be notified and then you can accept and decline the offer in the placement offers section.</p>
-                </div>
+
             </div>
         </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
     </div>
-    <form action="" method="post" enctype="multipart/form-data">
-        <p><?php if (isset($view->error)) {echo $view->error;} ?></p>
-        Select file to upload:
-        <input type="file" name="fileToUpload" id="fileToUpload">
-        <input type="submit" value="Upload" name="cvUpload">
-    </form>
 </section>
 
 <?php require ("template/footer.phtml")?>
