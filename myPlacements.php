@@ -13,7 +13,10 @@ require_once ("logout.php");
 
 $view->allPlacements = $placements->getAllPlacements();
 $view->allSkills = $skills->listPlacementSkills();
-
+if (isset($_POST['placement_id']))
+{
+    $view->allPlacementSkills = $placementSkill->listAllPlacementSkills($_POST['placement_id']);
+}
 
 
 if (isset($_POST['addSkill']))

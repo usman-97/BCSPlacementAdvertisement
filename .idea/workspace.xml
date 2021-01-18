@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a2fb3b9-b181-48b7-adf5-bc9338dd0ffc" name="Default Changelist" comment="First commit">
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/PlacementSkills.php" beforeDir="false" afterPath="$PROJECT_DIR$/Models/PlacementSkills.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/myPlacements.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/myPlacements.phtml" afterDir="false" />
@@ -80,7 +79,8 @@
       <workItem from="1610724996719" duration="13171000" />
       <workItem from="1610750373218" duration="15116000" />
       <workItem from="1610792108757" duration="913000" />
-      <workItem from="1610931130552" duration="8103000" />
+      <workItem from="1610931130552" duration="8384000" />
+      <workItem from="1610960906984" duration="2411000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1610736764770</created>

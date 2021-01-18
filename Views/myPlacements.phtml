@@ -44,6 +44,11 @@
                     '</p></div><div class="col-sm-2"><p><b>End Date:</b> ' . $placement->getEndDate() . '</p></div></div>'
                     ;
 
+                foreach ($view->allPlacementSkills as $placementSkill)
+                {
+                    echo '<div class="row">' . $placementSkill->getSkill() . $placementSkill->getSkill() . '</div>';
+                }
+
                 echo '<div class="row"><div class="cols-sm-3"><p><b>Add required skills for placement
                         </b></p></div><div class="col-sm-2">';
                 echo '<select name="skill">';
