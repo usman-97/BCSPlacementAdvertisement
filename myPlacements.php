@@ -35,6 +35,11 @@ if (isset($_POST['nextPage']))
     // var_dump($placements->countPlacementID());
 }
 
+if (!isset($_SESSION['page']))
+{
+    $_SESSION['page'] = 0;
+}
+
 if (isset($_POST['prePage']))
 {
     if ($_SESSION['page'] != 0)
@@ -42,7 +47,7 @@ if (isset($_POST['prePage']))
         $_SESSION['page'] -= 1;
     }
 }
-// var_dump($_SESSION['page']);
+var_dump($_SESSION['page']);
 
 $view->allPlacements = $placements->getAllPlacements( $_SESSION['page'],  $_SESSION['page'] + 1);
 

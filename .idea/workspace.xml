@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a2fb3b9-b181-48b7-adf5-bc9338dd0ffc" name="Default Changelist" comment="First commit">
-      <change beforePath="$PROJECT_DIR$/Views/login.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/login.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/template/header.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/template/header.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/viewPlacements.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/viewPlacements.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myPlacements.php" beforeDir="false" afterPath="$PROJECT_DIR$/myPlacements.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewPlacements.php" beforeDir="false" afterPath="$PROJECT_DIR$/viewPlacements.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +38,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="PhpTemplates">
-    <option name="NEW_PHP_FILE_LAST_EXTENSION" value="phtml" />
-  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectId" id="1n4eWFkutbtd8zKG9LFhZkVGfj6" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -51,15 +53,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Client Server Systems/AuctionWebsite" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Views" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="database.main" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\RAJA\OneDrive - University of Salford\Uni\Year 2\Semester 1\Software Projects with Agile Techniques\HackCamp\HackCamp" />
       <recent name="C:\Users\RAJA\OneDrive - University of Salford\Uni\Year 2\Semester 1\Software Projects with Agile Techniques\HackCamp\HackCamp\Views" />
+      <recent name="C:\Users\RAJA\OneDrive - University of Salford\Uni\Year 2\Semester 1\Software Projects with Agile Techniques\HackCamp\HackCamp" />
     </key>
   </component>
   <component name="RunManager">
@@ -84,7 +86,7 @@
       <workItem from="1610792108757" duration="913000" />
       <workItem from="1610931130552" duration="8384000" />
       <workItem from="1610960906984" duration="8607000" />
-      <workItem from="1610971132304" duration="15994000" />
+      <workItem from="1610971132304" duration="18619000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1610736764770</created>
