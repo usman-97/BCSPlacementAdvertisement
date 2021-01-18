@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+unset($_SESSION['showSkills']);
 
 if (isset($_POST['logout']))
 {

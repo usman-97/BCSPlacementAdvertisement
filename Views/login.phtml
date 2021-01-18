@@ -1,12 +1,13 @@
 <?php require ("template/header.phtml") ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body
         {
-            background: #C5E1A5;
+            background: #C5E1A5;C5E1A5
         }
         form
         {
-            width: 30%;
+            width: 50%;
             margin: 60px auto;
             background: #efefef;
             padding: 60px 120px 80px 120px;
@@ -85,11 +86,19 @@
             background: #8BC34A;
             color: #ffffff;
         }
+
+        @media screen and (max-width: 800px) {
+            input, .line, .form-group, input[type=submit] {
+                width: 80%;
+                margin-top: 0;
+            }
+        }
     </style>
 
-<br /><br />
+<br /><br /><br /><br />
+<div>
 <form action="" method="post" class="form-group">
-    <h1 class="text-warning text-center pt-5">Login</h1>
+    <h1 style="color:#000000;">Login</h1>
     <label>
         <input type="text" class="input" name="userEmail" placeholder="Email" value="student@edu.email.ac.uk"/>
         <div class="line-box">
@@ -120,9 +129,10 @@
         </div>
     </label>
 
-    <input type="submit" name="login" value="Login">
+    <input type="submit" name="login" value="Login" class="btn btn-dark">
     <p><?php if (isset($view->error)) {echo $view->error;}?></p>
-    </div>
 </form>
+</div>
+<br /><br /><br /><br /><br /><br /><br /><br />
 
 <?php require ("template/footer.phtml") ?>

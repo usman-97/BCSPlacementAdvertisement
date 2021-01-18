@@ -6,7 +6,7 @@ require_once ("PlacementData.php");
  * Class PlacementDataSet
  */
 class PlacementDataSet {
-    protected $_dbInstance, $_dbHandle;
+    protected $_dbInstance, $_dbHandle, $_placement_id;
 
     /**
      * Constructor for PlacementDataSet
@@ -22,12 +22,14 @@ class PlacementDataSet {
     /**
      * Get all the placements from placement table
      */
-    public function getAllPlacements()
+    public function getAllPlacements($start, $limit)
     {
         // SQL query to fetch all placement data
-        $sqlQuery = "SELECT * FROM placement ORDER BY end_date DESC";
+        $sqlQuery = "SELECT * FROM placement ORDER BY end_date DESC LIMIT :startPage, :nextPage";
         // Prepare PDO statement
         $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":startPage", $start, PDO::PARAM_INT);
+        $statement->bindParam(":nextPage", $limit, PDO::PARAM_INT);
         // Execute the PDO statement
         $statement->execute();
 
@@ -42,6 +44,7 @@ class PlacementDataSet {
     }
 
     /**
+     * @param $title
      * @param $description
      * @param $benefits
      * @param $salary
@@ -58,6 +61,7 @@ class PlacementDataSet {
         $countStatement->execute();
 
         $newKey = $countStatement->fetchColumn() + 1;
+        $this->_placement_id = $newKey;
 
         $sqlQuery = "INSERT INTO placement VALUES (:id, :title, :description, :benefits, :salary, :salaryPaid, :start_date, :end_date)";
         $statement = $this->_dbHandle->prepare($sqlQuery);
@@ -71,5 +75,21 @@ class PlacementDataSet {
         $statement->bindParam(":end_date", $end_date, PDO::PARAM_STR);
 
         $statement->execute();
+    }
+
+    public function getPlacementID()
+    {
+        return $this->_placement_id;
+    }
+
+    public function countPlacementID()
+    {
+        // SQL query counts placement rows
+        $countQuery = "SELECT COUNT(placementID) FROM placement";
+        // Prepare PDO statement
+        $countStatement = $this->_dbHandle->prepare($countQuery);
+        $countStatement->execute();
+
+        return $countStatement->fetchColumn();
     }
 }

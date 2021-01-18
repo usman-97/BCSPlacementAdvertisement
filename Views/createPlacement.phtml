@@ -182,11 +182,13 @@ Have excellent problem-solving skills
             <label> End Date <input type="Date" name="endDate" /></label>
         </div>
 
-       <!-- <div class="section">Skills</div>
+    <!--<form action="" method="post">
+       <div class="section">Skills</div>
         <div class="inner-wrap">
+            <input type="hidden" name="placementTitle" value="<?php /*if (isset($view->title)) {echo $view->title;}*/?>" />
             <label> Skill:
                 <select name="skill">
-                    <?php /*foreach ($view->getAllSkills as $skill) {
+                    <?php /*foreach ($view->allSkills as $skill) {
                         for ($i = $skill->getStartLevel(); $i < $skill->getEndLevel(); $i++) {
                             echo '<option>' . $skill->getSkill() . ' - Level ' . $i .
                                 '</option>';

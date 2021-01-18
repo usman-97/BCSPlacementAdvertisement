@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a2fb3b9-b181-48b7-adf5-bc9338dd0ffc" name="Default Changelist" comment="First commit">
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/PlacementSkills.php" beforeDir="false" afterPath="$PROJECT_DIR$/Models/PlacementSkills.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/login.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/login.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/myPlacements.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/myPlacements.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myPlacements.php" beforeDir="false" afterPath="$PROJECT_DIR$/myPlacements.php" afterDir="false" />
     </list>
@@ -37,14 +36,20 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="PhpTemplates">
+    <option name="NEW_PHP_FILE_LAST_EXTENSION" value="phtml" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectId" id="1n4eWFkutbtd8zKG9LFhZkVGfj6" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -80,7 +85,9 @@
       <workItem from="1610724996719" duration="13171000" />
       <workItem from="1610750373218" duration="15116000" />
       <workItem from="1610792108757" duration="913000" />
-      <workItem from="1610931130552" duration="8103000" />
+      <workItem from="1610931130552" duration="8384000" />
+      <workItem from="1610960906984" duration="8607000" />
+      <workItem from="1610971132304" duration="15695000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1610736764770</created>
@@ -128,6 +135,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="First commit" />
     <MESSAGE value="commit" />
     <option name="LAST_COMMIT_MESSAGE" value="commit" />
