@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a2fb3b9-b181-48b7-adf5-bc9338dd0ffc" name="Default Changelist" comment="First commit">
+      <change afterPath="$PROJECT_DIR$/Models/StudentSkill.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/StudentSkillData.php" beforeDir="false" afterPath="$PROJECT_DIR$/Models/StudentSkillData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
