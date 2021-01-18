@@ -1,0 +1,35 @@
+<?php require ("template/header.phtml") ?>
+
+<style>
+    #placementHolder {
+        margin-top: 100px;
+    }
+</style>
+
+<section>
+    <div class="container" id="placementHolder">
+    <div class="row">
+        <?php foreach ($view->allPlacements as $placement) {
+            echo '<form action="" method="post">' .
+                '<div class="row"><h4>' .
+                $placement->getTitle() . '</h4></div>' .
+                '<input type="hidden" name="placement_id" value="' . $placement->getPlacementID() . '"/>' . '<br />' .
+                '<h6>Description</h6>' .
+                '<div class="row">' . $placement->getDescription() . '</div>' . '<br />' .
+                '<h6>Benefits</h6>' .
+                '<div class="row">' . $placement->getBenefits() . '</div><br />' .
+                '<div class="row"><p><b>Salary:</b>  £' . $placement->getSalary() .
+                ' ' . $placement->getSalaryPaid() . '</p></div>' .
+                '<div class="row"><div class="col-sm-2"><p><b>Start Date:</b>' . $placement->getStartDate() .
+                '</p></div><div class="col-sm-2"><p><b>End Date:</b> ' . $placement->getEndDate() . '</p></div></div>';
+
+        }?>
+    </div>
+
+        <form action="" method="post"><input type="submit" name="prePage" value="Back">
+            <input type="submit" name="nextPage" value="Next"></form>
+    </div>
+    </div>
+</section>
+
+<?php require ("template/footer.phtml") ?>

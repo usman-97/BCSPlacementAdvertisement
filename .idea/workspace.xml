@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a2fb3b9-b181-48b7-adf5-bc9338dd0ffc" name="Default Changelist" comment="First commit">
+<<<<<<< HEAD
+=======
+      <change afterPath="$PROJECT_DIR$/CVUploads/student/Skills Health Check.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> usman
       <change beforePath="$PROJECT_DIR$/Views/studentProfile.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/studentProfile.phtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,19 +48,20 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Client Server Systems/AuctionWebsite" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Views" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="database.main" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\RAJA\OneDrive - University of Salford\Uni\Year 2\Semester 1\Software Projects with Agile Techniques\HackCamp\HackCamp" />
       <recent name="C:\Users\RAJA\OneDrive - University of Salford\Uni\Year 2\Semester 1\Software Projects with Agile Techniques\HackCamp\HackCamp\Views" />
+      <recent name="C:\Users\RAJA\OneDrive - University of Salford\Uni\Year 2\Semester 1\Software Projects with Agile Techniques\HackCamp\HackCamp" />
     </key>
   </component>
   <component name="RunManager">
@@ -78,6 +84,10 @@
       <workItem from="1610724996719" duration="13171000" />
       <workItem from="1610750373218" duration="15116000" />
       <workItem from="1610792108757" duration="913000" />
+      <workItem from="1610931130552" duration="8384000" />
+      <workItem from="1610960906984" duration="8607000" />
+      <workItem from="1610971132304" duration="18619000" />
+      <workItem from="1610994756139" duration="317000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1610736764770</created>
@@ -125,6 +135,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="First commit" />
     <MESSAGE value="commit" />
     <option name="LAST_COMMIT_MESSAGE" value="commit" />
