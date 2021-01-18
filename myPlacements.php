@@ -14,19 +14,17 @@ require_once ("logout.php");
 $view->allPlacements = $placements->getAllPlacements();
 $view->allSkills = $skills->listPlacementSkills();
 
-if (isset($_POST['placement_id']))
-{
-    $view->allPlacementSkills = $placementSkill->listAllPlacementSkills($_POST['placement_id']);
-}
-
+// $_SESSION['showSkills'] = true;
+$view->allPlacementSkills = $placementSkill->listAllPlacementSkills($_POST['placement_id']);
+var_dump($view->allPlacementSkills);
 
 if (isset($_POST['addSkill']))
 {
     $skill = $_POST['skill'];
-    if ($placementSkill->checkSkill($_POST['placement_id'], $skill[0])) {
+    // if ($placementSkill->checkSkill($_POST['placement_id'], $skill[0])) {
         $placementSkill->addPlacementSkills($_POST['placement_id'], $skill[0], $skill[-1]);
-    }
-    var_dump($_POST['placement_id']);
+    // }
+
     // header ("location: myPlacements.php");
 }
 

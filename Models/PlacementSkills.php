@@ -46,7 +46,7 @@ class PlacementSkills {
      */
     public function listAllPlacementSkills($idPlacement)
     {
-        $sqlQuery = "SELECT skill, placement_skills.level FROM placement, placement_skills, skills WHERE placementID = :id AND placement.placementID = placement_skills.placement_id AND skills.skillID = placement_skills.skill_id";
+        $sqlQuery = "SELECT * FROM skills, placement_skills WHERE placement_id = :id AND placement_skills.skill_id = skills.skillID";
         $statement = $this->_dbHandle->prepare($sqlQuery);
         $statement->bindParam(":id", $idPlacement, PDO::PARAM_INT);
         $statement->execute();
@@ -56,7 +56,7 @@ class PlacementSkills {
         {
             $dataSet[] = new PlacementSkillsData($row);
         }
-        var_dump($dataSet);
+
         return $dataSet;
     }
 

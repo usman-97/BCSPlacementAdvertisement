@@ -43,12 +43,6 @@
                     '<div class="row"><div class="col-sm-2"><p><b>Start Date:</b>' . $placement->getStartDate() .
                     '</p></div><div class="col-sm-2"><p><b>End Date:</b> ' . $placement->getEndDate() . '</p></div></div>';
 
-                foreach ($view->allPlacementSkills as $placementSkill)
-                {
-                    echo '<form action="" method="" ><div class="row">' . $placementSkill->getSkill() .
-                        ' - Level ' . $placementSkill->getLevel() . '</div></form>';
-                }
-
                 echo '<div class="row"><div class="cols-sm-3"><p><b>Add required skills for placement
                         </b></p></div><div class="col-sm-2">';
                 echo '<select name="skill">';
@@ -60,16 +54,14 @@
                     }
                 }
                 echo '</select>';
-                echo '<input type="submit" name="addSkill" value="Add Skill"></form></div></div>';
-                /*foreach ($view->allSkills as $skill)
+                echo '<input type="submit" name="addSkill" value="Add Skill">';
+
+                foreach ($view->allPlacementSkills as $placementSkill)
                 {
-                    for ($i = $skill->getStartLevel(); $i < $skill->getEndLevel() + 1; $i++)
-                    {
-                        echo '<option>' . $i . '</option>';
-                        $_SESSION['skillID'] = $skill;
-                    }
-                }*/
-                // echo '<input type="submit" name="addSkill" value="Add Skill"></form></div></div>';
+                    echo '<form action="" method="">' . $placementSkill->getSkill() . '</form>';
+                }
+                echo '</form></div></div>';
+
             } ?>
         </div>
 
