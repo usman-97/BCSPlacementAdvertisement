@@ -60,9 +60,10 @@
                     <?php endif; ?>
                 <form action="" method="post">
                     <?php if (isset($_SESSION['username'])) :?>
+                    <p style="color: #FFFFFF"><b>
                     <?php echo 'Hello, ' . $_SESSION['username']?>
                     <?php endif; ?>
-                    <input type="submit" name="logout" value="Logout" class="btn btn-danger">
+                        </b><input type="submit" name="logout" value="Logout" class="btn btn-danger"></p>
                 </form>
                 <?php endif; ?>
             </ul>
