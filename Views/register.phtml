@@ -8,7 +8,7 @@
         {
             width: 30%;
             margin: 60px auto;
-            background: #efefef;
+            background: #2E8B57;
             padding: 60px 120px 80px 120px;
             text-align: center;
             -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
@@ -40,6 +40,10 @@
             background: transparent;
             border: none;
             outline: none;
+        }
+
+        input::placeholder {
+            color: #000000;
         }
 
         .line-box
@@ -88,10 +92,11 @@
     </style>
 </head>
 <body>
+<br />
 <section>
     <div>
         <form action="" method="post" class="form-group">
-            <h4 class="text-warning text-center pt-5">Registration Page</h4>
+            <h4>Registration</h4>
             <select name="userType">
                 <option>Student</option>
                 <option>Employer</option>
@@ -179,7 +184,7 @@
                         </div>
                     </label>
 
-                    <input type="submit" name="register" value="Register">
+                    <input type="submit" name="register" value="Register" class="btn btn-dark">
             <p style="color: #bd2130"><?php echo $view->error ?></p>
             </div>
         </form>
