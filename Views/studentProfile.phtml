@@ -1,11 +1,15 @@
 <?php require ("template/header.phtml")?>
     <style type="text/css">
 
+        section {
+            background: #8BC34A;
+        }
+
         .form-style-10
         {
             width:450px;
             padding:30px;
-            margin:40px auto;
+            margin:auto;
             background: #FFF;
             border-radius: 10px;
             -webkit-border-radius:10px;
@@ -96,7 +100,6 @@
         .form-style-10 input[type="button"],
         .form-style-10 input[type="submit"]
         {
-            background: #2a88ad;
             padding: 8px 20px 8px 20px;
             border-radius: 5px;
             -webkit-border-radius: 5px;
@@ -130,17 +133,17 @@
     </style>
 
 <section>
-    <div class="container">
+    <br /><br /><br /><br /><br /><br /><br />
+    <div class="container" id="profileSection">
         <div class="form-style-10">
-            <h1>My Profile<span>Edit your student profile!</span></h1>
+            <h1><?php echo $_SESSION['username'];?></h1>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
                         <div class="well profile">
                             <div class="col-sm-12">
-                                <div class="col-xs-12 col-sm-8">
-                                    <h2> Full Name </h2>
-                                    <p><strong>About: </strong>
+                                <!--<div class="col-xs-12 col-sm-8">
+                                    <h2><?php /*if (isset($_SESSION['username'])) {echo $_SESSION['username'];} */?></h2>
+                                    <p><strong>Email: </strong>
                                     <p><strong>Contact Details: </strong>
                                     <p><strong>Skills: </strong>
                                         <span class="tags"> </span>
@@ -148,11 +151,13 @@
                                         <span class="tags"> </span>
                                         <span class="tags"> </span>
                                     </p>
-                                </div>
+                                </div>-->
+                                <h4>Your Details</h4>
+                                <?php  ?>
 
                                 <div class="button-section">
-                                    <input type="submit" name="selectSkills" value="Add Skills" />
-                                    <input type="submit" name="cancel" value="Cancel" />
+                                    <input type="submit" name="selectSkills" value="Add Skills" class="btn btn-dark"/>
+                                    <input type="submit" name="cancel" value="Cancel" class="btn btn-dark"/>
                                     <!--<span class="privacy-policy">
                              <input type="checkbox" name="field7">You agree to our Terms and Policy.
                              </span>-->
@@ -161,8 +166,16 @@
         <p><?php if (isset($view->error)) {echo $view->error;} ?></p>
         Select file to upload:
         <input type="file" name="fileToUpload" id="fileToUpload">
-        <input type="submit" value="Upload" name="cvUpload">
+        <input type="submit" value="Upload" name="cvUpload" class="btn btn-dark">
     </form>
+    </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
     </div>
 </section>
 

@@ -1,5 +1,6 @@
 <?php
 require_once ("Models/FileUpload.php");
+require_once ("Models/User.php");
 require_once ("logout.php");
 
 $view = new stdClass();

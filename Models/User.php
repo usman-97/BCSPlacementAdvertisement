@@ -1,5 +1,6 @@
 <?php
 require_once ("Database.php");
+require_once ("UserData.php");
 
 /**
  * Class User
@@ -207,6 +208,21 @@ class User {
         {
             return false;
         }
+    }
+
+    public function getUserData($id)
+    {
+        $sqlQuery = "SELECT full_name, phone_number, postal_address FROM users WHERE userID = :id";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":id", $id, PDO::PARAM_INT);
+        $statement->execute();
+
+        $dataSet = [];
+        while ($row = $statement->fetch())
+        {
+            $dataSet[] = new UserData($row);
+        }
+        return $dataSet;
     }
 
     /**
