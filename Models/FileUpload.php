@@ -108,6 +108,7 @@ class FileUpload {
 
     /**
      * Insert CV file name reference to student table
+     * @param $userID
      */
     public function addFileToDatabase($userID)
     {
