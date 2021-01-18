@@ -1,7 +1,6 @@
 <?php
 require_once ("Models/Database.php");
-require_once ("Models/SkillsData.php");
-require_once ("Models/PlacementData.php");
+require_once ("Models/PlacementSkillsData.php");
 
 /**
  * Class PlacementSkills
@@ -52,12 +51,35 @@ class PlacementSkills {
         $statement->bindParam(":id", $idPlacement, PDO::PARAM_INT);
         $statement->execute();
 
-        $SkillsDataSet = [];
+        $dataSet = [];
         while ($row = $statement->fetch())
         {
-            $SkillsDataSet[] = new SkillsData($row);
+            $dataSet[] = new PlacementSkillsData($row);
         }
-        var_dump($SkillsDataSet);
-        return $SkillsDataSet;
+        var_dump($dataSet);
+        return $dataSet;
+    }
+
+    /**
+     * @param $placement
+     * @param $id
+     * @return bool
+     */
+    public function checkSkill($placement, $id)
+    {
+        $sqlQuery = "SELECT skill_id FROM placement_skills WHERE placement_id = :placement AND skill_id = :id";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":placement", $placement, PDO::PARAM_INT);
+        $statement->bindParam(":id", $id, PDO::PARAM_INT);
+        $statement->execute();
+
+        if ($statement->rowCount() > 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 }
