@@ -14,7 +14,7 @@ $studentSkill = new StudentSkill();
 
 $view->showSkills = $skills->listPlacementSkills();
 $view->selectSkills = $studentSkill->addStudentSkill($_SESSION['userID']);
-var_dump($view->selectSkills);
+// var_dump($view->selectSkills);
 
 // $view->details = $user->getUserData($_SESSION['userID']);
 

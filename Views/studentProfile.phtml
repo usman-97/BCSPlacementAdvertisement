@@ -132,11 +132,15 @@
         }
     </style>
 
-<section>
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 order-lg-1">
-                    <div class="p-5">
+    <section>
+        <br /><br /><br /><br /><br /><br /><br />
+        <div class="container" id="profileSection">
+            <div class="form-style-10">
+                <h1><?php echo $_SESSION['username'];?></h1>
+                <div class="container">
+                    <div class="row">
+                        <div class="well profile">
+                            <div class="col-sm-12">
                         <h4>Your Details</h4>
                         <p><b>Email:</b> <?php if (isset($_SESSION['email'])) {echo $_SESSION['email'];} ?></p>
                         <p><b>Phone Number:</b> <?php if (isset($_SESSION['phone'])) {echo $_SESSION['phone'];}?></p>
@@ -144,7 +148,11 @@
                         <div >
                             <div class="row">
                                 <form action="" method="post">
-                                    <select>
+                                    <div>
+                                        <input type="submit" name="changeDetails" value="Change Details" class="btn btn-dark"/>
+                                    </div>
+                                    <br />
+                                    <select name="studentSkill">
                                         <?php foreach ($view->showSkills as $skill)
                                         {
                                             for ($i = $skill->getStartLevel(); $i < $skill->getEndLevel(); $i++)
@@ -153,8 +161,10 @@
                                                     $skill->getSkill() . ' - Level' .  $i . '</option>';
                                             }
                                         }?>
+                                        <div>
+                                            <input type="submit" name="addStudentSkills" value="Add Skills" class="btn btn-dark" />
+                                        </div>
                                     </select>
-                                    <input type="submit" name="changeDetails" value="Change Details" class="btn btn-dark"/>
                                 </form>
                             </div>
                         </div>
@@ -163,11 +173,15 @@
                             <p><?php if (isset($view->error)) {echo $view->error;} ?></p>
                             Select file to upload:
                             <input type="file" name="fileToUpload" id="fileToUpload">
-                            <input type="submit" value="Upload" name="cvUpload">
+                            <input type="submit" value="Upload" name="cvUpload" class="btn btn-dark">
                         </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
+            <br /><br /><br /><br /><br /><br /><br /><br /><br />
         </div>
     </section>
 
