@@ -145,10 +145,13 @@
                             <div class="row">
                                 <form action="" method="post">
                                     <select>
-                                        <?php foreach ($view->selectSkills as $skill)
+                                        <?php foreach ($view->showSkills as $skill)
                                         {
-                                            echo '<option>' . $skill->getSkillID() . '. ' .
-                                                $skill->getSkill() . ' - Level' .  $skill->getLevel() . '</option>';
+                                            for ($i = $skill->getStartLevel(); $i < $skill->getEndLevel(); $i++)
+                                            {
+                                                echo '<option>' . $skill->getSkillID() . '. ' .
+                                                    $skill->getSkill() . ' - Level' .  $i . '</option>';
+                                            }
                                         }?>
                                     </select>
                                     <input type="submit" name="changeDetails" value="Change Details" class="btn btn-dark"/>
