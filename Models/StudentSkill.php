@@ -60,6 +60,10 @@ class StudentSkill {
         }
     }
 
+    /**
+     * @param $user
+     * @return array|false
+     */
     public function showStudentSkills($user)
     {
         // SQL query to select all student skills
@@ -81,5 +85,18 @@ class StudentSkill {
         {
             return false;
         }
+    }
+
+    public function removeSkill($user, $skill)
+    {
+        // SQL query to remove skill from user skill inventory
+        $sqlQuery = "DELETE FROM student_skill WHERE user_id = :user_id AND skill_id = :skill";
+        $statement = $this->_dbHandle->prepare($sqlQuery); // Prepare PDO statement
+
+        // Assign value to parameters in SQL query
+        $statement->bindParam(":user_id", $user, PDO::PARAM_INT);
+        $statement->bindParam(":skill", $skill, PDO::PARAM_INT);
+
+        $statement->execute(); // Execute PDO statement
     }
 }

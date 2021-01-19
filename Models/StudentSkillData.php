@@ -11,11 +11,6 @@ class StudentSkillData {
         $this->_level = $dbRow['level'];
     }
 
-    public function getUserID()
-    {
-        return $this->_user_id;
-    }
-
     public function getSkillID()
     {
         return $this->_skillID;

@@ -17,10 +17,6 @@ $view->showSkills = $skills->listPlacementSkills();
 
 $view->listSkills = $studentSkill->showStudentSkills($_SESSION['userID']);
 // var_dump($view->listSkills);
-if (!$view->listSkills)
-{
-    $view->msg = "Add Skills";
-}
 
 // If user has pressed cvUpload button
 if (isset($_POST['cvUpload']))
@@ -55,7 +51,21 @@ if (isset($_POST['addStudentSkills']))
         $view->selectSkills = $studentSkill->addStudentSkill($_SESSION['userID'], $selectedSkill[0], $selectedSkill[-1]);
         header ("location: studentProfile.php");
     }
+    else
+    {
+        $view->error = "You have already added this skill";
+    }
     // var_dump($_SESSION['userID']);
+}
+
+if (isset($_POST['removeSkill']))
+{
+    if (isset($_POST['skill_id']))
+    {
+        $studentSkill->removeSkill($_SESSION['userID'], $_POST['skill_id']);
+        header ("location: studentProfile.php");
+
+    }
 }
 
 require_once ("Views/studentProfile.phtml");

@@ -170,13 +170,20 @@
                                 <div class="row" id="studentSkills">
                                     <p><b>Skills</b></p>
                                     <ul>
-                                    <?php foreach ($view->listSkills as $studentSkill)
+                                    <?php if (!$view->listSkills)
+                                    {
+                                        echo '<p>Add you skills here ...</p>';
+                                    }
+                                    else
+                                    {
+                                        foreach ($view->listSkills as $studentSkill)
                                         {
                                             echo '<div class="col-sm-12"><form action="" method="post"><li>' .
                                                 $studentSkill->getSkill() . ' - Level ' . $studentSkill->getLevel() .
                                                 '<input type="hidden" name="skill_id" value="' . $studentSkill->getSkillID() . '"/>'
                                                 . '</li><input type="submit" name="removeSkill" value="X" class="btn btn-danger" /></form></div>';
-                                        }?>
+                                        }
+                                    }?>
                                     </ul>
                                 </div>
 
@@ -185,13 +192,13 @@
                                     <br />
                                     <select name="studentSkill" class="skillMenu">
                                         <?php foreach ($view->showSkills as $skill)
-                                        {
-                                            for ($i = $skill->getStartLevel(); $i < $skill->getEndLevel(); $i++)
                                             {
-                                                echo '<option>' . $skill->getSkillID() . '. ' .
-                                                    $skill->getSkill() . ' - Level ' .  $i . '</option>';
-                                            }
-                                        }?>
+                                                for ($i = $skill->getStartLevel(); $i < $skill->getEndLevel(); $i++)
+                                                {
+                                                    echo '<option>' . $skill->getSkillID() . '. ' .
+                                                        $skill->getSkill() . ' - Level ' .  $i . '</option>';
+                                                }
+                                            }?>
                                         <div>
                                             <input type="submit" name="addStudentSkills" value="Add Skills" class="btn btn-dark" />
                                         </div>
