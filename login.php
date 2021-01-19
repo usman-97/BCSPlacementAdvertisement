@@ -1,10 +1,13 @@
 <?php
 
 require_once ("Models/User.php");
+require_once ("Models/ReCaptcha.php");
 
 $view = new stdClass();
 $view->pageTitle = "Sign in"; // Title of the page
 $user = new User(); // Instance of User class
+$reCaptcha = new ReCaptcha();
+$view->finalReCaptcha = $reCaptcha->generateReCaptcha();
 
 require_once ("logout.php");
 
