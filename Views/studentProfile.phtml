@@ -133,8 +133,15 @@
 
         #studentSkills {
             padding: 2px 2px 2px 20px;
+            min-width: 60%;
             width: 80%;
             border: 2px solid #000000;
+        }
+
+        @media screen and (max-width: 800px) {
+            .skillMenu {
+                width: 40%;
+            }
         }
     </style>
 
@@ -162,18 +169,21 @@
                             <br />
                                 <div class="row" id="studentSkills">
                                     <p><b>Skills</b></p>
+                                    <ul>
                                     <?php foreach ($view->listSkills as $studentSkill)
                                         {
-                                            echo '<div class="col-sm-12"><form action="" method="post">' .
-                                                $studentSkill->getSkill() . ' - Level ' . $studentSkill->getLevel()
-                                                . '</form></div>';
+                                            echo '<div class="col-sm-12"><form action="" method="post"><li>' .
+                                                $studentSkill->getSkill() . ' - Level ' . $studentSkill->getLevel() .
+                                                '<input type="hidden" name="skill_id" value="' . $studentSkill->getSkillID() . '"/>'
+                                                . '</li><input type="submit" name="removeSkill" value="X" class="btn btn-danger" /></form></div>';
                                         }?>
+                                    </ul>
                                 </div>
 
                                 <div class="row">
                                 <form action="" method="post">
                                     <br />
-                                    <select name="studentSkill">
+                                    <select name="studentSkill" class="skillMenu">
                                         <?php foreach ($view->showSkills as $skill)
                                         {
                                             for ($i = $skill->getStartLevel(); $i < $skill->getEndLevel(); $i++)

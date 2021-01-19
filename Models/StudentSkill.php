@@ -62,12 +62,15 @@ class StudentSkill {
 
     public function showStudentSkills($user)
     {
+        // SQL query to select all student skills
         $sqlQuery = "SELECT skillID, skill, level FROM student_skill, skills WHERE user_id = :id AND student_skill.skill_id = skills.skillID";
-        $statement = $this->_dbHandle->prepare($sqlQuery);
-        $statement->bindParam(":id", $user, PDO::PARAM_INT);
-        $statement->execute();
+        $statement = $this->_dbHandle->prepare($sqlQuery); // Prepare PDO statement
+        $statement->bindParam(":id", $user, PDO::PARAM_INT); // Assign values to parameter in SQL query
+        $statement->execute(); // Execute PDO statement
 
+        // List to store all student skills
         $dataSet = [];
+        // If student list not empty
         if ($statement->rowCount() > 0) {
             while ($row = $statement->fetch()) {
                 $dataSet[] = new StudentSkillData($row);
