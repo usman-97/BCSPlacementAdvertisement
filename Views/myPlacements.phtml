@@ -46,17 +46,19 @@
                 }
                 echo '</select>';
                 echo '<input type="submit" name="addSkill" value="Add Skill" class="btn btn-dark"></div></div>
-                        <div class="row"><input type="submit" name="showSkills" value="Show Required Skills" class="btn btn-dark"></div><br />';
+                        <div class="row"><input type="hidden" name="pageTrack" value="' . $view->page .'" class="btn btn-dark">
+                        <input type="submit" name="showSkills" value="Show Required Skills" class="btn btn-dark"></div><br />';
 
                     if (isset($_POST['showSkills']))
                     {
                         echo '<br /><div class="row"><h6>Required Skills: </h6>';
-                        foreach ($view->allPlacementSkills as $placementSkill)
-                        {
-                            echo '<div class="col-sm-2">';
-                            echo '<form action="" method="post"><p><b>' . $placementSkill->getSkill() .
-                                ' - Level ' . $placementSkill->getLevel() . '</b></p></form>';
-                            echo '</div>';
+                        if ($view->allPlacementSkills) {
+                            foreach ($view->allPlacementSkills as $placementSkill) {
+                                echo '<div class="col-sm-2">';
+                                echo '<form action="" method="post"><p><b>' . $placementSkill->getSkill() .
+                                    ' - Level ' . $placementSkill->getLevel() . '</b></p></form>';
+                                echo '</div>';
+                            }
                         }
                         echo '</div></form>';
                     }

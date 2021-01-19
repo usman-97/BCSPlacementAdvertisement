@@ -21,6 +21,9 @@ class PlacementDataSet {
 
     /**
      * Get all the placements from placement table
+     * @param $start
+     * @param $limit
+     * @return array
      */
     public function getAllPlacements($start, $limit)
     {
@@ -40,6 +43,7 @@ class PlacementDataSet {
         {
             $dataSet[] = new PlacementData($row);
         }
+        // var_dump($start, $limit);
         return $dataSet;
     }
 
