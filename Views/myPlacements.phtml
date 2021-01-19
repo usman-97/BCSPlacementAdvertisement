@@ -46,7 +46,7 @@
                 }
                 echo '</select>';
                 echo '<input type="submit" name="addSkill" value="Add Skill" class="btn btn-dark"></div></div>
-                        <div class="row"><input type="hidden" name="pageTrack" value="' . $view->page .'" class="btn btn-dark">
+                        <div class="row"><input type="hidden" name="pageTrack" value="' . $_SESSION['page'] .'" class="btn btn-dark">
                         <input type="submit" name="showSkills" value="Show Required Skills" class="btn btn-dark"></div><br />';
 
                     if (isset($_POST['showSkills']))
