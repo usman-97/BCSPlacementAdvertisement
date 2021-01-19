@@ -4,6 +4,16 @@ session_start();
 unset($_SESSION['showSkills']);
 unset($_SESSION['page']);
 
+if (isset($_SESSION['student']))
+{
+    unset($_SESSION['student']);
+}
+
+if (isset($_SESSION['student']))
+{
+    unset($_SESSION['student']);
+}
+
 if (isset($_POST['logout']))
 {
     unset($_SESSION['loggedIn']);

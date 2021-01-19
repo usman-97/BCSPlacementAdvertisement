@@ -14,7 +14,9 @@ require_once ("logout.php");
 $view->allSkills = $skills->listPlacementSkills();
 
 // $_SESSION['showSkills'] = true;
-$view->allPlacementSkills = $placementSkill->listAllPlacementSkills($_POST['placement_id']);
+if (isset($_POST['placement_id'])) {
+    $view->allPlacementSkills = $placementSkill->listAllPlacementSkills($_POST['placement_id']);
+}
 
 if (isset($_POST['addSkill']))
 {
@@ -26,18 +28,19 @@ if (isset($_POST['addSkill']))
     // header ("location: myPlacements.php");
 }
 
-if (isset($_POST['nextPage']))
-{
-    if ($_SESSION['page'] != $placements->countPlacementID() - 1)
-    {
-        $_SESSION['page'] += 1;
-    }
-    // var_dump($placements->countPlacementID());
-}
-
 if (!isset($_SESSION['page']))
 {
     $_SESSION['page'] = 0;
+}
+
+if (isset($_POST['nextPage']))
+{
+
+        if ($_SESSION['page'] != $placements->countPlacementID())
+        {
+            $_SESSION['page'] += 1;
+        }
+    // var_dump($placements->countPlacementID());
 }
 
 if (isset($_POST['prePage']))
@@ -47,7 +50,7 @@ if (isset($_POST['prePage']))
         $_SESSION['page'] -= 1;
     }
 }
-var_dump($_SESSION['page']);
+// var_dump($_SESSION['page']);
 
 $view->allPlacements = $placements->getAllPlacements( $_SESSION['page'],  $_SESSION['page'] + 1);
 

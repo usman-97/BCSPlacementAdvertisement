@@ -25,7 +25,7 @@ if (isset($_POST['nextPage']))
             $_SESSION['page'] += 10;
         }
     }
-    var_dump($totalRecords);
+    // var_dump($totalRecords);
 }
 
 if (isset($_POST['prePage']))

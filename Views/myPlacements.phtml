@@ -1,29 +1,18 @@
 <?php require ("template/header.phtml") ?>
 
-<section>
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 order-lg-2">
-                <div class="p-5">
-                    <img class="img-fluid rounded-circle" src="img/01.jpg" alt="">
-                </div>
-            </div>
-            <div class="col-lg-6 order-lg-1">
-                <div class="p-5">
-                    <h2 class="display-4">Who are we?</h2>
-                    <p>As a charity with a royal charter, our agenda is to lead the IT industry through its ethical challenges, to support the people who work in the industry, and to make IT good for society.
-                        We are expanding our purpose by creating new job advertisement website that takes the stress and ease from you manually searching and applying for the
-                        jobs, the way our site works is that when you register to our website you upload your CV with your details and what type of industry you're
-                        looking to go to and then you sit back and relax because our algorithm sends your details to employers that are looking for recruitment, if
-                        an employer is impressed with your CV you will be notified and then you can accept and decline the offer in the placement offers section.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<style>
+    #placementSection {
+        border-bottom: 5px solid #000000;
+    }
+
+    .myPlacementSection {
+        margin-top: 100px;
+        margin-bottom: 150px;
+    }
+</style>
 
 <br /> <br />
-<section>
+<section class="myPlacementSection">
     <div class="container">
         <div class="row">
             <h1><?php $view->pageTitle ?></h1>
@@ -31,7 +20,7 @@
         <div class="row">
             <?php foreach ($view->allPlacements as $placement) {
                 echo '<form action="" method="post">' .
-                    '<div class="row"><h4>#' . $placement->getPlacementID() .
+                    '<div class="row" id="placementSection"><h4>#' . $placement->getPlacementID() .
                     '. ' . $placement->getTitle() . '</h4></div>' .
                     '<input type="hidden" name="placement_id" value="' . $placement->getPlacementID() . '"/>' . '<br />' .
                     '<h6>Description</h6>' .
@@ -51,29 +40,30 @@
                 {
                     for ($i = $skill->getStartLevel(); $i < $skill->getEndLevel() + 1; $i++)
                     {
-                        echo '<option>' . $skill->getSkillID() . '. ' . $skill->getSkillID() .
+                        echo '<option>' . $skill->getSkillID() .
                             '. ' . $skill->getSkill() . ' - level ' . $i . '</option>';
                     }
                 }
                 echo '</select>';
-                echo '<input type="submit" name="addSkill" value="Add Skill"></div></div>
-                        <input type="submit" name="showSkills" value="Show Required Skills"><br />';
+                echo '<input type="submit" name="addSkill" value="Add Skill" class="btn btn-dark"></div></div>
+                        <div class="row"><input type="submit" name="showSkills" value="Show Required Skills" class="btn btn-dark"></div><br />';
 
-                if (isset($_POST['showSkills']))
-                {
-                    echo '<br /><div class="row"><h6>Required Skills: </h6>';
-                    foreach ($view->allPlacementSkills as $placementSkill)
+                    if (isset($_POST['showSkills']))
                     {
-                        echo '<div class="col-sm-2">';
-                        echo '<form action="" method="post"><p><b>' . $placementSkill->getSkill() .
-                            ' - Level ' . $placementSkill->getLevel() . '</b></p></form>';
-                        echo '</div>';
+                        echo '<br /><div class="row"><h6>Required Skills: </h6>';
+                        foreach ($view->allPlacementSkills as $placementSkill)
+                        {
+                            echo '<div class="col-sm-2">';
+                            echo '<form action="" method="post"><p><b>' . $placementSkill->getSkill() .
+                                ' - Level ' . $placementSkill->getLevel() . '</b></p></form>';
+                            echo '</div>';
+                        }
+                        echo '</div></form>';
                     }
-                echo '</div></form>';
-            } }?>
+            }?>
 
-            <form action="" method="post"><input type="submit" name="prePage" value="Back">
-                <input type="submit" name="nextPage" value="Next"></form>
+            <form action="" method="post"><input type="submit" name="prePage" value="Back" class="btn btn-dark">
+                <input type="submit" name="nextPage" value="Next" class="btn btn-dark"></form>
         </div>
 
     </div>

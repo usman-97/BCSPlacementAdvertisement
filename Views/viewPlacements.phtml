@@ -4,6 +4,10 @@
     #placementHolder {
         margin-top: 100px;
     }
+
+    #placementSection {
+        border-bottom: 5px solid #000000;
+    }
 </style>
 
 <section>
@@ -11,7 +15,7 @@
     <div class="row">
         <?php foreach ($view->allPlacements as $placement) {
             echo '<form action="" method="post">' .
-                '<div class="row"><h4>' .
+                '<div class="row" id="placementSection"><h4>' .
                 $placement->getTitle() . '</h4></div>' .
                 '<input type="hidden" name="placement_id" value="' . $placement->getPlacementID() . '"/>' . '<br />' .
                 '<h6>Description</h6>' .
@@ -25,11 +29,13 @@
 
         }?>
     </div>
-
-        <form action="" method="post"><input type="submit" name="prePage" value="Back">
-            <input type="submit" name="nextPage" value="Next"></form>
+        <div class="">
+            <form action="" method="post"><input type="submit" name="prePage" value="Back" class="btn btn-dark">
+            <input type="submit" name="nextPage" value="Next" class="btn btn-dark"></form>
+        </div>
     </div>
     </div>
+    <br />
 </section>
 
 <?php require ("template/footer.phtml") ?>

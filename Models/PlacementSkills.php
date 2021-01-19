@@ -42,7 +42,7 @@ class PlacementSkills {
 
     /**
      * @param $idPlacement
-     * @return array
+     * @return array|false
      */
     public function listAllPlacementSkills($idPlacement)
     {
@@ -52,12 +52,16 @@ class PlacementSkills {
         $statement->execute();
 
         $dataSet = [];
-        while ($row = $statement->fetch())
-        {
-            $dataSet[] = new PlacementSkillsData($row);
+        if ($statement->rowCount() > 0) {
+            while ($row = $statement->fetch()) {
+                $dataSet[] = new PlacementSkillsData($row);
+            }
+            return $dataSet;
         }
-
-        return $dataSet;
+        else
+        {
+            return false;
+        }
     }
 
     /**
