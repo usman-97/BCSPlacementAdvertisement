@@ -170,6 +170,15 @@
                             <div class="row">
                                 <form action="" method="post">
                                     <div>
+                                        <p><?php if (isset($view->showSector)) {
+                                            echo '<b>Your Sector: </b>' . $view->showSector;
+                                        }
+                                        else
+                                        {
+                                            echo 'Please add your sector';
+                                        }?></p>
+                                    </div>
+                                    <div>
                                         <select name="studentSector">
                                             <option>Information Technology</option>
                                             <option>Business</option>

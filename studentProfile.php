@@ -3,6 +3,7 @@ require_once ("Models/FileUpload.php");
 require_once ("Models/User.php");
 require_once ("Models/Skills.php");
 require_once ("Models/StudentSkill.php");
+require_once ("Models/Student.php");
 require_once ("logout.php");
 
 $view = new stdClass();
@@ -11,6 +12,8 @@ $cv = new FileUpload();
 $user = new User();
 $skills = new Skills();
 $studentSkill = new StudentSkill();
+$student = new Student();
+$view->showSector = $student->getSector($_SESSION['userID']);
 
 $view->showSkills = $skills->listPlacementSkills();
 // var_dump($view->selectSkills);
@@ -66,6 +69,12 @@ if (isset($_POST['removeSkill']))
         header ("location: studentProfile.php");
 
     }
+}
+
+if (isset($_POST['addSector']))
+{
+    $student->addSector($_SESSION['userID'], $_POST['studentSector']);
+    header ("location: studentProfile.php");
 }
 
 require_once ("Views/studentProfile.phtml");

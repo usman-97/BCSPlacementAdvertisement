@@ -887,108 +887,112 @@
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="264" parent="231" name="cv">
+    <column id="264" parent="231" name="sector">
       <Position>3</Position>
+      <DataType>varchar(60)|0s</DataType>
+    </column>
+    <column id="265" parent="231" name="cv">
+      <Position>4</Position>
       <DataType>varchar(45)|0s</DataType>
       <DefaultExpression>&apos;No CV&apos;</DefaultExpression>
     </column>
-    <index id="265" parent="231" name="user_id_idx">
+    <index id="266" parent="231" name="user_id_idx">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="266" parent="231" name="PRIMARY">
+    <key id="267" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>studentID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="267" parent="231" name="user_id">
+    <foreign-key id="268" parent="231" name="user_id">
       <ColNames>user_id</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>userID</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="268" parent="232" name="user_id">
+    <column id="269" parent="232" name="user_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="269" parent="232" name="skill_id">
+    <column id="270" parent="232" name="skill_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="270" parent="232" name="level">
+    <column id="271" parent="232" name="level">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="271" parent="232" name="iduser_idx">
+    <index id="272" parent="232" name="iduser_idx">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="272" parent="232" name="idskill_idx">
+    <index id="273" parent="232" name="idskill_idx">
       <ColNames>skill_id</ColNames>
       <Type>btree</Type>
     </index>
-    <foreign-key id="273" parent="232" name="iduser">
+    <foreign-key id="274" parent="232" name="iduser">
       <ColNames>user_id</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>userID</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="274" parent="232" name="idskill">
+    <foreign-key id="275" parent="232" name="idskill">
       <ColNames>skill_id</ColNames>
       <RefTableName>skills</RefTableName>
       <RefColNames>skillID</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="275" parent="233" name="userID">
+    <column id="276" parent="233" name="userID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="276" parent="233" name="full_name">
+    <column id="277" parent="233" name="full_name">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="277" parent="233" name="email">
+    <column id="278" parent="233" name="email">
       <Position>3</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="278" parent="233" name="password">
+    <column id="279" parent="233" name="password">
       <Position>4</Position>
       <DataType>varchar(70)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="279" parent="233" name="phone_number">
+    <column id="280" parent="233" name="phone_number">
       <Position>5</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="280" parent="233" name="postal_address">
+    <column id="281" parent="233" name="postal_address">
       <Position>6</Position>
       <DataType>varchar(70)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="281" parent="233" name="user_type">
+    <column id="282" parent="233" name="user_type">
       <Position>7</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="282" parent="233" name="phone_number_UNIQUE">
+    <index id="283" parent="233" name="phone_number_UNIQUE">
       <ColNames>phone_number</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="283" parent="233" name="PRIMARY">
+    <key id="284" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userID</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="284" parent="233" name="phone_number_UNIQUE">
+    <key id="285" parent="233" name="phone_number_UNIQUE">
       <ColNames>phone_number</ColNames>
       <UnderlyingIndexName>phone_number_UNIQUE</UnderlyingIndexName>
     </key>

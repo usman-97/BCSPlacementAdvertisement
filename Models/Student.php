@@ -13,10 +13,22 @@ class Student extends User {
         parent::__construct();
     }
 
-    public function getSector()
+    public function getSector($user)
     {
         $sqlQuery = "SELECT sector FROM student WHERE user_id = :id";
         $statement = $this->_dbHandle->prepare($sqlQuery);
-        $statement->bindParam(":");
+        $statement->bindParam(":id", $user, PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchColumn();
+    }
+
+    public function addSector($user, $sector)
+    {
+        $sqlQuery = "UPDATE student SET sector = :selectedSector WHERE user_id = :id";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":selectedSector", $sector, PDO::PARAM_STR);
+        $statement->bindParam(":id", $user, PDO::PARAM_INT);
+        $statement->execute();
     }
 }
