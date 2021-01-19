@@ -59,6 +59,14 @@ class PlacementData {
     }
 
     /**
+     * @return mixed
+     */
+    public function getLocation()
+    {
+        return $this->_location;
+    }
+
+    /**
      *
      */
     public function getSalary()
