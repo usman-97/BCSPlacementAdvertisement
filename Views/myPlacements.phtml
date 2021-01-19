@@ -21,7 +21,7 @@
             <?php foreach ($view->allPlacements as $placement) {
                 echo '<form action="" method="post">' .
                     '<div class="row" id="placementSection"><h4>#' . $placement->getPlacementID() .
-                    '. ' . $placement->getTitle() . '</h4></div>' .
+                    '. ' . $placement->getTitle() . ' - ' . $placement->getSector() . '</h4></div>' .
                     '<input type="hidden" name="placement_id" value="' . $placement->getPlacementID() . '"/>' . '<br />' .
                     '<h6>Company: ' . $placement->getCompany() . '</h6>' . '<br />' . '<h6>Description</h6>' .
                     '<div class="row">' . $placement->getDescription() . '</div>' . '<br />' .

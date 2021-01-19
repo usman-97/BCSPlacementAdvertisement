@@ -2,12 +2,13 @@
 
 class PlacementData {
 
-    protected $_placement_id, $_company, $_title, $_description, $_benefits, $_location,  $_salary, $_salaryPaid, $_startDate, $_endDate;
+    protected $_placement_id, $_company, $_sector, $_title, $_description, $_benefits, $_location,  $_salary, $_salaryPaid, $_startDate, $_endDate;
 
     public function __construct($dbRow)
     {
         $this->_placement_id = $dbRow['placementID'];
         $this->_company = $dbRow['company'];
+        $this->_sector = $dbRow['sector'];
         $this->_title = $dbRow['title'];
         $this->_description = $dbRow['description'];
         $this->_benefits = $dbRow['benefits'];
@@ -32,6 +33,14 @@ class PlacementData {
     public function getCompany()
     {
         return $this->_company;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSector()
+    {
+        return $this->_sector;
     }
 
     /**

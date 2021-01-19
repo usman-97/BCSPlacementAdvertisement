@@ -49,15 +49,17 @@ class PlacementDataSet {
 
     /**
      * @param $company
+     * @param $sector
      * @param $title
      * @param $description
      * @param $benefits
+     * @param $location
      * @param $salary
      * @param $salaryPaid
      * @param $start_date
      * @param $end_date
      */
-    public function createPlacement($company, $title, $description, $benefits, $location, $salary, $salaryPaid, $start_date, $end_date)
+    public function createPlacement($company, $sector, $title, $description, $benefits, $location, $salary, $salaryPaid, $start_date, $end_date)
     {
         // SQL query counts placement rows
         $countQuery = "SELECT COUNT(placementID) FROM placement";
@@ -68,10 +70,11 @@ class PlacementDataSet {
         $newKey = $countStatement->fetchColumn() + 1;
         $this->_placement_id = $newKey;
 
-        $sqlQuery = "INSERT INTO placement VALUES (:id, :company, :title, :description, :benefits, :location, :salary, :salaryPaid, :start_date, :end_date)";
+        $sqlQuery = "INSERT INTO placement VALUES (:id, :company, :sector, :title, :description, :benefits, :location, :salary, :salaryPaid, :start_date, :end_date)";
         $statement = $this->_dbHandle->prepare($sqlQuery);
         $statement->bindParam(":id", $newKey, PDO::PARAM_INT);
         $statement->bindParam(":company", $company, PDO::PARAM_STR);
+        $statement->bindParam(":sector", $sector, PDO::PARAM_STR);
         $statement->bindParam(":title", $title, PDO::PARAM_STR);
         $statement->bindParam(":description", $description, PDO::PARAM_STR);
         $statement->bindParam(":benefits", $benefits, PDO::PARAM_STR);
