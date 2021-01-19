@@ -14,10 +14,10 @@ require_once ("logout.php");
 
 if (isset($_POST['createPlacement']))
 {
-    if (!empty($_POST['title']) && !empty($_POST['description']) && !empty($_POST['benefits']) && !empty($_POST['salary']) &&
-        !empty($_POST['salaryPaid']) && !empty($_POST['startDate']) && !empty($_POST['endDate']))
+    if (!empty($_POST['company']) && !empty($_POST['title']) && !empty($_POST['description']) && !empty($_POST['benefits']) && !empty($_POST['location']) &&
+        !empty($_POST['salary']) && !empty($_POST['salaryPaid']) && !empty($_POST['startDate']) && !empty($_POST['endDate']))
     {
-        $placement->createPlacement($_POST['title'], $_POST['description'], $_POST['benefits'], $_POST['salary'], $_POST['salaryPaid'], $_POST['startDate'], $_POST['endDate']);
+        $placement->createPlacement($_POST['company'], $_POST['title'], $_POST['description'], $_POST['benefits'], $_POST['location'], $_POST['salary'], $_POST['salaryPaid'], $_POST['startDate'], $_POST['endDate']);
         $_SESSION['placement_id'] = $placement->getPlacementID();
         header("location: myPlacements.php");
     }

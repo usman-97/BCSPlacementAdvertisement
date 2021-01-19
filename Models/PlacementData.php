@@ -2,16 +2,18 @@
 
 class PlacementData {
 
-    protected $_placement_id, $_title, $_description, $_benefits, $_salary, $_salarlyPaid, $_startDate, $_endDate;
+    protected $_placement_id, $_company, $_title, $_description, $_benefits, $_location,  $_salary, $_salaryPaid, $_startDate, $_endDate;
 
     public function __construct($dbRow)
     {
         $this->_placement_id = $dbRow['placementID'];
+        $this->_company = $dbRow['company'];
         $this->_title = $dbRow['title'];
         $this->_description = $dbRow['description'];
         $this->_benefits = $dbRow['benefits'];
+        $this->_location = $dbRow['location'];
         $this->_salary = $dbRow['salary'];
-        $this->_salarlyPaid = $dbRow['salaryPaid'];
+        $this->_salaryPaid = $dbRow['salaryPaid'];
         $this->_startDate = $dbRow['start_date'];
         $this->_endDate = $dbRow['end_date'];
     }
@@ -22,6 +24,14 @@ class PlacementData {
     public function getPlacementID()
     {
         return $this->_placement_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompany()
+    {
+        return $this->_company;
     }
 
     /**
@@ -61,7 +71,7 @@ class PlacementData {
      */
     public function getSalaryPaid()
     {
-        return $this->_salarlyPaid;
+        return $this->_salaryPaid;
     }
 
     /**
