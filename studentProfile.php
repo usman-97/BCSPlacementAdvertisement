@@ -1,6 +1,7 @@
 <?php
 require_once ("Models/FileUpload.php");
 require_once ("Models/User.php");
+require_once ("Models/Skills.php");
 require_once ("Models/StudentSkill.php");
 require_once ("logout.php");
 
@@ -8,10 +9,12 @@ $view = new stdClass();
 $view->pageTitle = "My Profile";
 $cv = new FileUpload();
 $user = new User();
+$skills = new Skills();
 $studentSkill = new StudentSkill();
 
+$view->showSkills = $skills->listPlacementSkills();
 $view->selectSkills = $studentSkill->addStudentSkill($_SESSION['userID']);
-var_dump($view->selectSkills);
+// var_dump($view->selectSkills);
 
 // $view->details = $user->getUserData($_SESSION['userID']);
 
