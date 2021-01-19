@@ -17,11 +17,14 @@ class StudentSkill {
         $this->_dbHandle = $this->_dbInstance->getdbConnection(); // Establish connection to database
     }
 
-    public function addStudentSkill($id)
+    public function addStudentSkill($id, $skill, $level)
     {
-        $sqlQuery = "SELECT skill, level FROM student_skill WHERE user_id = :userID";
+        // SQL query to get
+        $sqlQuery = "INSERT INTO student_skill VALUES (:userID, :skill_id, :skillLevel)";
         $statement = $this->_dbHandle->prepare($sqlQuery);
         $statement->bindParam(":userID", $id, PDO::PARAM_INT);
+        $statement->bindParam(":skill_id", $skill, PDO::PARAM_INT);
+        $statement->bindParam(":skillLevel", $level, PDO::PARAM_INT);
         $statement->execute();
 
         $dataSet = [];
