@@ -98,6 +98,14 @@
             background: #8BC34A;
             font-size: 30px;
             border: 3px solid #000000;
+
+            /* Prevent user from copying the reCaptcha */
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
         }
 
         @media screen and (max-width: 800px) {
@@ -149,6 +157,7 @@
     <div class="reCaptcha">
         <p><b><?php if (isset($view->finalReCaptcha)) {echo $view->finalReCaptcha;} ?></b></p>
     </div>
+    <input type="hidden" name="storeReCaptcha" value="<?php if (isset($view->finalReCaptcha)) {echo $view->finalReCaptcha;} ?>" />
 
     <label>
         <input

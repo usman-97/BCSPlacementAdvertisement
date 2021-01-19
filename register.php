@@ -14,31 +14,39 @@ if (isset($_POST['register']))
     if (!empty(trim($_POST['newFullName'])) && !empty(trim($_POST['email'])) && !empty(trim($_POST['newPwd'])) &&
         !empty(trim($_POST['phone_number'])) && !empty(trim($_POST['address'])))
     {
-        $user->setEmail($_POST['email']); // Sets email field for user
-        $user->setPassword($_POST['newPwd']); // Sets password field for user
-        $user->setUserType($_POST['userType']); // Sets userType field for user
-        // If user email doesn't exist in database
-        if (!$user->checkEmail())
+        if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
         {
-            if ($_POST['newPwd'] == $_POST['confirmPassword'])
-            {
-                // Then register new user
-                $user->register($_POST['newFullName'], $_POST['phone_number'], $_POST['address']);
-                if ($_POST['userType'] == "Student")
-                {
-                    $user->addStudent();
+            if (strlen($_POST['newPwd']) >= 8) {
+                $user->setEmail($_POST['email']); // Sets email field for user
+                $user->setPassword($_POST['newPwd']); // Sets password field for user
+                $user->setUserType($_POST['userType']); // Sets userType field for user
+                // If user email doesn't exist in database
+                if (!$user->checkEmail()) {
+                    if ($_POST['newPwd'] == $_POST['confirmPassword']) {
+                        // Then register new user
+                        $user->register($_POST['newFullName'], $_POST['phone_number'], $_POST['address']);
+                        if ($_POST['userType'] == "Student") {
+                            $user->addStudent();
+                        }
+                        echo "Created";
+                        header("location: login.php");
+                    }
+                    else {
+                        $view->error = "Password doesn't match";
+                    }
                 }
-                echo "Created";
-                header ("location: login.php");
+                else {
+                    $view->error = "This email is already taken";
+                }
             }
             else
             {
-                $view->error = "Password doesn't match";
+                $view->error = "Your password should be greater than 8 characters";
             }
         }
         else
         {
-            $view->error = "This email is already taken";
+            $view->error = "Invalid Email";
         }
     }
     else
