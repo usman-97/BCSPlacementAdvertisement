@@ -7,7 +7,7 @@
 
         .form-style-10
         {
-            width:450px;
+            width:70%;
             padding:30px;
             margin:auto;
             background: #FFF;
@@ -130,6 +130,12 @@
             margin-top: 10px;
             text-align: right;
         }
+
+        #studentSkills {
+            padding: 2px 2px 2px 20px;
+            width: 80%;
+            border: 2px solid #000000;
+        }
     </style>
 
     <section>
@@ -140,17 +146,32 @@
                 <div class="container">
                     <div class="row">
                         <div class="well profile">
-                            <div class="col-sm-12">
+                            <div>
                         <h4>Your Details</h4>
                         <p><b>Email:</b> <?php if (isset($_SESSION['email'])) {echo $_SESSION['email'];} ?></p>
                         <p><b>Phone Number:</b> <?php if (isset($_SESSION['phone'])) {echo $_SESSION['phone'];}?></p>
                         <p><b>Address:</b> <?php if (isset($_SESSION['address'])) {echo $_SESSION['address'];}?></p>
-                        <div >
-                            <div class="row">
+                        <div>
+                                <div class="row">
                                 <form action="" method="post">
                                     <div>
                                         <input type="submit" name="changeDetails" value="Change Details" class="btn btn-dark"/>
                                     </div>
+                                </form>
+                                </div>
+                            <br />
+                                <div class="row" id="studentSkills">
+                                    <p><b>Skills</b></p>
+                                    <?php foreach ($view->listSkills as $studentSkill)
+                                        {
+                                            echo '<div class="col-sm-12"><form action="" method="post">' .
+                                                $studentSkill->getSkill() . ' - Level ' . $studentSkill->getLevel()
+                                                . '</form></div>';
+                                        }?>
+                                </div>
+
+                                <div class="row">
+                                <form action="" method="post">
                                     <br />
                                     <select name="studentSkill">
                                         <?php foreach ($view->showSkills as $skill)
@@ -158,7 +179,7 @@
                                             for ($i = $skill->getStartLevel(); $i < $skill->getEndLevel(); $i++)
                                             {
                                                 echo '<option>' . $skill->getSkillID() . '. ' .
-                                                    $skill->getSkill() . ' - Level' .  $i . '</option>';
+                                                    $skill->getSkill() . ' - Level ' .  $i . '</option>';
                                             }
                                         }?>
                                         <div>
@@ -166,7 +187,7 @@
                                         </div>
                                     </select>
                                 </form>
-                            </div>
+                                </div>
                         </div>
 
                         <form action="" method="post" enctype="multipart/form-data">

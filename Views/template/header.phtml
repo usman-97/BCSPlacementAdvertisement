@@ -46,11 +46,11 @@
                 </li>
                 <?php if (isset($_SESSION['loggedIn']))  : ?>
                 <?php if (isset($_SESSION['typeOfUser']) && $_SESSION['typeOfUser'] == "Student")  : ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="studentProfile.php">My Profile</a>
-                    </li>
                         <li class="nav-item">
                             <a class="nav-link" href="viewPlacements.php">View Placements</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="studentProfile.php">My Profile</a>
                         </li>
                 <?php endif; ?>
                     <?php if (isset($_SESSION['typeOfUser']) && $_SESSION['typeOfUser'] == "Employer")  : ?>

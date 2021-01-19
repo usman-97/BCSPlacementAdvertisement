@@ -51,7 +51,8 @@
                 {
                     for ($i = $skill->getStartLevel(); $i < $skill->getEndLevel() + 1; $i++)
                     {
-                        echo '<option>' . $skill->getSkillID() . '. ' . $skill->getSkill() . ' - level ' . $i . '</option>';
+                        echo '<option>' . $skill->getSkillID() . '. ' . $skill->getSkillID() .
+                            '. ' . $skill->getSkill() . ' - level ' . $i . '</option>';
                     }
                 }
                 echo '</select>';

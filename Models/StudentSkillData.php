@@ -2,15 +2,13 @@
 
 class StudentSkillData {
 
-    protected $_user_id, $_skillID, $_skill, $_startLevel, $_endLevel;
+    protected $_skillID, $_skill, $_level;
 
     public function __construct($dbRow)
     {
-        $this->_user_id = $dbRow['user_id'];
         $this->_skillID = $dbRow['skillID'];
         $this->_skill = $dbRow['skill'];
-        $this->_startLevel = $dbRow['startLevel'];
-        $this->_endLevel = $dbRow['endLevel'];
+        $this->_level = $dbRow['level'];
     }
 
     public function getUserID()
@@ -28,13 +26,8 @@ class StudentSkillData {
         return $this->_skill;
     }
 
-    public function getStartLevel()
+    public function getLevel()
     {
-        return $this->_startLevel;
-    }
-
-    public function getEndLevel()
-    {
-        return $this->_endLevel;
+        return $this->_level;
     }
 }
