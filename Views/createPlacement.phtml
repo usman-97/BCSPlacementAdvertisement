@@ -3,7 +3,7 @@
     <style type="text/css">
 
         .form-style-10{
-            width:450px;
+            width:60%;
             padding:30px;
             margin:40px auto;
             background: #FFF;
@@ -45,7 +45,7 @@
         .form-style-10 label
         {
             display: block;
-            font: 13px Arial, Helvetica, sans-serif;
+            font: 20px Arial, Helvetica, sans-serif;
             color: #000000;
             margin-bottom: 15px;
         }
@@ -126,6 +126,16 @@
             margin-top: 10px;
             text-align: right;
         }
+
+        @media screen and (max-width: 800px) {
+            .form-style-10 {
+                width: 95%;
+            }
+
+            .form-style-10 label {
+                font: 12px Arial, Helvetica, sans-serif;
+            }
+        }
     </style>
 
 <section style="background: #C5E1A5">
@@ -147,15 +157,13 @@
 
         <div class="section">Placement Description</div>
         <div class="inner-wrap">
-            <label><textarea rows="4" cols="50" name="description" placeholder="200 character max ...">
-                    You'll join us on an initial 12-month placement and, after getting up to speed working on internal projects,you'll become part of an Agile development team; working in a fast-paced, customer-facing software development role.This will give you a great grounding in embedded software design, as well as commercial experience of C++and Java, and exposure to technologies such as Android.
+            <label><textarea rows="4" cols="50" name="description" placeholder="200 character max ...">You'll join us on an initial 12-month placement and, after getting up to speed working on internal projects,you'll become part of an Agile development team; working in a fast-paced, customer-facing software development role.This will give you a great grounding in embedded software design, as well as commercial experience of C++and Java, and exposure to technologies such as Android.
                 </textarea></label>
         </div>
 
         <div class="section">Benefits</div>
         <div class="inner-wrap">
-            <label> <textarea rows="4" cols="50" name="benefits" >
-                    Be studying for an undergraduate honours degree in Computer Science, Computer Systems Engineering or a similar subject
+            <label> <textarea rows="4" cols="50" name="benefits" >Be studying for an undergraduate honours degree in Computer Science, Computer Systems Engineering or a similar subject
 Have completed at least two years of study by summer 2021
 Have excellent communication skills in English (written and spoken)
 Have excellent problem-solving skills
