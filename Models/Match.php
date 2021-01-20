@@ -140,4 +140,24 @@ class Match {
         }
     }
 
+    public function countMatchID()
+    {
+        $sqlQuery = "SELECT COUNT(matchID) FROM matches";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->execute();
+        return $statement->fetchColumn();
+    }
+
+    public function addMatch($student, $placement)
+    {
+        $newKey = $this->countMatchID() + 1;
+
+        $sqlQuery = "INSERT INTO matches VALUES (:id, :student, :placement)";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":id", $newKey, PDO::PARAM_INT);
+        $statement->bindParam(":student", $student, PDO::PARAM_INT);
+        $statement->bindParam(":placement", $placement, PDO::PARAM_INT);
+        $statement->execute();
+    }
+
 }

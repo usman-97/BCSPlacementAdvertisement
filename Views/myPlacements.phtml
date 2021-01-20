@@ -81,7 +81,9 @@
                         echo '<form action="" method="post"><div class="row">';
                         for ($x = 0; $x < count($view->finalMatches); $x++)
                         {
-                            echo '<p><b>Candidate#00' . $view->finalMatches[$x] . ' - </b></p>';
+                            echo '<p><b>Candidate#00' . $view->finalMatches[$x] . ' - </b></p>'
+                            . '<input type="hidden" name="storeCandidateID" value="'. $view->finalMatches[$x] . '"/>' .
+                            '<input type="hidden" name="storePlacementID" value="'. $_POST['placement_id']. '"/>';
                             echo '<div class="row"><div class="col-sm-12"><ul>';
                             for ($i = 0; $i < count($view->potentialCandidates[$x]); $i++)
                             {

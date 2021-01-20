@@ -178,4 +178,10 @@ if (isset($_POST['previousCandidate']))
     $_SESSION['candidatePage'] += 0;
 }
 
+if (isset($_POST['acceptMatch']))
+{
+    $_SESSION['page'] = $_POST['storePage'];
+    $view->matches->addMatch($_POST['storeCandidateID'], $_POST['storePlacementID']);
+}
+
 require_once ("Views/myPlacements.phtml");

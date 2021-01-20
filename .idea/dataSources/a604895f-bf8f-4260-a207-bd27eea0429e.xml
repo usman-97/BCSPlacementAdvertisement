@@ -727,7 +727,7 @@
 </ObjectGrants>
     </user>
     <table id="227" parent="2" name="employer"/>
-    <table id="228" parent="2" name="match"/>
+    <table id="228" parent="2" name="matches"/>
     <table id="229" parent="2" name="placement"/>
     <table id="230" parent="2" name="placement_skills"/>
     <table id="231" parent="2" name="skills"/>
