@@ -137,7 +137,7 @@ class User {
 
         // Execute PDO statement
         $statement->execute();
-        var_dump($password);
+        // var_dump($password);
     }
 
     /**
@@ -157,7 +157,7 @@ class User {
         // New id for student table
         $newKey = $countStatement->fetchColumn() + 1;
         // SQL query to insert student and user id
-        $sqlQuery = "INSERT INTO student VALUES (:id, :user_id, null)";
+        $sqlQuery = "INSERT INTO student VALUES (:id, :user_id, null, null)";
         // Prepare PDO statement
         $statement = $this->_dbHandle->prepare($sqlQuery);
         // Assign values to parameters in SQL query
@@ -165,7 +165,7 @@ class User {
         $statement->bindParam(":user_id", $this->_userID, PDO::PARAM_INT);
         // Execute PDO statement
         $statement->execute();
-        // var_dump($this->_userID);
+        var_dump($this->_userID);
 
     }
 

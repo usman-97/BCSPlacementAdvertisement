@@ -9,7 +9,7 @@ $view->pageTitle = "My Placement Advertisements";
 $placements = new PlacementDataSet();
 $skills = new Skills();
 $placementSkill = new PlacementSkills();
-$matches = new Match();
+$view->matches = new Match();
 
 require_once ("logout.php");
 
@@ -82,21 +82,20 @@ else
     $view->allPlacements = $placements->getAllPlacements($_SESSION['page'],  $_SESSION['page']);
 }
 
-$view->potentialCandidates = $matches->showCandidates()
 if (isset($_POST['findMatches']))
 {
-    $matchLocationSector = $matches->checkLocationSector($_POST['placementAddress'], $_POST['placementSector']);
+    $matchLocationSector = $view->matches->checkLocationSector($_POST['placementAddress'], $_POST['placementSector']);
     var_dump($matchLocationSector);
     // var_dump($_POST['placementAddress']);
     // var_dump($_POST['placementSector']);
 
-    /*$matchSkills = $matches->checkStudentSkills($matchLocationSector[0], $_POST['placement_id']);
+    /*$matchSkills = $view->matches->checkStudentSkills($matchLocationSector[0], $_POST['placement_id']);
     var_dump($matchSkills);*/
 
     $view->finalMatches = [];
     for ($i = 0; $i < count($matchLocationSector); $i++) {
-        $matchSkills = $matches->checkStudentSkills($matchLocationSector[$i], $_POST['placement_id']);
-        $placementRequiredSkills = $matches->getAllPlacementSkills($_POST['placement_id']);
+        $matchSkills = $view->matches->checkStudentSkills($matchLocationSector[$i], $_POST['placement_id']);
+        $placementRequiredSkills = $view->matches->getAllPlacementSkills($_POST['placement_id']);
         $skillMatches = 0;
 
         if ($matchSkills)
@@ -131,4 +130,11 @@ if (isset($_POST['findMatches']))
     var_dump($_POST['placement_id']);
 }
 
+for ($z = 0; $z < count($view->finalMatches); $z++)
+{
+    $view->potentialCandidates[] = $view->matches->showCandidates($view->finalMatches[$z]);
+}
+
+var_dump($view->potentialCandidates);
+// var_dump(count($view->finalPotentialCandidates));
 require_once ("Views/myPlacements.phtml");

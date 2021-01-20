@@ -124,11 +124,12 @@ class Match {
         $statement->execute();
 
         $finalMatches = [];
+        // var_dump($statement->fetch());
         if ($statement->rowCount() > 0)
         {
             while ($row = $statement->fetch())
             {
-                $finalMatches = new MatchData($row);
+                $finalMatches[] = new MatchData($row);
 
             }
             return $finalMatches;

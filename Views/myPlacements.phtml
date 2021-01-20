@@ -72,6 +72,26 @@
                 <form action="" method="post"><input type="submit" name="prePage" value="Back" class="btn btn-dark">
                     <input type="submit" name="nextPage" value="Next" class="btn btn-dark"></form>
             </div>
+                <?php if (isset($view->potentialCandidates))
+                    {
+                        echo '<form action="" method="post"><div class="row">';
+                        for ($x = 0; $x < count($view->finalMatches); $x++)
+                        {
+                            echo '<p>Candidate#00' . $view->finalMatches[$x] . ' - </p>';
+                            echo '<div class="row"><div class="col-sm-12"><ul>';
+                            for ($i = 0; $i < count($view->potentialCandidates[$x]); $i++)
+                            {
+                                echo '<div class="col-sm-12"><li>' . $view->potentialCandidates[$x][$i]->getSkill() . '</li></div>';
+                                /*foreach ($view->potentialCandidates as $candidate)
+                                {
+                                    echo '<div class="row">' . $candidate[$i]->getSkill() . '</div>';
+                                }*/
+                                // echo '</div>';
+                            }
+                            echo '</ul></div></div>';
+                        }
+                        echo '</form></div>';
+                    }?>
         </div>
 
     </div>
