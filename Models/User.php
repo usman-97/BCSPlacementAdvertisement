@@ -169,6 +169,32 @@ class User {
 
     }
 
+    public function addEmployer()
+    {
+        // SQL query counts userID rows
+        $countQuery = "SELECT COUNT(employerID) FROM employer";
+        // Prepare PDO statement
+        $countStatement = $this->_dbHandle->prepare($countQuery);
+        $countStatement->bindParam(":id", $id, PDO::PARAM_INT);
+        $countStatement->bindParam(":tableName", $table, PDO::PARAM_STR);
+        // Execute PDO statement
+        $countStatement->execute();
+
+        // New id for student table
+        $newKey = $countStatement->fetchColumn() + 1;
+        // SQL query to insert student and user id
+        $sqlQuery = "INSERT INTO employer VALUES (:id, :user_id)";
+        // Prepare PDO statement
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        // Assign values to parameters in SQL query
+        $statement->bindParam(":id", $newKey, PDO::PARAM_INT);
+        $statement->bindParam(":user_id", $this->_userID, PDO::PARAM_INT);
+        // Execute PDO statement
+        $statement->execute();
+        var_dump($this->_userID);
+
+    }
+
     /**
      * Verify user email and password from users table
      */

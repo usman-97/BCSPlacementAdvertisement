@@ -3,6 +3,7 @@
 session_start();
 unset($_SESSION['showSkills']);
 unset($_SESSION['page']);
+unset($_SESSION['MatchMode']);
 
 if (isset($_SESSION['student']))
 {

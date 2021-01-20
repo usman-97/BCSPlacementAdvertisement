@@ -21,16 +21,20 @@ class PlacementDataSet {
 
     /**
      * Get all the placements from placement table
+     * @param $employer
      * @param $start
      * @param $limit
      * @return array
      */
-    public function getAllPlacements($start, $limit)
+    public function getAllPlacements($employer, $start, $limit)
     {
+        $employerID = $this->findEmployerID($employer);
+
         // SQL query to fetch all placement data
-        $sqlQuery = "SELECT * FROM placement ORDER BY end_date DESC LIMIT :startPage, :nextPage";
+        $sqlQuery = "SELECT * FROM placement WHERE employer_id = :employer ORDER BY end_date DESC LIMIT :startPage, :nextPage";
         // Prepare PDO statement
         $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":employer", $employerID, PDO::PARAM_INT);
         $statement->bindParam(":startPage", $start, PDO::PARAM_INT);
         $statement->bindParam(":nextPage", $limit, PDO::PARAM_INT);
         // Execute the PDO statement
@@ -58,8 +62,9 @@ class PlacementDataSet {
      * @param $salaryPaid
      * @param $start_date
      * @param $end_date
+     * @param $employer
      */
-    public function createPlacement($company, $sector, $title, $description, $benefits, $location, $salary, $salaryPaid, $start_date, $end_date)
+    public function createPlacement($company, $sector, $title, $description, $benefits, $location, $salary, $salaryPaid, $start_date, $end_date, $employer)
     {
         // SQL query counts placement rows
         $countQuery = "SELECT COUNT(placementID) FROM placement";
@@ -70,7 +75,9 @@ class PlacementDataSet {
         $newKey = $countStatement->fetchColumn() + 1;
         $this->_placement_id = $newKey;
 
-        $sqlQuery = "INSERT INTO placement VALUES (:id, :company, :sector, :title, :description, :benefits, :location, :salary, :salaryPaid, :start_date, :end_date)";
+        $newEmployerId = $this->findEmployerID($employer) + 1;
+
+        $sqlQuery = "INSERT INTO placement VALUES (:id, :company, :sector, :title, :description, :benefits, :location, :salary, :salaryPaid, :start_date, :end_date, :employer)";
         $statement = $this->_dbHandle->prepare($sqlQuery);
         $statement->bindParam(":id", $newKey, PDO::PARAM_INT);
         $statement->bindParam(":company", $company, PDO::PARAM_STR);
@@ -83,9 +90,19 @@ class PlacementDataSet {
         $statement->bindParam(":salaryPaid", $salaryPaid, PDO::PARAM_STR);
         $statement->bindParam(":start_date", $start_date, PDO::PARAM_STR);
         $statement->bindParam(":end_date", $end_date, PDO::PARAM_STR);
+        $statement->bindParam(":employer", $newEmployerId, PDO::PARAM_INT);
 
         $statement->execute();
         var_dump($statement->execute());
+    }
+
+    public function findEmployerID($employer)
+    {
+        $sqlQuery = "SELECT employerID FROM employer WHERE user_id = :id";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":id", $employer, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchColumn();
     }
 
     public function getPlacementID()

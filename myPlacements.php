@@ -10,6 +10,7 @@ $placements = new PlacementDataSet();
 $skills = new Skills();
 $placementSkill = new PlacementSkills();
 $view->matches = new Match();
+$view->finalMatches = [];
 
 require_once ("logout.php");
 
@@ -48,10 +49,16 @@ if (!isset($_SESSION['page']))
     }
     else
     {
-        $_SESSION['page'] = 0;
+        if (isset($_POST['storePage']))
+        {
+            $_SESSION['page'] = $_POST['storePage'];
+        }
+        else {
+            $_SESSION['page'] = 0;
+        }
     }
 }
-// var_dump($_SESSION['page']);
+// var_dump($_SESSION['storePage']);
 
 if (isset($_POST['prePage']))
 {
@@ -75,24 +82,23 @@ if (isset($_POST['nextPage']))
 
 if ( $_SESSION['page'] ==  0)
 {
-    $view->allPlacements = $placements->getAllPlacements($_SESSION['page'], ($_SESSION['page'] + 1));
+    $view->allPlacements = $placements->getAllPlacements($_SESSION['userID'], $_SESSION['page'], ($_SESSION['page'] + 1));
 }
 else
 {
-    $view->allPlacements = $placements->getAllPlacements($_SESSION['page'],  $_SESSION['page']);
+    $view->allPlacements = $placements->getAllPlacements($_SESSION['userID'], $_SESSION['page'],  $_SESSION['page']);
 }
 
 if (isset($_POST['findMatches']))
 {
     $matchLocationSector = $view->matches->checkLocationSector($_POST['placementAddress'], $_POST['placementSector']);
-    var_dump($matchLocationSector);
+    // var_dump($matchLocationSector);
     // var_dump($_POST['placementAddress']);
     // var_dump($_POST['placementSector']);
 
     /*$matchSkills = $view->matches->checkStudentSkills($matchLocationSector[0], $_POST['placement_id']);
     var_dump($matchSkills);*/
 
-    $view->finalMatches = [];
     for ($i = 0; $i < count($matchLocationSector); $i++) {
         $matchSkills = $view->matches->checkStudentSkills($matchLocationSector[$i], $_POST['placement_id']);
         $placementRequiredSkills = $view->matches->getAllPlacementSkills($_POST['placement_id']);
@@ -125,16 +131,51 @@ if (isset($_POST['findMatches']))
         }
     }
 
+    if (count($view->finalMatches) > 0)
+    {
+        $_SESSION['MatchMode'] = true;
+    }
+
     $_SESSION['page'] = $_POST['pageTrack'];
-    var_dump($view->finalMatches);
-    var_dump($_POST['placement_id']);
+    // var_dump($view->finalMatches);
+    // var_dump($_POST['placement_id']);
 }
 
-for ($z = 0; $z < count($view->finalMatches); $z++)
+if (count($view->finalMatches) > 0)
 {
-    $view->potentialCandidates[] = $view->matches->showCandidates($view->finalMatches[$z]);
+    for ($z = 0; $z < count($view->finalMatches); $z++)
+    {
+        $view->potentialCandidates[] = $view->matches->showCandidates($view->finalMatches[$z]);
+    }
+}
+// var_dump($view->potentialCandidates);
+// var_dump($_SESSION['MatchMode']);
+// var_dump(count($view->finalPotentialCandidates));
+
+if (isset($_SESSION['candidatePage']))
+{
+    if (isset($_POST['storeCandidatePage']))
+    {
+        $_SESSION['candidatePage'] = $_POST['storeCandidatePage'];
+    }
+    else
+    {
+        $_SESSION['candidatePage'] = 0;
+    }
 }
 
-var_dump($view->potentialCandidates);
-// var_dump(count($view->finalPotentialCandidates));
+if (isset($_POST['previousCandidate']))
+{
+    $_SESSION['page'] = $_POST['pageTrack'];
+    $_SESSION['page'] = $_POST['storePage'];
+    $_SESSION['candidatePage'] -= 0;
+}
+
+if (isset($_POST['previousCandidate']))
+{
+    $_SESSION['page'] = $_POST['pageTrack'];
+    $_SESSION['page'] = $_POST['storePage'];
+    $_SESSION['candidatePage'] += 0;
+}
+
 require_once ("Views/myPlacements.phtml");

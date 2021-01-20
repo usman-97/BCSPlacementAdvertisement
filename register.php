@@ -23,13 +23,31 @@ if (isset($_POST['register']))
                 // If user email doesn't exist in database
                 if (!$user->checkEmail()) {
                     if ($_POST['newPwd'] == $_POST['confirmPassword']) {
-                        // Then register new user
-                        $user->register($_POST['newFullName'], $_POST['phone_number'], $_POST['address']);
                         if ($_POST['userType'] == "Student") {
-                            $user->addStudent();
+                            if (preg_match('/ac.uk$/', $_POST['email']))
+                            {
+                                // Then register new user
+                                $user->register($_POST['newFullName'], $_POST['phone_number'], $_POST['address']);
+                                $user->addStudent();
+                                // header("location: login.php");
+                            }
+                            else
+                            {
+                                $view->error = "Please use your College/University email to register";
+                            }
                         }
-                        echo "Created";
-                        header("location: login.php");
+                        if ($_POST['userType'] == "Employer")
+                        {
+                            // Then register new user
+                            $user->register($_POST['newFullName'], $_POST['phone_number'], $_POST['address']);
+                            $user->addEmployer();
+                            // header("location: login.php");
+                        }
+                        /*else
+                        {
+                            $view->error = "Please choose between Student or employer";
+                        }*/
+                        // echo "Created";
                     }
                     else {
                         $view->error = "Password doesn't match";

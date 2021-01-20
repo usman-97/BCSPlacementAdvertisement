@@ -65,19 +65,23 @@
                         }
                     }
                 echo '<div class="row"><input type="submit" name="findMatches" value="Find Candidates" class="btn btn-secondary"/>
-                    </div><br /></div></form>';
+                    </div><br /></div><input type="submit" name="prePage" value="Back" class="btn btn-dark">
+                    <input type="submit" name="nextPage" value="Next" class="btn btn-dark"></form>';
             }?>
             <br/>
-            <div class="row">
+            <!--<div class="row">
                 <form action="" method="post"><input type="submit" name="prePage" value="Back" class="btn btn-dark">
                     <input type="submit" name="nextPage" value="Next" class="btn btn-dark"></form>
+            </div>-->
+            <div>
+                <p><?php if (isset($view->error)) {echo $view->error;} ?></p>
             </div>
-                <?php if (isset($view->potentialCandidates))
+                <?php if (isset($view->potentialCandidates) && count($view->finalMatches) > 0)
                     {
                         echo '<form action="" method="post"><div class="row">';
                         for ($x = 0; $x < count($view->finalMatches); $x++)
                         {
-                            echo '<p>Candidate#00' . $view->finalMatches[$x] . ' - </p>';
+                            echo '<p><b>Candidate#00' . $view->finalMatches[$x] . ' - </b></p>';
                             echo '<div class="row"><div class="col-sm-12"><ul>';
                             for ($i = 0; $i < count($view->potentialCandidates[$x]); $i++)
                             {
@@ -88,10 +92,21 @@
                                 }*/
                                 // echo '</div>';
                             }
-                            echo '</ul></div></div>';
+                            echo '</ul></div></div><div><input type="submit" name="acceptMatch" value="Accept" class="btn btn-secondary" /></div>';
                         }
-                        echo '</form></div>';
+                        echo '<input type="hidden" name="storeCandidatePage" value="' . $_SESSION['candidatePage'] .'"/>
+                              <input type="hidden" name="storePage" value="' . $_SESSION['page'] . '"/></form></div>';
                     }?>
+            <?php if (isset($_SESSION['MatchMode'])) : ?>
+            <div>
+                <form action="" method="post">
+                    <div>
+                        <input type="submit" name="previousCandidate" value="Back" class="btn btn-dark">
+                        <input type="submit" name="nextCandidate" value="Next" class="btn btn-dark">
+                    </div>
+                </form>
+            </div>
+            <?php endif; ?>
         </div>
 
     </div>
