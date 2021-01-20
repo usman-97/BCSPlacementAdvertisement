@@ -70,7 +70,7 @@ class Match {
 
         // List where student matched skills will be stored
         $student = [];
-        // If
+        // If student skill match
         if ($statement->rowCount() > 0)
         {
             while ($row = $statement->fetch())
@@ -78,6 +78,32 @@ class Match {
                 $student[] = $row['skill'];
             }
             return $student;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /**
+     * @param $placement
+     * @return array|false
+     */
+    public function getAllPlacementSkills($placement)
+    {
+        $sqlQuery = "SELECT skill FROM placement_skills, skills WHERE placement_id = :placement AND placement_skills.skill_id = skills.skillID";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":placement", $placement, PDO::PARAM_INT);
+        $statement->execute();
+
+        $placementSkills = [];
+        if ($statement->rowCount() > 0)
+        {
+            while ($row = $statement->fetch())
+            {
+                $placementSkills[] = $row['skill'];
+            }
+            return $placementSkills;
         }
         else
         {

@@ -91,6 +91,31 @@ if (isset($_POST['findMatches']))
 
     $matchSkills = $matches->checkStudentSkills($matchLocationSector[0], $_POST['placement_id']);
     var_dump($matchSkills);
+
+    $view->finalMatches = [];
+    for ($i = 0; $i < count($matchLocationSector); $i++)
+    {
+        $matchSkills = $matches->checkStudentSkills($matchLocationSector[$i], $_POST['placement_id']);
+        $placementRequiredSkills = $matches->getAllPlacementSkills($_POST['placement_id']);
+        $skillMatches = 0;
+
+        for ($j = 0; $j < count($matchSkills); $j++)
+        {
+            for ($x = 0; $x < count($placementRequiredSkills); $x++)
+            {
+                if ($matchSkills[$j] == $placementRequiredSkills[$x])
+                {
+                    $skillMatches++;
+                }
+            }
+        }
+
+        if ($skillMatches > 0)
+        {
+            array_push($view->finalMatches, $matchLocationSector[$i]);
+        }
+    }
+    var_dump($view->finalMatches);
 }
 
 require_once ("Views/myPlacements.phtml");
