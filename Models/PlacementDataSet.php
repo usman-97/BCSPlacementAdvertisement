@@ -111,12 +111,14 @@ class PlacementDataSet {
         return $this->_placement_id;
     }
 
-    public function countPlacementID()
+    public function countPlacementID($id)
     {
+        $employerID = $this->findEmployerID($id);
         // SQL query counts placement rows
-        $countQuery = "SELECT COUNT(placementID) FROM placement";
+        $countQuery = "SELECT COUNT(placementID) FROM placement WHERE employer_id = :id";
         // Prepare PDO statement
         $countStatement = $this->_dbHandle->prepare($countQuery);
+        $countStatement->bindParam(":id", $employerID, PDO::PARAM_INT);
         $countStatement->execute();
 
         return $countStatement->fetchColumn();

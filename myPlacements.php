@@ -71,10 +71,10 @@ if (isset($_POST['prePage']))
 
 if (isset($_POST['nextPage']))
 {
-    if ($_SESSION['page'] < ($placements->countPlacementID() - 1)) {
+    if ($_SESSION['page'] < ($placements->countPlacementID($_SESSION['userID']) - 1)) {
         $_SESSION['page'] += 1;
     }
-    //var_dump($placements->countPlacementID());
+    // var_dump($placements->countPlacementID($_SESSION['userID']));
 }
 
 // var_dump( $_SESSION['page']);

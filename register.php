@@ -29,7 +29,7 @@ if (isset($_POST['register']))
                                 // Then register new user
                                 $user->register($_POST['newFullName'], $_POST['phone_number'], $_POST['address']);
                                 $user->addStudent();
-                                // header("location: login.php");
+                                header("location: login.php");
                             }
                             else
                             {
@@ -41,7 +41,7 @@ if (isset($_POST['register']))
                             // Then register new user
                             $user->register($_POST['newFullName'], $_POST['phone_number'], $_POST['address']);
                             $user->addEmployer();
-                            // header("location: login.php");
+                            header("location: login.php");
                         }
                         /*else
                         {
