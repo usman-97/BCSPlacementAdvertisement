@@ -19,7 +19,7 @@ if (isset($_POST['createPlacement']))
     {
         $placement->createPlacement($_POST['company'], $_POST['sector'], $_POST['title'], $_POST['description'], $_POST['benefits'], $_POST['location'], $_POST['salary'], $_POST['salaryPaid'], $_POST['startDate'], $_POST['endDate'], $_SESSION['userID']);
         $_SESSION['placement_id'] = $placement->getPlacementID();
-        header("location: myPlacements.php");
+        // header("location: myPlacements.php");
     }
     else
     {

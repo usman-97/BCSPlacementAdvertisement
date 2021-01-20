@@ -75,7 +75,7 @@ class PlacementDataSet {
         $newKey = $countStatement->fetchColumn() + 1;
         $this->_placement_id = $newKey;
 
-        $newEmployerId = $this->findEmployerID($employer) + 1;
+        $newEmployerId = $this->findEmployerID($employer);
 
         $sqlQuery = "INSERT INTO placement VALUES (:id, :company, :sector, :title, :description, :benefits, :location, :salary, :salaryPaid, :start_date, :end_date, :employer)";
         $statement = $this->_dbHandle->prepare($sqlQuery);
@@ -93,6 +93,7 @@ class PlacementDataSet {
         $statement->bindParam(":employer", $newEmployerId, PDO::PARAM_INT);
 
         $statement->execute();
+        var_dump($newEmployerId);
         var_dump($statement->execute());
     }
 
