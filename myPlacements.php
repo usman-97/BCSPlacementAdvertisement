@@ -2,12 +2,14 @@
 require_once ("Models/PlacementDataSet.php");
 require_once ("Models/Skills.php");
 require_once  ("Models/PlacementSkills.php");
+require_once  ("Models/Match.php");
 
 $view = new stdClass();
 $view->pageTitle = "My Placement Advertisements";
 $placements = new PlacementDataSet();
 $skills = new Skills();
 $placementSkill = new PlacementSkills();
+$matches = new Match();
 
 require_once ("logout.php");
 
@@ -78,6 +80,17 @@ if ( $_SESSION['page'] ==  0)
 else
 {
     $view->allPlacements = $placements->getAllPlacements($_SESSION['page'],  $_SESSION['page']);
+}
+
+if (isset($_POST['findMatches']))
+{
+    $matchLocationSector = $matches->checkLocationSector($_POST['placementAddress'], $_POST['placementSector']);
+    var_dump($matchLocationSector[0]);
+    // var_dump($_POST['placementAddress']);
+    // var_dump($_POST['placementSector']);
+
+    $matchSkills = $matches->checkStudentSkills($matchLocationSector[0], $_POST['placement_id']);
+    var_dump($matchSkills);
 }
 
 require_once ("Views/myPlacements.phtml");

@@ -165,7 +165,7 @@ class User {
         $statement->bindParam(":user_id", $this->_userID, PDO::PARAM_INT);
         // Execute PDO statement
         $statement->execute();
-        var_dump($this->_userID);
+        // var_dump($this->_userID);
 
     }
 

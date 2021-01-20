@@ -165,7 +165,7 @@
                 class="input"
                 name="reCaptcha"
                 placeholder=""
-                value=""/>
+                value="<?php if (isset($view->finalReCaptcha)) {echo $view->finalReCaptcha;} ?>"/>
         <div class="line-box">
             <div class="line"></div>
         </div>

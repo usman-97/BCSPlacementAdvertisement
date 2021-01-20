@@ -199,7 +199,7 @@
                                     <ul>
                                     <?php if (!$view->listSkills)
                                     {
-                                        echo '<p>Add you skills here ...</p>';
+                                        echo '<p>Add your skills here ...</p>';
                                     }
                                     else
                                     {
@@ -220,7 +220,7 @@
                                     <select name="studentSkill" class="skillMenu">
                                         <?php foreach ($view->showSkills as $skill)
                                             {
-                                                for ($i = $skill->getStartLevel(); $i < $skill->getEndLevel(); $i++)
+                                                for ($i = $skill->getStartLevel(); $i < ($skill->getEndLevel() + 1); $i++)
                                                 {
                                                     echo '<option>' . $skill->getSkillID() . '. ' .
                                                         $skill->getSkill() . ' - Level ' .  $i . '</option>';
