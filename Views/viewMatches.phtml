@@ -1,1 +1,27 @@
-<?php
+<?php require("template/header.phtml") ?>
+
+<section>
+    <div class="container-fluid" style="margin-top: 100px;">
+        <div class="row">
+            <div>
+                <h1><?php echo $view->pageTitle ?></h1>
+            </div>
+        </div>
+            <?php if ($view->listMatches)
+                {
+                    foreach ($view->listMatches as $savedMatches)
+                    {
+                        echo '<div class="row"><form action="" method="post">' .
+                            '<h4>Candidate#00' . $savedMatches->getUserID() .' - #' . $savedMatches->getPlacementID() .
+                            ' ' . $savedMatches->getTitle() .'</h4>' . '</div><div class="row">' . '<p><b>Full Name:</b> ' .
+                            $savedMatches->getFullName() . '</p>' . '</div><div class="row"><p><b>Phone Number:</b> ' .
+                            $savedMatches->getPhoneNumber() . '</p></div><div class="row"><p><b>Address:</b> ' .
+                            $savedMatches->getAddress() . '</p>' . '</div></form>';
+                    }
+                }?>
+
+    </div>
+</section>
+
+
+<?php require("template/footer.phtml") ?>

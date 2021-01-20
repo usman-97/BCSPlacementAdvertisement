@@ -1,6 +1,8 @@
 <?php
 require_once ("Database.php");
 require_once ("MatchData.php");
+require_once ("MatchExtendedData.php");
+require_once ("PlacementDataSet.php");
 
 /**
  * Class Match
@@ -158,6 +160,32 @@ class Match {
         $statement->bindParam(":student", $student, PDO::PARAM_INT);
         $statement->bindParam(":placement", $placement, PDO::PARAM_INT);
         $statement->execute();
+    }
+
+    public function getAllMatches($employer)
+    {
+        $placement = new PlacementDataSet();
+        $employerID = $placement->findEmployerID($employer);
+        var_dump($employerID);
+
+        $sqlQuery = "SELECT userID, full_name, email, postal_address, phone_number, placementID, title FROM users, placement, matches WHERE users.userID = matches.user_id AND matches.placement_id = placement.placementID AND employer_id = :id";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":id", $employerID, PDO::PARAM_INT);
+        $statement->execute();
+
+        $dataSet = [];
+        if ($statement->rowCount() > 0)
+        {
+            while ($row = $statement->fetch())
+            {
+                $dataSet[] = new MatchExtendedData($row);
+            }
+            return $dataSet;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }
