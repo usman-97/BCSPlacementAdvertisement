@@ -1,4 +1,6 @@
 <?php
+require_once ("Database.php");
+require_once ("MatchData.php");
 
 /**
  * Class Match
@@ -86,16 +88,19 @@ class Match {
     }
 
     /**
+     * Get All required skills from target placement
      * @param $placement
      * @return array|false
      */
     public function getAllPlacementSkills($placement)
     {
+        // SQL query to get all skills for target placement
         $sqlQuery = "SELECT skill FROM placement_skills, skills WHERE placement_id = :placement AND placement_skills.skill_id = skills.skillID";
-        $statement = $this->_dbHandle->prepare($sqlQuery);
-        $statement->bindParam(":placement", $placement, PDO::PARAM_INT);
-        $statement->execute();
+        $statement = $this->_dbHandle->prepare($sqlQuery); // Prepare PDO statement
+        $statement->bindParam(":placement", $placement, PDO::PARAM_INT); // Assign values to parameter in SQL query
+        $statement->execute(); // Execute PDO statement
 
+        // List where all skills will be stored
         $placementSkills = [];
         if ($statement->rowCount() > 0)
         {
@@ -110,4 +115,28 @@ class Match {
             return false;
         }
     }
+
+    public function showCandidates($user)
+    {
+        $sqlQuery = "SELECT user_id, skill, level FROM student_skill, skills WHERE user_id = :user AND student_skill.skill_id = skills.skillID ";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":user", $user, PDO::PARAM_INT);
+        $statement->execute();
+
+        $finalMatches = [];
+        if ($statement->rowCount() > 0)
+        {
+            while ($row = $statement->fetch())
+            {
+                $finalMatches = new MatchData($row);
+
+            }
+            return $finalMatches;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

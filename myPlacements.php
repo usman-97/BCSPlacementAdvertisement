@@ -82,40 +82,53 @@ else
     $view->allPlacements = $placements->getAllPlacements($_SESSION['page'],  $_SESSION['page']);
 }
 
+$view->potentialCandidates = $matches->showCandidates()
 if (isset($_POST['findMatches']))
 {
     $matchLocationSector = $matches->checkLocationSector($_POST['placementAddress'], $_POST['placementSector']);
-    var_dump($matchLocationSector[0]);
+    var_dump($matchLocationSector);
     // var_dump($_POST['placementAddress']);
     // var_dump($_POST['placementSector']);
 
-    $matchSkills = $matches->checkStudentSkills($matchLocationSector[0], $_POST['placement_id']);
-    var_dump($matchSkills);
+    /*$matchSkills = $matches->checkStudentSkills($matchLocationSector[0], $_POST['placement_id']);
+    var_dump($matchSkills);*/
 
     $view->finalMatches = [];
-    for ($i = 0; $i < count($matchLocationSector); $i++)
-    {
+    for ($i = 0; $i < count($matchLocationSector); $i++) {
         $matchSkills = $matches->checkStudentSkills($matchLocationSector[$i], $_POST['placement_id']);
         $placementRequiredSkills = $matches->getAllPlacementSkills($_POST['placement_id']);
         $skillMatches = 0;
 
-        for ($j = 0; $j < count($matchSkills); $j++)
+        if ($matchSkills)
         {
-            for ($x = 0; $x < count($placementRequiredSkills); $x++)
+            for ($j = 0; $j < count($matchSkills); $j++)
             {
-                if ($matchSkills[$j] == $placementRequiredSkills[$x])
-                {
-                    $skillMatches++;
+                for ($x = 0; $x < count($placementRequiredSkills); $x++) {
+                    if ($matchSkills[$j] == $placementRequiredSkills[$x])
+                    {
+                        $skillMatches++;
+                    }
                 }
             }
+        }
+        else
+        {
+            $view->error = "No match found";
         }
 
         if ($skillMatches > 0)
         {
             array_push($view->finalMatches, $matchLocationSector[$i]);
         }
+        else
+        {
+            $view->error = "No candidate found";
+        }
     }
+
+    $_SESSION['page'] = $_POST['pageTrack'];
     var_dump($view->finalMatches);
+    var_dump($_POST['placement_id']);
 }
 
 require_once ("Views/myPlacements.phtml");
