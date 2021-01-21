@@ -8,7 +8,7 @@ require_once ("logout.php");
 
 $viewAllPlacements = new PlacementDataSet();
 
-$totalRecords = $viewAllPlacements->countPlacementID();
+$totalRecords = $viewAllPlacements->countViewPlacementID();
 $totalPages = $totalRecords / 10;
 
 if (!isset($_SESSION['page']))
@@ -36,6 +36,6 @@ if (isset($_POST['prePage']))
     }
 }
 
-$view->allPlacements = $viewAllPlacements->getAllPlacements($_SESSION['page'], $_SESSION['page'] + 10);
+$view->allPlacements = $viewAllPlacements->getAllPlacementsForStudent($_SESSION['page'], $_SESSION['page'] + 10);
 
 require_once ("Views/viewPlacements.phtml");

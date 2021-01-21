@@ -51,6 +51,29 @@ class PlacementDataSet {
         return $dataSet;
     }
 
+    public function getAllPlacementsForStudent($start, $limit)
+    {
+
+        // SQL query to fetch all placement data
+        $sqlQuery = "SELECT * FROM placement ORDER BY end_date DESC LIMIT :startPage, :nextPage";
+        // Prepare PDO statement
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":startPage", $start, PDO::PARAM_INT);
+        $statement->bindParam(":nextPage", $limit, PDO::PARAM_INT);
+        // Execute the PDO statement
+        $statement->execute();
+
+        // All placement data will be stored in this list
+        $dataSet = [];
+        // Get all data and insert it in dataSet list
+        while ($row = $statement->fetch())
+        {
+            $dataSet[] = new PlacementData($row);
+        }
+        // var_dump($start, $limit);
+        return $dataSet;
+    }
+
     /**
      * @param $company
      * @param $sector
@@ -114,6 +137,18 @@ class PlacementDataSet {
     public function countPlacementID($id)
     {
         $employerID = $this->findEmployerID($id);
+        // SQL query counts placement rows
+        $countQuery = "SELECT COUNT(placementID) FROM placement WHERE employer_id = :id";
+        // Prepare PDO statement
+        $countStatement = $this->_dbHandle->prepare($countQuery);
+        $countStatement->bindParam(":id", $employerID, PDO::PARAM_INT);
+        $countStatement->execute();
+
+        return $countStatement->fetchColumn();
+    }
+
+    public function countViewPlacementID()
+    {
         // SQL query counts placement rows
         $countQuery = "SELECT COUNT(placementID) FROM placement WHERE employer_id = :id";
         // Prepare PDO statement

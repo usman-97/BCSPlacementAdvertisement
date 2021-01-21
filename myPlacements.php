@@ -92,7 +92,7 @@ else
 if (isset($_POST['findMatches']))
 {
     $matchLocationSector = $view->matches->checkLocationSector($_POST['placementAddress'], $_POST['placementSector']);
-    // var_dump($matchLocationSector);
+    var_dump($matchLocationSector);
     // var_dump($_POST['placementAddress']);
     // var_dump($_POST['placementSector']);
 
@@ -137,7 +137,6 @@ if (isset($_POST['findMatches']))
     }
 
     $_SESSION['page'] = $_POST['pageTrack'];
-    // var_dump($view->finalMatches);
     // var_dump($_POST['placement_id']);
 }
 
@@ -148,6 +147,7 @@ if (count($view->finalMatches) > 0)
         $view->potentialCandidates[] = $view->matches->showCandidates($view->finalMatches[$z]);
     }
 }
+var_dump($view->finalMatches);
 // var_dump($view->potentialCandidates);
 // var_dump($_SESSION['MatchMode']);
 // var_dump(count($view->finalPotentialCandidates));
