@@ -90,6 +90,10 @@
             color: #ffffff;
         }
 
+        .username {
+            display: none;
+        }
+
         @media screen and (max-width: 800px) {
             input, .line, .form-group, input[type=submit] {
                 width: 100%;
@@ -125,6 +129,18 @@
                             <div class="line"></div>
                         </div>
                     </label>
+
+            <label class="username">
+                <input
+                        type="text"
+                        class="input"
+                        name="username"
+                        placeholder="username"
+                        value="user_12"/>
+                <div class="line-box">
+                    <div class="line"></div>
+                </div>
+            </label>
 
                     <label>
                         <input type="text" class="input" name="email" placeholder="Email" value="employer@email.org"/>
