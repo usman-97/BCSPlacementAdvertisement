@@ -2,7 +2,7 @@
 require_once ("Models/Match.php");
 
 $view = new stdClass();
-$view->pageTitle = "Saved Matches";
+$view->pageTitle = "Saved Student Profiles";
 $matches = new Match();
 
 require_once ("logout.php");
