@@ -22,6 +22,7 @@
                 echo '<form action="" method="post">' .
                     '<div class="row" id="placementSection"><h4>#' . $placement->getPlacementID() .
                     '. ' . $placement->getTitle() . ' - ' . $placement->getSector() . '</h4></div>' .
+                    '<input type="hidden" name="placementTitle" value="' . $placement->getTitle() . '" />' .
                     '<input type="hidden" name="placementSector" value="' . $placement->getSector() . '" />' .
                     '<input type="hidden" name="placement_id" value="' . $placement->getPlacementID() . '"/>' . '<br />' .
                     '<h6>Company: ' . $placement->getCompany() . '</h6>' . '<br />' . '<h6>Description</h6>' .
@@ -74,7 +75,7 @@
                     <input type="submit" name="nextPage" value="Next" class="btn btn-dark"></form>
             </div>-->
             <div>
-                <p><?php if (isset($view->error)) {echo $view->error;} ?></p>
+                <p style="margin: 10px; color: #bd2130;"><b><?php if (isset($view->error)) {echo $view->error;} ?></b></p>
             </div>
                 <?php if (isset($view->potentialCandidates) && count($view->finalMatches) > 0)
                     {
@@ -83,7 +84,8 @@
                         {
                             echo '<p><b>Candidate#00' . $view->finalMatches[$x] . ' - </b></p>'
                             . '<input type="hidden" name="storeCandidateID" value="'. $view->finalMatches[$x] . '"/>' .
-                            '<input type="hidden" name="storePlacementID" value="'. $_POST['placement_id']. '"/>';
+                            '<input type="hidden" name="storePlacementID" value="'. $_POST['placement_id']. '"/>' .
+                                '<input type="hidden" name="storePlacementTitle" value="'. $_POST['placementTitle']. '"/>';
                             echo '<div class="row"><div class="col-sm-12"><ul>';
                             for ($i = 0; $i < count($view->potentialCandidates[$x]); $i++)
                             {

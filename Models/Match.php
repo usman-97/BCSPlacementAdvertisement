@@ -3,6 +3,7 @@ require_once ("Database.php");
 require_once ("MatchData.php");
 require_once ("MatchExtendedData.php");
 require_once ("PlacementDataSet.php");
+require_once ("MatchData.php");
 
 /**
  * Class Match
@@ -162,6 +163,24 @@ class Match {
         $statement->execute();
     }
 
+    public function checkMatch($id, $placement)
+    {
+        $sqlQuery = "SELECT * FROM matches WHERE user_id = :id AND placement_id = :placement";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":id", $id, PDO::PARAM_INT);
+        $statement->bindParam(":placement", $placement, PDO::PARAM_INT);
+        $statement->execute();
+
+        if ($statement->rowCount() > 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public function getAllMatches($employer)
     {
         $placement = new PlacementDataSet();
@@ -196,7 +215,7 @@ class Match {
         $statement->execute();
 
         $file = $statement->fetchColumn();
-        var_dump($file);
+        // var_dump($file);
         if ($file != null)
         {
             return $file;
@@ -219,6 +238,7 @@ class Match {
     {
         $sqlQuery = "SELECT full_name FROM users WHERE userID = :id";
         $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":id", $id, PDO::PARAM_INT);
         $statement->execute();
 
         return $statement->fetchColumn();
@@ -227,21 +247,42 @@ class Match {
     public function sendMessage($id, $placement)
     {
         $newKey = $this->countMessageID() + 1;
-        $expiryDate = date("Y-m-d");
+        $date = date("Y-m-d");
+        $incrementDate = strtotime("+3 day", strtotime($date));
+        $expiryDate = date("Y-m-d", $incrementDate);
+        // var_dump($expiryDate);
         $name = $this->findFullName($id);
-        $message = "Hello $name, You CV is being reviewed for $placement";
+        $message = "Hello $name, Your CV is being reviewed for $placement";
 
-        $sqlQuery = "INSERT INTO messages (:id, :user_id:, :message, :expiry)";
+        $sqlQuery = "INSERT INTO messages VALUES (:id, :user_id, :message, :expiry)";
         $statement = $this->_dbHandle->prepare($sqlQuery);
         $statement->bindParam(":id", $newKey, PDO::PARAM_INT);
         $statement->bindParam(":user_id", $id, PDO::PARAM_INT);
-        $statement->bindParam(":message", $message, PDO::PARAM_INT);
-        $statement->bindParam(":expiry", $expiryDate, PDO::PARAM_INT);
+        $statement->bindParam(":message", $message, PDO::PARAM_STR);
+        $statement->bindParam(":expiry", $expiryDate, PDO::PARAM_STR);
+
         $statement->execute();
     }
 
-    public function getMessages()
+    public function getMessages($id)
     {
-        $sqlQuery = "SELECT * ";
+        $sqlQuery = "SELECT * FROM messages WHERE user_id = :id";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":id", $id, PDO::PARAM_INT);
+        $statement->execute();
+
+        $dataSet = [];
+        if ($statement->rowCount() > 0)
+        {
+            while ($row = $statement->fetch())
+            {
+                $dataSet[] = new MatchData($row);
+            }
+            return $dataSet;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

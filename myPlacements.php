@@ -92,7 +92,7 @@ else
 if (isset($_POST['findMatches']))
 {
     $matchLocationSector = $view->matches->checkLocationSector($_POST['placementAddress'], $_POST['placementSector']);
-    var_dump($matchLocationSector);
+    // var_dump($matchLocationSector);
     // var_dump($_POST['placementAddress']);
     // var_dump($_POST['placementSector']);
 
@@ -147,7 +147,7 @@ if (count($view->finalMatches) > 0)
         $view->potentialCandidates[] = $view->matches->showCandidates($view->finalMatches[$z]);
     }
 }
-var_dump($view->finalMatches);
+// var_dump($view->finalMatches);
 // var_dump($view->potentialCandidates);
 // var_dump($_SESSION['MatchMode']);
 // var_dump(count($view->finalPotentialCandidates));
@@ -180,8 +180,18 @@ if (isset($_POST['previousCandidate']))
 
 if (isset($_POST['acceptMatch']))
 {
-    $_SESSION['page'] = $_POST['storePage'];
-    $view->matches->addMatch($_POST['storeCandidateID'], $_POST['storePlacementID']);
+    // $_SESSION['page'] = $_POST['storePage'];
+    /*if ($view->matches->checkMatch($_POST['storeCandidateID'], $_POST['storePlacementID']))
+    {*/
+        $view->matches->addMatch($_POST['storeCandidateID'], $_POST['storePlacementID']);
+        $view->matches->sendMessage($_POST['storeCandidateID'], $_POST['storePlacementTitle']);
+        header("location: viewMatches.php");
+        // var_dump($_POST['storePlacementTitle']);
+    // }
+    /*else
+    {
+        $view->error = "You have already saved this match for placement";
+    }*/
 }
 
 require_once ("Views/myPlacements.phtml");

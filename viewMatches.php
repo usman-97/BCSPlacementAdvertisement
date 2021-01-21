@@ -13,8 +13,8 @@ if (isset($_POST['previewCV']))
 {
     $view->filename = $matches->getMatchFile($_POST['user_id']);
     $file = "CVUploads/" . $_POST['candidateFullName'] ."/";
-    var_dump($file);
-    var_dump($_POST['user_id']);
+    // var_dump($file);
+    // var_dump($_POST['user_id']);
     if (!$file)
     {
         $view->error = "This candidate has not uploaded their CV yet.";
