@@ -166,7 +166,7 @@ class Match {
     {
         $placement = new PlacementDataSet();
         $employerID = $placement->findEmployerID($employer);
-        var_dump($employerID);
+        // var_dump($employerID);
 
         $sqlQuery = "SELECT userID, full_name, email, postal_address, phone_number, placementID, title FROM users, placement, matches WHERE users.userID = matches.user_id AND matches.placement_id = placement.placementID AND employer_id = :id";
         $statement = $this->_dbHandle->prepare($sqlQuery);
@@ -188,4 +188,22 @@ class Match {
         }
     }
 
+    public function getMatchFile($id)
+    {
+        $sqlQuery = "SELECT cv FROM student WHERE user_id = :id";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":id", $id, PDO::PARAM_INT);
+        $statement->execute();
+
+        $file = $statement->fetchColumn();
+        var_dump($file);
+        if ($file != null)
+        {
+            return $file;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

@@ -1,25 +1,52 @@
 <?php require("template/header.phtml") ?>
 
-<section>
+<style>
+    .row {
+        padding: 10px 40px;
+    }
+    .match {
+        border: 5px solid #000000;
+    }
+</style>
+
+<section style="margin-bottom: 100px">
     <div class="container-fluid" style="margin-top: 100px;">
         <div class="row">
             <div>
                 <h1><?php echo $view->pageTitle ?></h1>
             </div>
         </div>
+        <div class="match">
             <?php if ($view->listMatches)
                 {
                     foreach ($view->listMatches as $savedMatches)
                     {
                         echo '<div class="row"><form action="" method="post">' .
                             '<h4>Candidate#00' . $savedMatches->getUserID() .' - #' . $savedMatches->getPlacementID() .
+                            '<input type="hidden" name="user_id" value="' . $savedMatches->getUserID() . '"/>' .
                             ' ' . $savedMatches->getTitle() .'</h4>' . '</div><div class="row">' . '<p><b>Full Name:</b> ' .
                             $savedMatches->getFullName() . '</p>' . '</div><div class="row"><p><b>Phone Number:</b> ' .
+                            '<input type="hidden" name="candidateFullName" value="' . $savedMatches->getFullName() . '"/>' .
                             $savedMatches->getPhoneNumber() . '</p></div><div class="row"><p><b>Address:</b> ' .
-                            $savedMatches->getAddress() . '</p>' . '</div></form>';
+                            $savedMatches->getAddress() . '</p>' .
+                            '</div><div class="row"><input type="submit" name="previewCV" value="Preview CV" class="btn btn-dark"></div>';
+
+                        if (isset($_POST['previewCV']))
+                        {
+                            if (!$view->filename)
+                            {
+                                echo '<p>This candidate has not uploaded their CV yet.</p>';
+                            }
+                            else {
+                                echo '<div class="col-sm-1"><object data="CVUploads/' . $_POST['candidateFullName'] . '/' . $view->filename . '" type="application/x-pdf" title="SamplePdf" width="500" height="720">
+                            <a href="CVUploads/' . $_POST['candidateFullName'] . '/' . $view->filename . '" target="_blank">View CV</a> </object></div>';
+                            }
+                        }
+
+                            echo '</form>';
                     }
                 }?>
-
+        </div>
     </div>
 </section>
 

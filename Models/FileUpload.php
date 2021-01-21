@@ -7,7 +7,7 @@ require_once ("Database.php");
  */
 class FileUpload {
 
-    protected $_dbInstance, $_dbHandle, $fileType;
+    protected $_dbInstance, $_dbHandle, $fileType, $size;
 
     public function __construct()
     {
@@ -116,6 +116,9 @@ class FileUpload {
         $sqlQuery = 'UPDATE student SET cv = :filename WHERE user_id = :idUser';
         // Prepare SQL statement
         $statement = $this->_dbHandle->prepare($sqlQuery);
+
+        // $fileEncrypted = md5_file($_FILES['fileToUpload']['name'], true);
+        // var_dump($fileEncrypted);
         // Assign values to parameters in SQL query
         $statement->bindParam(":filename", $_FILES['fileToUpload']['name'], PDO::PARAM_STR);
         $statement->bindParam(":idUser", $userID, PDO::PARAM_INT);
