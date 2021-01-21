@@ -206,4 +206,42 @@ class Match {
             return false;
         }
     }
+
+    public function countMessageID()
+    {
+        $sqlQuery = "SELECT COUNT(messageID) FROM messages";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->execute();
+        return $statement->fetchColumn();
+    }
+
+    public function findFullName($id)
+    {
+        $sqlQuery = "SELECT full_name FROM users WHERE userID = :id";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->execute();
+
+        return $statement->fetchColumn();
+    }
+
+    public function sendMessage($id, $placement)
+    {
+        $newKey = $this->countMessageID() + 1;
+        $expiryDate = date("Y-m-d");
+        $name = $this->findFullName($id);
+        $message = "Hello $name, You CV is being reviewed for $placement";
+
+        $sqlQuery = "INSERT INTO messages (:id, :user_id:, :message, :expiry)";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":id", $newKey, PDO::PARAM_INT);
+        $statement->bindParam(":user_id", $id, PDO::PARAM_INT);
+        $statement->bindParam(":message", $message, PDO::PARAM_INT);
+        $statement->bindParam(":expiry", $expiryDate, PDO::PARAM_INT);
+        $statement->execute();
+    }
+
+    public function getMessages()
+    {
+        $sqlQuery = "SELECT * ";
+    }
 }
