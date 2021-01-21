@@ -3,7 +3,7 @@ require_once ("Database.php");
 require_once ("MatchData.php");
 require_once ("MatchExtendedData.php");
 require_once ("PlacementDataSet.php");
-require_once ("MatchData.php");
+require_once ("MessageData.php");
 
 /**
  * Class Match
@@ -264,6 +264,14 @@ class Match {
         $statement->execute();
     }
 
+    /*public function checkInbox()
+    {
+        $sqlQuery = "SELECT COUNT(messageID) FROM messages";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->execute();
+        return $statement->fetchColumn();
+    }*/
+
     public function getMessages($id)
     {
         $sqlQuery = "SELECT * FROM messages WHERE user_id = :id";
@@ -276,7 +284,7 @@ class Match {
         {
             while ($row = $statement->fetch())
             {
-                $dataSet[] = new MatchData($row);
+                $dataSet[] = new MessageData($row);
             }
             return $dataSet;
         }

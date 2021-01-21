@@ -1,0 +1,36 @@
+<?php require ('template/header.phtml') ?>
+
+<style>
+    .messageBox
+    {
+        padding: 10px 40px;
+        border: 5px solid #000000;
+        font-size: 20px;
+    }
+</style>
+
+<section style="margin-bottom: 100px">
+    <div class="container-fluid" style="margin-top: 100px;">
+        <div class="row">
+            <div>
+                <h1><?php echo $view->pageTitle ?></h1>
+            </div>
+        </div>
+        <div class="messageBox">
+            <?php if (!$view->allMessages)
+                {
+                    echo $view->error;
+                }
+                else
+            {
+                foreach ($view->allMessages as $message)
+                {
+                    echo '<div class="row"><form action="" method="post"><div class="row"><b>#0' . $message->getMessageID() .
+                        '0</b> ----- ' . $message->getMessage() . '</div></form></div>';
+                }
+            }?>
+        </div>
+    </div>
+</section>
+
+<?php require ('template/footer.phtml') ?>
