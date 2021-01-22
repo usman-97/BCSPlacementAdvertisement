@@ -7,6 +7,12 @@
         border: 5px solid #000000;
         font-size: 20px;
     }
+
+    #message
+    {
+        padding-bottom: 10px;
+        border-bottom: 5px solid #000000;
+    }
 </style>
 
 <section style="margin-bottom: 100px">
@@ -25,8 +31,10 @@
             {
                 foreach ($view->allMessages as $message)
                 {
-                    echo '<div class="row"><form action="" method="post"><div class="row"><b>#0' . $message->getMessageID() .
-                        '0</b> ----- ' . $message->getMessage() . '</div></form></div>';
+                    echo '<div class="row" id="message"><form action="" method="post"><div class="col-sm-6"><b>#0' . $message->getMessageID() .
+                        '<input type="hidden" name="messageID" value="' . $message->getMessageID() . '" />' .
+                        '0</b> ----- ' . $message->getMessage() . '</div><div class="col-sm-6"><input type="submit" name="removeMessage" value="X" class="btn btn-danger"/>
+                        </div></form></div><br />';
                 }
             }?>
         </div>

@@ -297,4 +297,12 @@ class Match {
             return false;
         }
     }
+
+    public function deleteMessage($id)
+    {
+        $sqlQuery = "DELETE FROM messages WHERE messageID = :id";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":id", $id, PDO::PARAM_INT);
+        $statement->execute();
+    }
 }

@@ -13,4 +13,10 @@ if  (!$messages->getMessages($_SESSION['userID']))
     $view->error = "No new message found";
 }
 
+if (isset($_POST['removeMessage']))
+{
+    $messages->deleteMessage($_POST['messageID']);
+    header("location: viewMessages.php");
+}
+
 require_once ("Views/viewMessages.phtml");
