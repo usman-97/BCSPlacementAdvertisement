@@ -1,17 +1,22 @@
 <?php require("template/header.phtml") ?>
 
+<style>
+    section {
+        font-size: 20px;
+    }
+</style>
 
     <header class="masthead text-center text-white">
         <div class="masthead-content">
             <div class="container">
-                <h1 class="masthead-heading mb-0"><?php echo $view->pageTitle ?></h1>
-                <h2 class="masthead-subheading mb-0">Placements</h2>
+                <h1 class="masthead-heading mb-0" style="color: #FFFFFF"><?php echo $view->pageTitle ?></h1>
+                <h4 style="color: #FFFFFF;"> Boost your prospects through our tools, content, qualifications and opportunities to network with thought leaders and renowned organisations.</h4>
                 <?php if (!isset($_SESSION['loggedIn'])) : ?>
-                <a href="login.php" class="btn btn-primary btn-xl rounded-pill mt-5">Login</a>
-                <a href="register.php" class="btn btn-primary btn-xl rounded-pill mt-5">Register</a>
+                <a href="login.php" class="btn btn-dark btn-xl rounded-pill mt-5">Login</a>
+                <a href="register.php" class="btn btn-dark btn-xl rounded-pill mt-5">Register</a>
                 <?php endif; ?>
                 <?php if (isset($_SESSION['typeOfUser']) && $_SESSION['typeOfUser'] == "Employer") : ?>
-                    <a href="createPlacement.php" class="btn btn-primary btn-xl rounded-pill mt-5">Create Placement Offer</a>
+                    <a href="createPlacement.php" class="btn btn-dark btn-xl rounded-pill mt-5">Create Placement Offer</a>
                 <?php endif; ?>
             </div>
         </div>

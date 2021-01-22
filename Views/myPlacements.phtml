@@ -7,7 +7,23 @@
 
     .myPlacementSection {
         margin-top: 100px;
-        margin-bottom: 150px;
+        padding: 30px 10px;
+        font-size: 20px;
+        background: #ededed;
+    }
+
+    #candidate {
+        margin: 10px;
+        padding: 10px;
+        background-image: linear-gradient(#a8ffb8, #690);
+        border: 5px solid #000000;
+    }
+
+    #requiredSkills {
+        margin: 5px;
+        padding: 10px;
+        background-image: linear-gradient(#a8ffb8, #690);
+        border: 5px solid #000000;
     }
 </style>
 
@@ -26,6 +42,7 @@
                     '<input type="hidden" name="placementSector" value="' . $placement->getSector() . '" />' .
                     '<input type="hidden" name="placement_id" value="' . $placement->getPlacementID() . '"/>' . '<br />' .
                     '<h6>Company: ' . $placement->getCompany() . '</h6>' . '<br />' . '<h6>Description</h6>' .
+                    '<input type="hidden" name="companyName" value="' . $placement->getCompany() . '"/>' .
                     '<div class="row">' . $placement->getDescription() . '</div>' . '<br />' .
                     '<h6>Benefits</h6>' . '<div class="row">' . $placement->getBenefits() . '</div><br />' .
                     '<div class="row"><div class="col-sm-12"><h6>Location: </h6></div><div class="col-sm-1">' . $placement->getLocation() .
@@ -35,8 +52,8 @@
                     '<div class="row"><div class="col-sm-2"><p><b>Start Date:</b>' . $placement->getStartDate() .
                     '</p></div><div class="col-sm-2"><p><b>End Date:</b> ' . $placement->getEndDate() . '</p></div></div>';
 
-                echo '<div class="row"><div class="cols-sm"><p><b>Add required skills for placement
-                        </b></p></div><div class="col-sm">';
+                echo '<div class="row"><div class="col-sm-auto"><p><b>Add required skills for placement
+                        </b></p></div><div class="col-sm-auto">';
                 echo '<select name="skill">';
 
                 foreach ($view->allSkills as $skill)
@@ -50,25 +67,27 @@
                 echo '</select></div>';
                 echo '<div class="col-sm"><input type="submit" name="addSkill" value="Add Skill" class="btn btn-dark"></div></div>
                         <div class="row"><input type="hidden" name="pageTrack" value="' . $_SESSION['page'] .'" class="btn btn-dark">
-                         <div class="col-auto"><input type="submit" name="showSkills" value="Show Required Skills" class="btn btn-dark"></div>
-                        <input type="submit" name="findMatches" value="Find Candidates" class="btn btn-secondary"/>
-                    </div><br />';
+                         <div class="col-sm-auto"><input type="submit" name="showSkills" value="Show Required Skills" class="btn btn-dark"></div>
+                        <div class="col-sm-auto align-content-sm-center"><input type="submit" name="findMatches" value="Find Candidates" class="btn btn-secondary"/></div>
+                    </div><br /><div class="row"><div class="col-sm-auto"><input type="submit" name="prePage" value="Back" class="btn btn-dark"></div>
+                    <div class="col-sm"><input type="submit" name="nextPage" value="Next" class="btn btn-dark"></div></div><br />';
 
                     if (isset($_POST['showSkills']))
                     {
-                        echo '<br /><div class="row"><div class="col-sm"><h6>Required Skills: </h6></div>';
+                        echo '<br /><div class="row"><div class="col-sm">
+                            <h6><ul><u>Required Skills: </u></ul></h6></div>';
                         if ($view->allPlacementSkills) {
                             foreach ($view->allPlacementSkills as $placementSkill) {
-                                echo '<div class="col-sm">';
+                                echo '<div class="col-sm-auto" id="requiredSkills">';
                                 echo '<form action="" method="post"><p><b>' . $placementSkill->getSkill() .
                                     ' - Level ' . $placementSkill->getLevel() . '</b></p></form></div>';
                             }
                             echo '</div>';
                         }
                     }
-                echo '<div class="row"><!--<div class="col-sm"><input type="submit" name="findMatches" value="Find Candidates" class="btn btn-secondary"/>
-                    </div>--><div class="col-sm"><input type="submit" name="prePage" value="Back" class="btn btn-dark"></div>
-                    <div class="col-sm"><input type="submit" name="nextPage" value="Next" class="btn btn-dark"></div></div></form>';
+                echo '<!--<div class="row">&lt;!&ndash;<div class="col-sm"><input type="submit" name="findMatches" value="Find Candidates" class="btn btn-secondary"/>
+                    </div>&ndash;&gt;<div class="col-sm-auto"><input type="submit" name="prePage" value="Back" class="btn btn-dark"></div>
+                    <div class="col-sm"><input type="submit" name="nextPage" value="Next" class="btn btn-dark"></div></div>--></form>';
             }?>
             <br/>
             <!--<div class="row">
@@ -83,23 +102,28 @@
                         echo '<form action="" method="post">';
                         for ($x = 0; $x < count($view->finalMatches); $x++)
                         {
-                            echo '<form action="" method="post"/><p>
-                                <b>Candidate#00' . $view->finalMatches[$x] . ' - </b></p>'
-                            . '<input type="hidden" name="storeCandidateID" value="'. $view->finalMatches[$x] . '"/>' .
-                            '<input type="hidden" name="storePlacementID" value="'. $_POST['placement_id']. '"/>' .
-                                '<input type="hidden" name="storePlacementTitle" value="'. $_POST['placementTitle']. '"/>
-                                <input type="submit" name="acceptMatch" value="Accept" class="btn btn-secondary" />';
-                            echo '<ul></form>';
+                            echo '<form action="" method="post"/><div class="col-sm-auto" id="candidate"><h3>
+                                <b>Candidate#M00' . $view->finalMatches[$x] . '</b></h3>
+                                <div class="col-sm-auto"><div class="progress">
+                                <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: '. $view->matchPercentage[$x] .
+                                '%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><b>' . $view->matchPercentage[$x] . '%</b></div></div>
+                                </div>' . '<input type="hidden" name="storeCandidateID" value="'. $view->finalMatches[$x] . '"/>' .
+                            '<input type="hidden" name="storePlacementID" value="'. $_POST['placement_id']. '"/>
+                                <input type="hidden" name="storePlacementTitle" value="'. $_POST['placementTitle']. '"/>
+                                <input type="hidden" name="storeCompanyName" value="'. $_POST['companyName']. '"/>
+                                <br/><div class="col-sm"><input type="submit" name="acceptMatch" value="Accept" class="btn btn-secondary" /></div>';
+                            echo '</form><ul>';
                             for ($i = 0; $i < count($view->potentialCandidates[$x]); $i++)
                             {
-                                echo '<form action="" method="post"/><li>' . $view->potentialCandidates[$x][$i]->getSkill() . '</li>';
+                                echo '<form action="" method="post"/><li><b>' . $view->potentialCandidates[$x][$i]->getSkill() . ' - Level ' .
+                                    $view->potentialCandidates[$x][$i]->getSkillLevel() . '</b></li>';
                                 /*foreach ($view->potentialCandidates as $candidate)
                                 {
                                     echo '<div class="row">' . $candidate[$i]->getSkill() . '</div>';
                                 }*/
                                 // echo '</div>';
                             }
-                            echo '</ul></form>';
+                            echo '</ul></form></div>';
                         }
                         echo '</form>';
                     }?>

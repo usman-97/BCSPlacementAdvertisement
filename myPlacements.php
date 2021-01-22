@@ -14,6 +14,7 @@ $view->matches = new Match();
 $message = new Message();
 
 $view->finalMatches = [];
+// $placementRequiredSkills = [];
 
 require_once ("logout.php");
 
@@ -124,10 +125,22 @@ if (isset($_POST['findMatches']))
             $view->error = "No match found";
         }
 
-        // var_dump($skillMatches);
+        if (!empty($placementRequiredSkills))
+        {
+            $view->matchPercentage[$i] = ($skillMatches / count($placementRequiredSkills)) * 100;
+        }
+        /*var_dump(count($placementRequiredSkills));
+        var_dump($skillMatches);*/
+        // var_dump($view->matchPercentage);
         if ($skillMatches > 0)
         {
             array_push($view->finalMatches, $matchLocationSector[$i]);
+            /*$matchMessage = "You appeared in match for ";
+            $message->sendMessage($i);*/
+            $userMessage = "Hello " . $view->matches->findFullName($view->finalMatches[$i]) . ", You were matched for " . $_POST['placementTitle'] . " in " . $_POST['companyName'] . ".";
+            $message->sendMessage($view->finalMatches[$i], $userMessage);
+            // var_dump($_POST['placementTitle']);
+            // var_dump($_POST['companyName']);
         }
         else
         {
@@ -187,10 +200,15 @@ if (isset($_POST['acceptMatch']))
     // $_SESSION['page'] = $_POST['storePage'];
     if ($view->matches->checkMatch($_POST['storeCandidateID'], $_POST['storePlacementID']))
     {
+        $userMessage = "Hello " . $view->matches->findFullName($_POST['storeCandidateID']) . "Your CV is being reviewed for " . $_POST['storePlacementTitle'] . " in " . $_POST['storeCompanyName'] . ".";
+
         $view->matches->addMatch($_POST['storeCandidateID'], $_POST['storePlacementID']);
-        $message->sendMessage($_POST['storeCandidateID'], $_POST['storePlacementTitle']);
+        $message->sendMessage($_POST['storeCandidateID'], $userMessage);
         // header("location: viewMatches.php");
         var_dump($_POST['storeCandidateID']);
+        var_dump($_POST['storePlacementTitle']);
+        var_dump($_POST['storeCompanyName']);
+        var_dump($userMessage);
     }
     else
     {

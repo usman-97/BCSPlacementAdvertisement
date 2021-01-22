@@ -34,7 +34,7 @@ class Message {
         return $statement->fetchColumn(); // Fetch the number of total rows
     }
 
-    public function sendMessage($id, $placement)
+    public function sendMessage($id, $message)
     {
         $newKey = $this->countMessageID() + 1;
         $date = date("Y-m-d");
@@ -43,8 +43,7 @@ class Message {
         // var_dump($expiryDate);
 
         $matchName = new Match();
-        $name = $matchName->findFullName($id);
-        $message = "Hello $name, Your CV is being reviewed for $placement";
+        // $name = $matchName->findFullName($id);
 
         $sqlQuery = "INSERT INTO messages VALUES (:id, :user_id, :message, :expiry)";
         $statement = $this->_dbHandle->prepare($sqlQuery);
