@@ -77,4 +77,29 @@ if (isset($_POST['addSector']))
     header ("location: studentProfile.php");
 }
 
+if (isset($_POST['changeDetails']))
+{
+    $_SESSION['changeStudentDetails'] = true;
+}
+
+if (isset($_POST['updateDetails']))
+{
+    if (!empty(trim($_POST['updatePhoneNumber'])))
+    {
+        $user->updatePhoneNumber($_SESSION['userID'], $_POST['updatePhoneNumber']);
+    }
+
+    if (!empty(trim($_POST['updateAddress'])))
+    {
+        $user->updateAddress($_SESSION['userID'], $_POST['updateAddress']);
+    }
+
+    unset($_SESSION['changeStudentDetails']);
+    var_dump($_POST['updatePhoneNumber']);
+    var_dump($_POST['updateAddress']);
+    header("location: studentProfile.php");
+}
+
+// var_dump($_SESSION['changeStudentDetails']);
+
 require_once ("Views/studentProfile.phtml");

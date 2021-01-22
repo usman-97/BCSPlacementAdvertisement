@@ -163,15 +163,26 @@
                     <div class="row">
                         <div class="well profile">
                             <div>
+                                <form action="" method="post">
                         <h4>Your Details</h4>
                         <p><b>Email:</b> <?php if (isset($_SESSION['email'])) {echo $_SESSION['email'];} ?></p>
                         <p><b>Phone Number:</b> <?php if (isset($_SESSION['phone'])) {echo $_SESSION['phone'];}?></p>
+                                    <?php if (isset($_SESSION['changeStudentDetails'])) : ?>
+                                    <input type="text" name="updatePhoneNumber" placeholder="Type your new phone number ..."/>
+                                    <?php endif; ?>
                         <p><b>Address:</b> <?php if (isset($_SESSION['address'])) {echo $_SESSION['address'];}?></p>
+                                    <?php if (isset($_SESSION['changeStudentDetails'])) : ?>
+                                    <input type="text" name="updateAddress" placeholder="Type your new address ..."/>
+                                    <?php endif; ?>
                         <div>
                                 <div class="row">
-                                <form action="" method="post">
                                     <div>
+                                        <?php if (!isset($_SESSION['changeStudentDetails'])) : ?>
                                         <input type="submit" name="changeDetails" value="Change Details" class="btn btn-dark"/>
+                                        <?php endif; ?>
+                                        <?php if (isset($_SESSION['changeStudentDetails'])) : ?>
+                                        <input type="submit" name="updateDetails" value="Update" class="btn btn-dark"/>
+                                        <?php endif; ?>
                                     </div>
                                 </form>
                                 </div>

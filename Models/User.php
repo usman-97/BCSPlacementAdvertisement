@@ -239,6 +239,24 @@ class User {
         }
     }
 
+    public function updatePhoneNumber($id, $newPhoneNumber)
+    {
+        $sqlQuery = "UPDATE users SET phone_number = :newNumber WHERE userID = :id";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":id", $id, PDO::PARAM_INT);
+        $statement->bindParam(":newNumber", $newPhoneNumber, PDO::PARAM_STR);
+        $statement->execute();
+    }
+
+    public function updateAddress($id, $newAddress)
+    {
+        $sqlQuery = "UPDATE users SET postal_address = :newAddress WHERE userID = :id";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":id", $id, PDO::PARAM_INT);
+        $statement->bindParam(":newAddress", $newAddress, PDO::PARAM_STR);
+        $statement->execute();
+    }
+
     /*public function getUserData($id)
     {
         $sqlQuery = "SELECT full_name, phone_number, postal_address FROM users WHERE userID = :id";

@@ -204,11 +204,11 @@ if (isset($_POST['acceptMatch']))
 
         $view->matches->addMatch($_POST['storeCandidateID'], $_POST['storePlacementID']);
         $message->sendMessage($_POST['storeCandidateID'], $userMessage);
-        // header("location: viewMatches.php");
-        var_dump($_POST['storeCandidateID']);
-        var_dump($_POST['storePlacementTitle']);
-        var_dump($_POST['storeCompanyName']);
-        var_dump($userMessage);
+        header("location: viewMatches.php");
+        // var_dump($_POST['storeCandidateID']);
+        // var_dump($_POST['storePlacementTitle']);
+        // var_dump($_POST['storeCompanyName']);
+        // var_dump($userMessage);
     }
     else
     {

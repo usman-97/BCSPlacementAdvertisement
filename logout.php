@@ -4,6 +4,7 @@ session_start();
 unset($_SESSION['showSkills']);
 unset($_SESSION['page']);
 unset($_SESSION['MatchMode']);
+unset($_SESSION['changeStudentDetails']);
 
 if (isset($_SESSION['student']))
 {

@@ -3,13 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9a2fb3b9-b181-48b7-adf5-bc9338dd0ffc" name="Default Changelist" comment="First commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Message.php" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/index.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/myPlacements.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/myPlacements.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/viewMessages.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/viewMessages.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/studentProfile.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/studentProfile.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/logout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myPlacements.php" beforeDir="false" afterPath="$PROJECT_DIR$/myPlacements.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/studentProfile.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +89,7 @@
       <workItem from="1610971132304" duration="18619000" />
       <workItem from="1610994756139" duration="317000" />
       <workItem from="1611325614057" duration="11049000" />
-      <workItem from="1611338520038" duration="6499000" />
+      <workItem from="1611338520038" duration="8201000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1610736764770</created>
