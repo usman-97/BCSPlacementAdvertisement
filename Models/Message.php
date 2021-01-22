@@ -1,6 +1,7 @@
 <?php
 require_once ("Database.php");
 require_once ("MessageData.php");
+require_once ("Match.php");
 
 /**
  * Class Message
@@ -40,7 +41,9 @@ class Message {
         $incrementDate = strtotime("+3 day", strtotime($date));
         $expiryDate = date("Y-m-d", $incrementDate);
         // var_dump($expiryDate);
-        $name = $this->findFullName($id);
+
+        $matchName = new Match();
+        $name = $matchName->findFullName($id);
         $message = "Hello $name, Your CV is being reviewed for $placement";
 
         $sqlQuery = "INSERT INTO messages VALUES (:id, :user_id, :message, :expiry)";

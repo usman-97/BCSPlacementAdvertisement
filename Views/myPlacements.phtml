@@ -27,8 +27,7 @@
                     '<input type="hidden" name="placement_id" value="' . $placement->getPlacementID() . '"/>' . '<br />' .
                     '<h6>Company: ' . $placement->getCompany() . '</h6>' . '<br />' . '<h6>Description</h6>' .
                     '<div class="row">' . $placement->getDescription() . '</div>' . '<br />' .
-                    '<h6>Benefits</h6>' .
-                    '<div class="row">' . $placement->getBenefits() . '</div><br />' .
+                    '<h6>Benefits</h6>' . '<div class="row">' . $placement->getBenefits() . '</div><br />' .
                     '<div class="row"><div class="col-sm-12"><h6>Location: </h6></div><div class="col-sm-1">' . $placement->getLocation() .
                     '<input type="hidden" name="placementAddress" value="' . $placement->getLocation() . '" />' .
                     '</div></div>' . '<br />' . '<div class="row"><p><b>Salary:</b>  £' . $placement->getSalary() .
@@ -36,8 +35,8 @@
                     '<div class="row"><div class="col-sm-2"><p><b>Start Date:</b>' . $placement->getStartDate() .
                     '</p></div><div class="col-sm-2"><p><b>End Date:</b> ' . $placement->getEndDate() . '</p></div></div>';
 
-                echo '<div class="row"><div class="cols-sm-3"><p><b>Add required skills for placement
-                        </b></p></div><div class="col-sm-2">';
+                echo '<div class="row"><div class="cols-sm"><p><b>Add required skills for placement
+                        </b></p></div><div class="col-sm">';
                 echo '<select name="skill">';
 
                 foreach ($view->allSkills as $skill)
@@ -48,26 +47,28 @@
                             '. ' . $skill->getSkill() . ' - level ' . $i . '</option>';
                     }
                 }
-                echo '</select>';
-                echo '<input type="submit" name="addSkill" value="Add Skill" class="btn btn-dark"></div></div>
+                echo '</select></div>';
+                echo '<div class="col-sm"><input type="submit" name="addSkill" value="Add Skill" class="btn btn-dark"></div></div>
                         <div class="row"><input type="hidden" name="pageTrack" value="' . $_SESSION['page'] .'" class="btn btn-dark">
-                        <input type="submit" name="showSkills" value="Show Required Skills" class="btn btn-dark"></div><br />';
+                         <div class="col-auto"><input type="submit" name="showSkills" value="Show Required Skills" class="btn btn-dark"></div>
+                        <input type="submit" name="findMatches" value="Find Candidates" class="btn btn-secondary"/>
+                    </div><br />';
 
                     if (isset($_POST['showSkills']))
                     {
-                        echo '<br /><div class="row"><h6>Required Skills: </h6>';
+                        echo '<br /><div class="row"><div class="col-sm"><h6>Required Skills: </h6></div>';
                         if ($view->allPlacementSkills) {
                             foreach ($view->allPlacementSkills as $placementSkill) {
-                                echo '<div class="col-sm-2">';
+                                echo '<div class="col-sm">';
                                 echo '<form action="" method="post"><p><b>' . $placementSkill->getSkill() .
-                                    ' - Level ' . $placementSkill->getLevel() . '</b></p></form>';
-                                echo '</div>';
+                                    ' - Level ' . $placementSkill->getLevel() . '</b></p></form></div>';
                             }
+                            echo '</div>';
                         }
                     }
-                echo '<div class="row"><input type="submit" name="findMatches" value="Find Candidates" class="btn btn-secondary"/>
-                    </div><br /><input type="submit" name="prePage" value="Back" class="btn btn-dark">
-                    <input type="submit" name="nextPage" value="Next" class="btn btn-dark"></form></div>';
+                echo '<div class="row"><!--<div class="col-sm"><input type="submit" name="findMatches" value="Find Candidates" class="btn btn-secondary"/>
+                    </div>--><div class="col-sm"><input type="submit" name="prePage" value="Back" class="btn btn-dark"></div>
+                    <div class="col-sm"><input type="submit" name="nextPage" value="Next" class="btn btn-dark"></div></div></form>';
             }?>
             <br/>
             <!--<div class="row">

@@ -3,6 +3,7 @@ require_once ("Models/PlacementDataSet.php");
 require_once ("Models/Skills.php");
 require_once  ("Models/PlacementSkills.php");
 require_once  ("Models/Match.php");
+require_once ("Models/Message.php");
 
 $view = new stdClass();
 $view->pageTitle = "My Placement Advertisements";
@@ -10,6 +11,8 @@ $placements = new PlacementDataSet();
 $skills = new Skills();
 $placementSkill = new PlacementSkills();
 $view->matches = new Match();
+$message = new Message();
+
 $view->finalMatches = [];
 
 require_once ("logout.php");
@@ -121,6 +124,7 @@ if (isset($_POST['findMatches']))
             $view->error = "No match found";
         }
 
+        // var_dump($skillMatches);
         if ($skillMatches > 0)
         {
             array_push($view->finalMatches, $matchLocationSector[$i]);
@@ -184,7 +188,7 @@ if (isset($_POST['acceptMatch']))
     if ($view->matches->checkMatch($_POST['storeCandidateID'], $_POST['storePlacementID']))
     {
         $view->matches->addMatch($_POST['storeCandidateID'], $_POST['storePlacementID']);
-        $view->matches->sendMessage($_POST['storeCandidateID'], $_POST['storePlacementTitle']);
+        $message->sendMessage($_POST['storeCandidateID'], $_POST['storePlacementTitle']);
         // header("location: viewMatches.php");
         var_dump($_POST['storeCandidateID']);
     }
