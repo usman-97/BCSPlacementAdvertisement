@@ -1,9 +1,9 @@
 <?php
-require_once ("Models/Match.php");
+require_once ("Models/Message.php");
 
 $view = new stdClass();
 $view->pageTitle = "Messages";
-$messages = new Match();
+$messages = new Message();
 
 require_once ("logout.php");
 

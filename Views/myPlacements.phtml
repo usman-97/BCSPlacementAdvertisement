@@ -66,8 +66,8 @@
                         }
                     }
                 echo '<div class="row"><input type="submit" name="findMatches" value="Find Candidates" class="btn btn-secondary"/>
-                    </div><br /></div><input type="submit" name="prePage" value="Back" class="btn btn-dark">
-                    <input type="submit" name="nextPage" value="Next" class="btn btn-dark"></form>';
+                    </div><br /><input type="submit" name="prePage" value="Back" class="btn btn-dark">
+                    <input type="submit" name="nextPage" value="Next" class="btn btn-dark"></form></div>';
             }?>
             <br/>
             <!--<div class="row">
@@ -79,27 +79,28 @@
             </div>
                 <?php if (isset($view->potentialCandidates) && count($view->finalMatches) > 0)
                     {
-                        echo '<form action="" method="post"><div class="row">';
+                        echo '<form action="" method="post">';
                         for ($x = 0; $x < count($view->finalMatches); $x++)
                         {
-                            echo '<p><b>Candidate#00' . $view->finalMatches[$x] . ' - </b></p>'
+                            echo '<form action="" method="post"/><p>
+                                <b>Candidate#00' . $view->finalMatches[$x] . ' - </b></p>'
                             . '<input type="hidden" name="storeCandidateID" value="'. $view->finalMatches[$x] . '"/>' .
                             '<input type="hidden" name="storePlacementID" value="'. $_POST['placement_id']. '"/>' .
-                                '<input type="hidden" name="storePlacementTitle" value="'. $_POST['placementTitle']. '"/>';
-                            echo '<div class="row"><div class="col-sm-12"><ul>';
+                                '<input type="hidden" name="storePlacementTitle" value="'. $_POST['placementTitle']. '"/>
+                                <input type="submit" name="acceptMatch" value="Accept" class="btn btn-secondary" />';
+                            echo '<ul></form>';
                             for ($i = 0; $i < count($view->potentialCandidates[$x]); $i++)
                             {
-                                echo '<div class="col-sm-12"><li>' . $view->potentialCandidates[$x][$i]->getSkill() . '</li></div>';
+                                echo '<form action="" method="post"/><li>' . $view->potentialCandidates[$x][$i]->getSkill() . '</li>';
                                 /*foreach ($view->potentialCandidates as $candidate)
                                 {
                                     echo '<div class="row">' . $candidate[$i]->getSkill() . '</div>';
                                 }*/
                                 // echo '</div>';
                             }
-                            echo '</ul></div></div><div><input type="submit" name="acceptMatch" value="Accept" class="btn btn-secondary" /></div>';
+                            echo '</ul></form>';
                         }
-                        /*echo '<!--<input type="hidden" name="storeCandidatePage" value="' . $_SESSION['candidatePage'] .'"/>-->
-                              <!--<input type="hidden" name="storePage" value="' . $_SESSION['page'] . '"/></form></div>';*/
+                        echo '</form>';
                     }?>
             <?php if (isset($_SESSION['MatchMode'])) : ?>
             <!--<div>

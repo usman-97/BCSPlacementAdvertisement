@@ -181,17 +181,17 @@ if (isset($_POST['previousCandidate']))
 if (isset($_POST['acceptMatch']))
 {
     // $_SESSION['page'] = $_POST['storePage'];
-    /*if ($view->matches->checkMatch($_POST['storeCandidateID'], $_POST['storePlacementID']))
-    {*/
+    if ($view->matches->checkMatch($_POST['storeCandidateID'], $_POST['storePlacementID']))
+    {
         $view->matches->addMatch($_POST['storeCandidateID'], $_POST['storePlacementID']);
         $view->matches->sendMessage($_POST['storeCandidateID'], $_POST['storePlacementTitle']);
-        header("location: viewMatches.php");
-        // var_dump($_POST['storePlacementTitle']);
-    // }
-    /*else
+        // header("location: viewMatches.php");
+        var_dump($_POST['storeCandidateID']);
+    }
+    else
     {
-        $view->error = "You have already saved this match for placement";
-    }*/
+        $view->error = "You have already saved this match for this placement";
+    }
 }
 
 require_once ("Views/myPlacements.phtml");
