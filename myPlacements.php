@@ -35,10 +35,15 @@ if (isset($_POST['showSkills'])) {
 if (isset($_POST['addSkill']))
 {
     $skill = $_POST['skill'];
+    /*var_dump($_POST['skill']);
+    var_dump(preg_match("/^../", $skill));*/
+    preg_match("/^[0-9]+/", $skill, $idMatches);
+    preg_match("/[0-9]$/", $skill, $levelMatches);
+    var_dump($levelMatches[0]);
     // If employer selected skill is not already in skill list
-    if ($placementSkill->checkSkill($_POST['placement_id'], $skill[0])) {
+    if ($placementSkill->checkSkill($_POST['placement_id'], $idMatches[0])) {
         // Then add skill for placement
-        $placementSkill->addPlacementSkills($_POST['placement_id'], $skill[0], $skill[-1]);
+        $placementSkill->addPlacementSkills($_POST['placement_id'], $idMatches[0], $levelMatches[0]);
     }
     // Keep the track of current page
     $_SESSION['page'] = $_POST['pageTrack'];
@@ -62,7 +67,8 @@ if (!isset($_SESSION['page']))
         }
     }
 }
-// var_dump($_SESSION['storePage']);
+// var_dump( $_SESSION['page']);
+// var_dump($_POST['pageTrack']);
 
 if (isset($_POST['prePage']))
 {
@@ -82,11 +88,12 @@ if (isset($_POST['nextPage']))
 }
 
 // var_dump( $_SESSION['page']);
-// var_dump( $_POST['pageTrack']);
+// var_dump($_POST['pageTrack']);
 
 if ( $_SESSION['page'] ==  0)
 {
     $view->allPlacements = $placements->getAllPlacements($_SESSION['userID'], $_SESSION['page'], ($_SESSION['page'] + 1));
+    // var_dump("Increment");
 }
 else
 {
@@ -127,7 +134,7 @@ if (isset($_POST['findMatches']))
 
         if (!empty($placementRequiredSkills))
         {
-            $view->matchPercentage[$i] = ($skillMatches / count($placementRequiredSkills)) * 100;
+            $view->matchPercentage[$i] = intval(($skillMatches / count($placementRequiredSkills)) * 100);
         }
         /*var_dump(count($placementRequiredSkills));
         var_dump($skillMatches);*/
@@ -214,6 +221,12 @@ if (isset($_POST['acceptMatch']))
     {
         $view->error = "You have already saved this match for this placement";
     }
+}
+
+if (isset($_POST['removePlacementSkill']))
+{
+    $placementSkill->removePlacementSkill($_POST['placementSkillID'], $_POST['skillPlacementID'], $_POST['skillPlacementLevel']);
+    // var_dump($_POST['skillPlacementID']);
 }
 
 require_once ("Views/myPlacements.phtml");

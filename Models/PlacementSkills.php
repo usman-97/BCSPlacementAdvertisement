@@ -86,4 +86,14 @@ class PlacementSkills {
             return true;
         }
     }
+
+    public function removePlacementSkill($placement, $skill, $level)
+    {
+        $sqlQuery = "DELETE FROM placement_skills WHERE placement_id = :placement AND skill_id = :skill AND level = :skillLevel";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(":placement", $placement, PDO::PARAM_INT);
+        $statement->bindParam(":skill", $skill, PDO::PARAM_INT);
+        $statement->bindParam(":skillLevel", $level, PDO::PARAM_INT);
+        $statement->execute();
+    }
 }

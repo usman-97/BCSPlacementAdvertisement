@@ -4,7 +4,7 @@
  * Class PlacementSkillsData
  */
 class PlacementSkillsData{
-    protected $_skill, $_level;
+    protected $_skillID, $_skill, $_level;
 
     /**
      * PlacementSkillsData constructor.
@@ -12,8 +12,17 @@ class PlacementSkillsData{
      */
     public function __construct($dbRow)
     {
+        $this->_skillID = $dbRow['skillID'];
         $this->_skill = $dbRow['skill'];
         $this->_level = $dbRow['level'];
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSkillID()
+    {
+        return $this->_skillID;
     }
 
     /**

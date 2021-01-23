@@ -49,8 +49,8 @@
                     '<input type="hidden" name="placementAddress" value="' . $placement->getLocation() . '" />' .
                     '</div></div>' . '<br />' . '<div class="row"><p><b>Salary:</b>  £' . $placement->getSalary() .
                     ' ' . $placement->getSalaryPaid() . '</p></div>' .
-                    '<div class="row"><div class="col-sm-2"><p><b>Start Date:</b>' . $placement->getStartDate() .
-                    '</p></div><div class="col-sm-2"><p><b>End Date:</b> ' . $placement->getEndDate() . '</p></div></div>';
+                    '<div class="row"><div class="col-sm-auto"><p><b>Start Date:</b>' . $placement->getStartDate() .
+                    '</p></div><div class="col-sm-auto"><p><b>End Date:</b> ' . $placement->getEndDate() . '</p></div></div>';
 
                 echo '<div class="row"><div class="col-sm-auto"><p><b>Add required skills for placement
                         </b></p></div><div class="col-sm-auto">';
@@ -80,7 +80,11 @@
                             foreach ($view->allPlacementSkills as $placementSkill) {
                                 echo '<div class="col-sm-auto" id="requiredSkills">';
                                 echo '<form action="" method="post"><p><b>' . $placementSkill->getSkill() .
-                                    ' - Level ' . $placementSkill->getLevel() . '</b></p></form></div>';
+                                    ' - Level ' . $placementSkill->getLevel() . '</b></p>
+                                    <input type="hidden" name="placementSkillID" value="' . $_POST['placement_id'] . '"/>
+                                    <input type="hidden" name="skillPlacementID" value="' . $placementSkill->getSkillID() . '" />
+                                    <input type="hidden" name="skillPlacementLevel" value="' . $placementSkill->getLevel() . '" />
+                                    <input type="submit" name="removePlacementSkill" value="X" class="btn btn-danger" /></form></div>';
                             }
                             echo '</div>';
                         }

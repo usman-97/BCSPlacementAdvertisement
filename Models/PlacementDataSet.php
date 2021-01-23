@@ -29,6 +29,8 @@ class PlacementDataSet {
     public function getAllPlacements($employer, $start, $limit)
     {
         $employerID = $this->findEmployerID($employer);
+        // var_dump($start);
+        // var_dump($limit);
 
         // SQL query to fetch all placement data
         $sqlQuery = "SELECT * FROM placement WHERE employer_id = :employer ORDER BY end_date DESC LIMIT :startPage, :nextPage";
@@ -47,7 +49,7 @@ class PlacementDataSet {
         {
             $dataSet[] = new PlacementData($row);
         }
-        // var_dump($start, $limit);
+        // var_dump($dataSet);
         return $dataSet;
     }
 
