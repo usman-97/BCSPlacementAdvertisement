@@ -107,18 +107,40 @@
 <section>
     <div>
         <form action="" method="post" class="form-group">
-            <h4>Registration</h4>
-            <select name="userType">
+            <h4 style="color: #000000">Registration</h4>
+            <!--<select name="userType">
                 <option>Student</option>
                 <option>Employer</option>
-            </select>
+            </select>-->
 <!--            <input type="text" name="newFullName" value="Legend Expression" >-->
             <!--<input type="text" name="email" value="legend.expression@edu.salford.ac.uk" >
             <input type="password" name="newPwd" value="123456789" >
             <input type="text" name="phone_number" value="0712345678" >
             <input type="text" name="address" value="51 princess road, M16">
             <input type="submit" name="register" value="Sign Up" >-->
-                    <label>
+
+            <label>
+                <input
+                        type="radio"
+                        class="input"
+                        name="userType"
+                        placeholder=""
+                        value="Employer"/>Employer
+                <div class="line-box">
+                    <div class="line"></div>
+                </div>
+                <input
+                        type="radio"
+                        class="input"
+                        name="userType"
+                        placeholder=""
+                        value="Student"/>Student
+                <div class="line-box">
+                    <div class="line"></div>
+                </div>
+            </label>
+
+                <label>
                         <input
                                 type="text"
                                 class="input"
