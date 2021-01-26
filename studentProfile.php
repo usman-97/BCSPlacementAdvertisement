@@ -49,9 +49,14 @@ if (isset($_POST['cvUpload']))
 if (isset($_POST['addStudentSkills']))
 {
     $selectedSkill = $_POST['studentSkill'];
-    if ($studentSkill->checkSkill($_SESSION['userID'],  $selectedSkill[0]))
+    preg_match("/^[0-9]+/", $selectedSkill, $idMatches);
+    preg_match("/[0-9]$/", $selectedSkill, $levelMatches);
+    var_dump($idMatches[0]);
+    var_dump($levelMatches[0]);
+
+    if ($studentSkill->checkSkill($_SESSION['userID'],  $idMatches[0], $levelMatches[0]))
     {
-        $view->selectSkills = $studentSkill->addStudentSkill($_SESSION['userID'], $selectedSkill[0], $selectedSkill[-1]);
+        $view->selectSkills = $studentSkill->addStudentSkill($_SESSION['userID'], $idMatches[0], $levelMatches[0]);
         header ("location: studentProfile.php");
     }
     else
@@ -95,8 +100,8 @@ if (isset($_POST['updateDetails']))
     }
 
     unset($_SESSION['changeStudentDetails']);
-    var_dump($_POST['updatePhoneNumber']);
-    var_dump($_POST['updateAddress']);
+    // var_dump($_POST['updatePhoneNumber']);
+    // var_dump($_POST['updateAddress']);
     header("location: studentProfile.php");
 }
 

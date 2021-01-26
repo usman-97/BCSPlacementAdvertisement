@@ -39,7 +39,7 @@ if (isset($_POST['addSkill']))
     var_dump(preg_match("/^../", $skill));*/
     preg_match("/^[0-9]+/", $skill, $idMatches);
     preg_match("/[0-9]$/", $skill, $levelMatches);
-    var_dump($levelMatches[0]);
+    // var_dump($levelMatches[0]);
     // If employer selected skill is not already in skill list
     if ($placementSkill->checkSkill($_POST['placement_id'], $idMatches[0])) {
         // Then add skill for placement

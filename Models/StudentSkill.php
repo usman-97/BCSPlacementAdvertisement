@@ -45,14 +45,16 @@ class StudentSkill {
     /**
      * @param $user
      * @param $skill
+     * @param $level
      * @return bool
      */
-    public function checkSkill($user, $skill)
+    public function checkSkill($user, $skill, $level)
     {
-        $sqlQuery = "SELECT skill_id FROM student_skill WHERE user_id = :userID AND skill_id = :id";
+        $sqlQuery = "SELECT skill_id FROM student_skill WHERE user_id = :userID AND skill_id = :id AND level = :skillLevel";
         $statement = $this->_dbHandle->prepare($sqlQuery);
         $statement->bindParam(":userID", $user, PDO::PARAM_INT);
         $statement->bindParam(":id", $skill, PDO::PARAM_INT);
+        $statement->bindParam(":skillLevel", $level, PDO::PARAM_INT);
         $statement->execute();
 
         if ($statement->rowCount() > 0)
