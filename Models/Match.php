@@ -123,6 +123,10 @@ class Match {
         }
     }
 
+    /**
+     * @param $user
+     * @return array|false
+     */
     public function showCandidates($user)
     {
         $sqlQuery = "SELECT user_id, skill, level FROM student_skill, skills WHERE user_id = :user AND student_skill.skill_id = skills.skillID ";
@@ -167,6 +171,11 @@ class Match {
         $statement->execute();
     }
 
+    /**
+     * @param $id
+     * @param $placement
+     * @return bool
+     */
     public function checkMatch($id, $placement)
     {
         $sqlQuery = "SELECT * FROM matches WHERE user_id = :id AND placement_id = :placement";
@@ -185,6 +194,10 @@ class Match {
         }
     }
 
+    /**
+     * @param $employer
+     * @return array|false
+     */
     public function getAllMatches($employer)
     {
         $placement = new PlacementDataSet();
@@ -230,13 +243,13 @@ class Match {
         }
     }
 
-    public function countMessageID()
+    /*public function countMessageID()
     {
         $sqlQuery = "SELECT COUNT(messageID) FROM messages";
         $statement = $this->_dbHandle->prepare($sqlQuery);
         $statement->execute();
         return $statement->fetchColumn();
-    }
+    }*/
 
     public function findFullName($id)
     {
@@ -248,7 +261,7 @@ class Match {
         return $statement->fetchColumn();
     }
 
-    public function sendMessage($id, $placement)
+    /*public function sendMessage($id, $placement)
     {
         $newKey = $this->countMessageID() + 1;
         $date = date("Y-m-d");
@@ -266,7 +279,7 @@ class Match {
         $statement->bindParam(":expiry", $expiryDate, PDO::PARAM_STR);
 
         $statement->execute();
-    }
+    }*/
 
     /*public function checkInbox()
     {
@@ -276,7 +289,7 @@ class Match {
         return $statement->fetchColumn();
     }*/
 
-    public function getMessages($id)
+    /*public function getMessages($id)
     {
         $sqlQuery = "SELECT * FROM messages WHERE user_id = :id";
         $statement = $this->_dbHandle->prepare($sqlQuery);
@@ -304,5 +317,5 @@ class Match {
         $statement = $this->_dbHandle->prepare($sqlQuery);
         $statement->bindParam(":id", $id, PDO::PARAM_INT);
         $statement->execute();
-    }
+    }*/
 }

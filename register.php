@@ -45,7 +45,7 @@ if (isset($_POST['register'])) {
                                 }*/
                                 // echo "Created";
                             } else {
-                                $view->error = "Password doesn't match";
+                                $view->error = "Password did not match";
                             }
                         } else {
                             $view->error = "This email is already taken";

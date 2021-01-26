@@ -120,6 +120,7 @@
 
             .reCaptcha {
                 width: 100%;
+                font-size: 20px;
             }
         }
     </style>
@@ -129,7 +130,7 @@
 <form action="" method="post" class="form-group">
     <h1 style="color:#000000;">Login</h1>
     <label>
-        <input type="text" class="input" name="userEmail" placeholder="Email" value="employer@email.org"/>
+        <input type="text" class="input" name="userEmail" placeholder="Email"/>
         <div class="line-box">
             <div class="line"></div>
         </div>
@@ -151,8 +152,7 @@
                 type="password"
                 class="input"
                 name="pwd"
-                placeholder="Password"
-                value="123456789"/>
+                placeholder="Password"/>
         <div class="line-box">
             <div class="line"></div>
         </div>
@@ -168,8 +168,7 @@
                 type="text"
                 class="input"
                 name="reCaptcha"
-                placeholder=""
-                value="<?php if (isset($view->finalReCaptcha)) {echo $view->finalReCaptcha;} ?>"/>
+                placeholder=""/>
         <div class="line-box">
             <div class="line"></div>
         </div>

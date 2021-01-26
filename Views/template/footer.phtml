@@ -1,17 +1,26 @@
 </div>
+
+<style>
+    .responsive {
+        width: 60%;
+        height: auto;
+    }
+
+    @media screen and (max-width: 800px) {
+        #logoContainer {
+            width: 100%;
+            height: auto;
+        }
+    }
+</style>
+
 <!-- Footer -->
 <footer class="py-5 bg-black">
     <div class="container">
-        <div class="d-flex justify-content-center" style="border-bottom: 3px solid #FFFFFF;">
-            <div>
-                <a href="https://www.facebook.com/IT.BCS/" target="_blank"><img src="img/facebook_logo.png" alt="FaceBook" /></a>
-            </div>
-            <div>
-                <a href="https://twitter.com/bcs?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank"><img src="img/Twitter_logo.png" alt="Twitter" /></a>
-            </div>
-            <div>
-                <a href="https://www.youtube.com/channel/UCbOuaNSjnye_DHcw8411hxg" target="_blank"><img src="img/youtube_logo.png" alt="YouTube" /></a>
-            </div>
+        <div class="d-flex justify-content-center" style="border-bottom: 3px solid #FFFFFF;" id="logoContainer">
+                <a href="https://www.facebook.com/IT.BCS/" target="_blank"><img src="img/facebook_logo.png" alt="FaceBook" class="responsive"/></a>
+                <a href="https://twitter.com/bcs?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank"><img src="img/Twitter_logo.png" alt="Twitter" class="responsive"/></a>
+                <a href="https://www.youtube.com/channel/UCbOuaNSjnye_DHcw8411hxg" target="_blank"><img src="img/youtube_logo.png" alt="YouTube" class="responsive"/></a>
         </div>
         <br />
         <p class="m-0 text-center text-white small">Copyright &copy; Group 16</p>
@@ -20,8 +29,8 @@
 </footer>
 
 <!-- Bootstrap core JavaScript -->
-<script src="../../vendor/jquery/jquery.min.js"></script>
-<script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

@@ -17,6 +17,11 @@ class StudentSkill {
         $this->_dbHandle = $this->_dbInstance->getdbConnection(); // Establish connection to database
     }
 
+    /**
+     * @param $id
+     * @param $skill
+     * @param $level
+     */
     public function addStudentSkill($id, $skill, $level)
     {
         // SQL query to insert student skills
@@ -87,6 +92,10 @@ class StudentSkill {
         }
     }
 
+    /**
+     * @param $user
+     * @param $skill
+     */
     public function removeSkill($user, $skill)
     {
         // SQL query to remove skill from user skill inventory

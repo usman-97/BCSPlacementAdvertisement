@@ -13,6 +13,10 @@ class Student extends User {
         parent::__construct();
     }
 
+    /**
+     * @param $user
+     * @return mixed
+     */
     public function getSector($user)
     {
         $sqlQuery = "SELECT sector FROM student WHERE user_id = :id";
@@ -23,6 +27,10 @@ class Student extends User {
         return $statement->fetchColumn();
     }
 
+    /**
+     * @param $user
+     * @param $sector
+     */
     public function addSector($user, $sector)
     {
         $sqlQuery = "UPDATE student SET sector = :selectedSector WHERE user_id = :id";

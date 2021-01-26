@@ -48,7 +48,7 @@ if (isset($_POST['login']))
                 $view->error = "Invalid email";
             }
         } else {
-            $view->error = "Please fill type email/password";
+            $view->error = "Please type email/password";
         }
     }
     else
