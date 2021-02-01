@@ -14,6 +14,7 @@ $view->matches = new Match();
 $message = new Message();
 
 $view->finalMatches = [];
+$view->potentialCandidates = [];
 // $placementRequiredSkills = [];
 
 require_once ("logout.php");
@@ -118,7 +119,7 @@ if (isset($_POST['findMatches']))
         if ($matchSkills)
         {
             for ($j = 0; $j < count($matchSkills); $j++)
-            {
+            {;
                 for ($x = 0; $x < count($placementRequiredSkills); $x++) {
                     if ($matchSkills[$j] == $placementRequiredSkills[$x])
                     {
@@ -129,16 +130,18 @@ if (isset($_POST['findMatches']))
         }
         else
         {
-            $view->error = "No match found";
+            // $view->error = "No match found";
         }
 
         if (!empty($placementRequiredSkills))
         {
             $view->matchPercentage[$i] = intval(($skillMatches / count($placementRequiredSkills)) * 100);
+            // var_dump($view->matchPercentage[$i]);
         }
         /*var_dump(count($placementRequiredSkills));
         var_dump($skillMatches);*/
         // var_dump($view->matchPercentage);
+
         if ($skillMatches > 0)
         {
             array_push($view->finalMatches, $matchLocationSector[$i]);
@@ -151,7 +154,7 @@ if (isset($_POST['findMatches']))
         }
         else
         {
-            $view->error = "No candidate found";
+            // $view->error = "No candidate found";
         }
     }
 
@@ -169,6 +172,7 @@ if (count($view->finalMatches) > 0)
     for ($z = 0; $z < count($view->finalMatches); $z++)
     {
         $view->potentialCandidates[] = $view->matches->showCandidates($view->finalMatches[$z]);
+        var_dump($view->potentialCandidates);
     }
 }
 // var_dump($view->finalMatches);

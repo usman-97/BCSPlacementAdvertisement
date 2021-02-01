@@ -110,7 +110,7 @@
                 <?php if (isset($view->potentialCandidates) && count($view->finalMatches) > 0)
                     {
                         echo '<form action="" method="post">';
-                        for ($x = 0; $x < count($view->finalMatches); $x++)
+                        for ($x = 0; $x < count($view->potentialCandidates); $x++)
                         {
                             echo '<form action="" method="post"/><div class="col-sm-auto" id="candidate"><h3>
                                 <b>Candidate#M00' . $view->finalMatches[$x] . '</b></h3>

@@ -92,7 +92,7 @@ class PlacementDataSet {
     public function createPlacement($company, $sector, $title, $description, $benefits, $location, $salary, $salaryPaid, $start_date, $end_date, $employer)
     {
         // SQL query counts placement rows
-        $countQuery = "SELECT COUNT(placementID) FROM placement";
+        $countQuery = "SELECT placementID FROM placement ORDER BY placementID DESC LIMIT 1";
         // Prepare PDO statement
         $countStatement = $this->_dbHandle->prepare($countQuery);
         $countStatement->execute();
@@ -101,6 +101,7 @@ class PlacementDataSet {
         $this->_placement_id = $newKey;
 
         $newEmployerId = $this->findEmployerID($employer);
+        var_dump($newEmployerId);
 
         $sqlQuery = "INSERT INTO placement VALUES (:id, :company, :sector, :title, :description, :benefits, :location, :salary, :salaryPaid, :start_date, :end_date, :employer)";
         $statement = $this->_dbHandle->prepare($sqlQuery);

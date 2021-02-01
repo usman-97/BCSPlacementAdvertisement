@@ -66,11 +66,7 @@ class Match {
     public function checkStudentSkills($student, $placement)
     {
         // SQL query to find student skills which match placement
-        $sqlQuery = "SELECT skill FROM student_skill, skills, placement_skills WHERE user_id = :student 
-                                                            AND student_skill.skill_id = skills.skillID 
-                                                            AND skills.skillID = placement_skills.skill_id 
-                                                            AND placement_id = :placement 
-                                                            AND student_skill.level >= placement_skills.level";
+        $sqlQuery = "SELECT skill FROM student_skill, skills, placement_skills WHERE user_id = :student AND student_skill.skill_id = skills.skillID  AND skills.skillID = placement_skills.skill_id  AND placement_id = :placement AND student_skill.level >= placement_skills.level";
         $statement = $this->_dbHandle->prepare($sqlQuery); // Prepare PDO statement
         // Assign values to parameters in SQL query
         $statement->bindParam(":student",$student, PDO::PARAM_INT);

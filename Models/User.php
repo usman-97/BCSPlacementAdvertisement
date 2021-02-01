@@ -108,7 +108,7 @@ class User {
     public function register($fullName, $phoneNumber, $address)
     {
         // SQL query counts userID rows
-        $countQuery = "SELECT COUNT(userID) FROM users";
+        $countQuery = "SELECT userID FROM users ORDER BY userID DESC LIMIT 1";
         // Prepare PDO statement
         $countStatement = $this->_dbHandle->prepare($countQuery);
         $countStatement->execute();
@@ -116,6 +116,7 @@ class User {
         // return total number of userID records
         $newKey = $countStatement->fetchColumn() + 1;
         $this->_userID = $newKey;
+        var_dump($newKey);
 
         // SQL query to insert user details
         $sqlQuery = "INSERT INTO users VALUES(:Pkey, :username, :userEmail, :pwd, :phone, :postal, :typeOfUser)";
@@ -172,7 +173,7 @@ class User {
     public function addEmployer()
     {
         // SQL query counts userID rows
-        $countQuery = "SELECT COUNT(employerID) FROM employer";
+        $countQuery = "SELECT employerID FROM employer ORDER BY employerID DESC LIMIT 1";
         // Prepare PDO statement
         $countStatement = $this->_dbHandle->prepare($countQuery);
         $countStatement->bindParam(":id", $id, PDO::PARAM_INT);

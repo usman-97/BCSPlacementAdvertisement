@@ -27,7 +27,7 @@ class Message {
     public function countMessageID()
     {
         // SQL query to count total rows
-        $sqlQuery = "SELECT COUNT(messageID) FROM messages";
+        $sqlQuery = "SELECT messageID FROM messages ORDER BY messageID DESC LIMIT 1";
         // Prepare PDO statement
         $statement = $this->_dbHandle->prepare($sqlQuery);
         $statement->execute();// Execute PDO statement
