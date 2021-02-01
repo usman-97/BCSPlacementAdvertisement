@@ -172,7 +172,7 @@ if (count($view->finalMatches) > 0)
     for ($z = 0; $z < count($view->finalMatches); $z++)
     {
         $view->potentialCandidates[] = $view->matches->showCandidates($view->finalMatches[$z]);
-        var_dump($view->potentialCandidates);
+        // var_dump($view->potentialCandidates);
     }
 }
 // var_dump($view->finalMatches);

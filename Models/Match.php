@@ -149,7 +149,7 @@ class Match {
 
     public function countMatchID()
     {
-        $sqlQuery = "SELECT COUNT(matchID) FROM matches";
+        $sqlQuery = "SELECT matchID FROM matches ORDER BY matchID DESC LIMIT 1";
         $statement = $this->_dbHandle->prepare($sqlQuery);
         $statement->execute();
         return $statement->fetchColumn();

@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a2fb3b9-b181-48b7-adf5-bc9338dd0ffc" name="Default Changelist" comment="First commit">
-      <change afterPath="$PROJECT_DIR$/CVUploads/Student Demo/TEST FILE.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a604895f-bf8f-4260-a207-bd27eea0429e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a604895f-bf8f-4260-a207-bd27eea0429e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/Match.php" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Match.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Message.php" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/PlacementDataSet.php" beforeDir="false" afterPath="$PROJECT_DIR$/Models/PlacementDataSet.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/createPlacement.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/createPlacement.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/index.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/login.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/login.phtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/myPlacements.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/myPlacements.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/template/header.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/template/header.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myPlacements.php" beforeDir="false" afterPath="$PROJECT_DIR$/myPlacements.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +94,8 @@
       <workItem from="1611668986778" duration="6243000" />
       <workItem from="1611837663189" duration="14150000" />
       <workItem from="1611857599673" duration="1074000" />
-      <workItem from="1612195528593" duration="475000" />
+      <workItem from="1612195528593" duration="2347000" />
+      <workItem from="1612216322023" duration="912000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1610736764770</created>
